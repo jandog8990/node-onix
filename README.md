@@ -3,7 +3,7 @@
 [![NPM version](https://badge.fury.io/js/onix.svg)](http://badge.fury.io/js/onix)
 [![Build Status](https://travis-ci.org/GitbookIO/node-onix.png?branch=master)](https://travis-ci.org/GitbookIO/node-onix)
 
-This library can be used to parse, or generate ONIX files from a list of books metadatas.
+This library can be used to parse, or generate ONIX files from a list of books metadatas. It includes ONIX 2.1 and basic ONIX 3.0 support.
 
 ### Installation
 
@@ -68,3 +68,19 @@ You can also parse an ONIX feed:
 var feed = onix.parse('...');
 ```
 
+### ONIX 3.0
+
+Add the version number as a string parameter to `create` and `parse`:
+
+```js
+
+var xml = onix.create({...}, '3.0');
+```
+
+and
+```js
+
+var feed = onix.parse('...', '3.0');
+```
+
+Please note that 3.0 coverage is _not_ complete.

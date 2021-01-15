@@ -1,0 +1,1137 @@
+diff --git a/lib/index.js b/lib/index.js
+index 119f0ac..24b9113 100644
+--- a/lib/index.js
++++ b/lib/index.js
+@@ -20,14 +20,30 @@ function create(definition, onixVersion) {
+ }
+ 
+ function parse(xml, onixVersion) {
++    console.log("Index Parse:");
++    console.log("Onix version = " + onixVersion);
++    console.log("\n");
++
+     var onixSchema = getSchema(onixVersion);
++    console.log("Onix Schema:");
++    console.log(onixSchema);
++    console.log("\n");
++
++    // var parsedXML = onixSchema.parse(xml); 
++    // console.log("Parse XML (NO REPLACE):");
++    // console.log(parsedXML);
++    // console.log("\n");
++
++    // console.log("Parse XML (XML REPLACE):");
+     return onixSchema.parse(xml.replace(/\<(\?xml|(\!DOCTYPE[^\>\[]+(\[[^\]]+)?))+[^>]+\>/g, ''));
+ }
+ 
+ function getSchema(onixVersion) {
+     if (typeof onixVersion != 'undefined' && onixVersion == '3.0') {
++        console.log("GET XMLSchema ONIX 3!"); 
+         return new XMLSchema(schemas.Onix3);
+     } else {
++        console.log("GET XMLSchema ONIX 2.1!"); 
+         return new XMLSchema(schemas.Onix21);
+     };
+ };
+diff --git a/lib/schemas/onix21/index.js b/lib/schemas/onix21/index.js
+index 7d4b84a..0ae33fb 100644
+--- a/lib/schemas/onix21/index.js
++++ b/lib/schemas/onix21/index.js
+@@ -1,6 +1,6 @@
+ 
++    // Product: require('./product'),
+ module.exports = {
+     Onix: require('./onix'),
+-    Product: require('./product'),
+     sysID: "http://www.editeur.org/onix/2.1/reference/onix-international.dtd"
+ };
+diff --git a/lib/schemas/onix21/onix.js b/lib/schemas/onix21/onix.js
+index cb359c0..30a2f88 100644
+--- a/lib/schemas/onix21/onix.js
++++ b/lib/schemas/onix21/onix.js
+@@ -3,7 +3,6 @@ var Header = require('./header');
+ 
+ module.exports = {
+     tag: 'ONIXMessage',
+-
+     fields: {
+         '$': Header,
+         'products': Product
+diff --git a/test/fixtures/epubDirect.onx b/test/fixtures/epubDirect.onx
+deleted file mode 100644
+index 6d63ecb..0000000
+--- a/test/fixtures/epubDirect.onx
++++ /dev/null
+@@ -1,162 +0,0 @@
+-<?xml version="1.0" encoding="utf-8" standalone="no"?>
+-<ONIXMessage>
+- <Header>
+-  <FromCompany>ePubDirect</FromCompany>
+-  <FromPerson>Helen Burnett</FromPerson>
+-  <FromEmail>deliveries@epubdirect.com</FromEmail>
+-  <SentDate>20131129</SentDate>
+- </Header>
+- <Product>
+-  <RecordReference>1f261549-df68-479e-a08d-9404101dafd8</RecordReference>
+-  <NotificationType>03</NotificationType>
+-  <ProductIdentifier>
+-   <ProductIDType>15</ProductIDType>
+-   <IDValue>978123456789</IDValue>
+-  </ProductIdentifier>
+-  <ProductForm>DG</ProductForm>
+-  <EpubType>029</EpubType>
+-  <NoSeries />
+-  <Title>
+-   <TitleType>01</TitleType>
+-   <TitleText>Sample Title Name</TitleText>
+-   <Subtitle>Sample Subtitle</Subtitle>
+-  </Title>
+-  <WorkIdentifier>
+-   <WorkIDType>15</WorkIDType>
+-   <IDValue>978123456789</IDValue>
+-  </WorkIdentifier>
+-  <Contributor>
+-   <SequenceNumber>1</SequenceNumber>
+-   <ContributorRole>A01</ContributorRole>
+-   <PersonName>John Doe</PersonName>
+-   <PersonNameInverted>Doe, John</PersonNameInverted>
+-   <BiographicalNote>Sample Bio</BiographicalNote>
+-  </Contributor>
+-  <Contributor>
+-   <SequenceNumber>2</SequenceNumber>
+-   <ContributorRole>A01</ContributorRole>
+-   <PersonName>Joe Bloggs</PersonName>
+-   <PersonNameInverted>Bloggs, Joe</PersonNameInverted>
+-   <BiographicalNote> Sample</BiographicalNote>
+-  </Contributor>
+-  <Language>
+-   <LanguageRole>01</LanguageRole>
+-   <LanguageCode>eng</LanguageCode>
+-  </Language>
+-  <NumberOfPages>80</NumberOfPages>
+-  <BASICMainSubject>SOC029000</BASICMainSubject>
+-  <BICMainSubject>VFJD</BICMainSubject>
+-  <BICVersion>2.0</BICVersion>
+-  <Subject>
+-   <MainSubject />
+-   <SubjectSchemeIdentifier>10</SubjectSchemeIdentifier>
+-   <SubjectCode>MED083000</SubjectCode>
+-  </Subject>
+-  <Subject>
+-   <SubjectSchemeIdentifier>10</SubjectSchemeIdentifier>
+-   <SubjectCode>MED028000</SubjectCode>
+-  </Subject>
+-  <Subject>
+-   <SubjectSchemeIdentifier>20</SubjectSchemeIdentifier>
+-   <SubjectHeadingText>Sample Heading</SubjectHeadingText>
+-  </Subject>
+-  <AudienceCode>01</AudienceCode>
+-  <OtherText>
+-   <TextTypeCode>01</TextTypeCode>
+-   <Text textformat="05"><![CDATA[<p>Sample description.]]</p>
+-<p>Features</p>
+-<p>Step by step guide</p>
+-<p>Full colour illustrations: all the pictures have been selected following a period of testing.</p>
+-<p>Glossary and list of helpful organisations.</p>
+-<p>Suggested full text storyline.</p>
+-<p>Readership</p>
+-<p>People with learning difficulties (who also have Epilepsy) and their carers</p>]]></Text>
+-  </OtherText>
+-  <OtherText>
+-   <TextTypeCode>02</TextTypeCode>
+-   <Text textformat="05"><![CDATA[<p>Getting on with Epilepsy illustrates experiences that can be worrying for people with epilepsy such as having a seizure in public, going to the doctor, having a brain scan, an EEG, a blood test, and taking daily medication. The book also stimulates discussion about the balance between personal autonomy and the need for safety.</p>]]></Text>
+-  </OtherText>
+-  <OtherText>
+-   <TextTypeCode>03</TextTypeCode>
+-   <Text textformat="05"><![CDATA[<p>Getting on with Epilepsy illustrates experiences that can be worrying for people with epilepsy such as having a seizure in public, going to the doctor, having a brain scan, an EEG, a blood test, and taking daily medication. The book also stimulates discussion about the balance between personal autonomy and the need for safety. Many specific safety issues, such as cycling, cooking, safe drinking and swimming are addressed, demonstrating that it is possible to enjoy an active and independent life with epilepsy. The authors prepared this book with the help of an advisory panel of people with learning disabilities.</p>
+-<p>Features</p>
+-<p>Provides a step-by-step guide to help carers use the books.</p>
+-<p>Full colour illustrations: all the pictures have been selected following a period of testing.</p>
+-<p>Glossary and list of helpful organisations.</p>
+-<p>Suggested full text storyline.</p>
+-<p>Readership</p>
+-<p>People with learning difficulties (who also have Epilepsy) and their carers</p>]]></Text>
+-  </OtherText>
+-  <MediaFile>
+-   <MediaFileTypeCode>04</MediaFileTypeCode>
+-   <MediaFileLinkTypeCode>06</MediaFileLinkTypeCode>
+-   <MediaFileLink>978123456789.jpg</MediaFileLink>
+-  </MediaFile>
+-  <Imprint>
+-   <ImprintName>Busy eBooks</ImprintName>
+-  </Imprint>
+-  <Publisher>
+-   <PublishingRole>01</PublishingRole>
+-   <PublisherName>Busy eBooks</PublisherName>
+-  </Publisher>
+-  <CityOfPublication>London</CityOfPublication>
+-  <CountryOfPublication>GB</CountryOfPublication>
+-  <PublishingStatus>04</PublishingStatus>
+-  <PublicationDate>20130917</PublicationDate>
+-  <SalesRights>
+-   <SalesRightsType>02</SalesRightsType>
+-   <RightsTerritory>WORLD</RightsTerritory>
+-  </SalesRights>
+-  <SalesRestriction>
+-   <SalesRestrictionType>09</SalesRestrictionType>
+-  </SalesRestriction>
+-  <RelatedProduct>
+-   <RelationCode>13</RelationCode>
+-   <ProductIdentifier>
+-    <ProductIDType>15</ProductIDType>
+-    <IDValue>978123456789</IDValue>
+-   </ProductIdentifier>
+-  </RelatedProduct>
+-  <SupplyDetail>
+-   <SupplierName>ePubDirect</SupplierName>
+-   <AvailabilityCode>IP</AvailabilityCode>
+-   <ProductAvailability>20</ProductAvailability>
+-   <ExpectedShipDate>20130917</ExpectedShipDate>
+-   <OnSaleDate>20130917</OnSaleDate>
+-   <Price>
+-    <PriceTypeCode>01</PriceTypeCode>
+-    <PriceQualifier>05</PriceQualifier>
+-    <PriceAmount>7.95</PriceAmount>
+-    <CurrencyCode>USD</CurrencyCode>
+-   </Price>
+-   <Price>
+-    <PriceTypeCode>01</PriceTypeCode>
+-    <PriceQualifier>05</PriceQualifier>
+-    <PriceAmount>5.00</PriceAmount>
+-    <CurrencyCode>GBP</CurrencyCode>
+-   </Price>
+-   <Price>
+-    <PriceTypeCode>01</PriceTypeCode>
+-    <PriceQualifier>05</PriceQualifier>
+-    <PriceAmount>5.00</PriceAmount>
+-    <CurrencyCode>EUR</CurrencyCode>
+-   </Price>
+-   <Price>
+-    <PriceTypeCode>01</PriceTypeCode>
+-    <PriceQualifier>05</PriceQualifier>
+-    <PriceAmount>8.95</PriceAmount>
+-    <CurrencyCode>CAD</CurrencyCode>
+-   </Price>
+-   <Price>
+-    <PriceTypeCode>02</PriceTypeCode>
+-    <PriceQualifier>05</PriceQualifier>
+-    <PriceAmount>6.00</PriceAmount>
+-    <CurrencyCode>GBP</CurrencyCode>
+-    <TaxRateCode1>S</TaxRateCode1>
+-    <TaxRatePercent1>20.00</TaxRatePercent1>
+-    <TaxableAmount1>5.00</TaxableAmount1>
+-    <TaxAmount1>1.00</TaxAmount1>
+-   </Price>
+-  </SupplyDetail>
+- </Product>
+-</ONIXMessage>
+diff --git a/test/fixtures/onix3sample.xml b/test/fixtures/onix3sample.xml
+index 0dc5249..96eaecf 100644
+--- a/test/fixtures/onix3sample.xml
++++ b/test/fixtures/onix3sample.xml
+@@ -12,6 +12,869 @@
+     <SentDateTime>20160127T211839Z</SentDateTime>
+     <DefaultLanguageOfText>fre</DefaultLanguageOfText>
+   </Header>
++  <Product>
++    <RecordReference>Record-Ref</RecordReference>
++    <NotificationType>06</NotificationType>
++    <ProductIdentifier>
++      <ProductIDType>19</ProductIDType>
++      <IDValue>978XXXXXXXXXX</IDValue>
++    </ProductIdentifier>
++    <DescriptiveDetail>
++      <ProductComposition>00</ProductComposition>
++      <ProductForm>EA</ProductForm>
++      <ProductFormDetail>E101</ProductFormDetail>
++      <ProductFormDetail>E200</ProductFormDetail>
++      <EpubTechnicalProtection>02</EpubTechnicalProtection>
++      <Collection>
++        <CollectionType>10</CollectionType>
++        <CollectionIdentifier>
++          <CollectionIDType>01</CollectionIDType>
++          <IDValue>CollectionID</IDValue>
++        </CollectionIdentifier>
++        <TitleDetail>
++          <TitleType>01</TitleType>
++          <TitleElement>
++            <TitleElementLevel>02</TitleElementLevel>
++            <TitleText><![CDATA[Collection name]]></TitleText>
++          </TitleElement>
++        </TitleDetail>
++      </Collection>
++      <TitleDetail>
++        <TitleType>01</TitleType>
++        <TitleElement>
++          <TitleElementLevel>01</TitleElementLevel>
++          <TitleText><![CDATA[The Title]]></TitleText>
++        </TitleElement>
++      </TitleDetail>
++      <Contributor>
++        <SequenceNumber>1</SequenceNumber>
++        <ContributorRole>A01</ContributorRole>
++        <PersonName>AuthorFirst AuthorLast</PersonName>
++        <PersonNameInverted>AuthorLast, AuthorFirst</PersonNameInverted>
++        <NamesBeforeKey>AuthorFirst</NamesBeforeKey>
++        <KeyNames>AuthorLast</KeyNames>
++        <BiographicalNote><![CDATA[bio notes]]></BiographicalNote>
++        <ContributorPlace>
++          <ContributorPlaceRelator>08</ContributorPlaceRelator>
++          <CountryCode>CA</CountryCode>
++        </ContributorPlace>
++      </Contributor>
++      <NoEdition/>
++      <Language>
++        <LanguageRole>01</LanguageRole>
++        <LanguageCode>fre</LanguageCode>
++      </Language>
++      <Extent>
++        <ExtentType>22</ExtentType>
++        <ExtentValue>2.11</ExtentValue>
++        <ExtentUnit>19</ExtentUnit>
++      </Extent>
++      <Extent>
++        <ExtentType>00</ExtentType>
++        <ExtentValue>316</ExtentValue>
++        <ExtentUnit>03</ExtentUnit>
++      </Extent>
++      <Subject>
++        <MainSubject/>
++        <SubjectSchemeIdentifier>10</SubjectSchemeIdentifier>
++        <SubjectCode>FIC050000</SubjectCode>
++      </Subject>
++      <Subject>
++        <SubjectSchemeIdentifier>28</SubjectSchemeIdentifier>
++        <SubjectCode>T130100</SubjectCode>
++      </Subject>
++      <Subject>
++        <MainSubject/>
++        <SubjectSchemeIdentifier>29</SubjectSchemeIdentifier>
++        <SubjectCode>3448</SubjectCode>
++      </Subject>
++      <Subject>
++        <SubjectSchemeIdentifier>20</SubjectSchemeIdentifier>
++        <SubjectHeadingText>keyword1, keyword2, keyword3</SubjectHeadingText>
++      </Subject>
++      <Audience>
++        <AudienceCodeType>06</AudienceCodeType>
++        <AudienceCodeValue>009</AudienceCodeValue>
++      </Audience>
++      <Audience>
++        <AudienceCodeType>01</AudienceCodeType>
++        <AudienceCodeValue>01</AudienceCodeValue>
++      </Audience>
++    </DescriptiveDetail>
++    <CollateralDetail>
++      <TextContent>
++        <TextType>03</TextType>
++        <ContentAudience>00</ContentAudience>
++        <Text><![CDATA[this book is very very good.]]></Text>
++      </TextContent>
++      <SupportingResource>
++        <ResourceContentType>01</ResourceContentType>
++        <ContentAudience>00</ContentAudience>
++        <ResourceMode>03</ResourceMode>
++        <ResourceFeature>
++          <ResourceFeatureType>02</ResourceFeatureType>
++          <FeatureValue>Couverture principale</FeatureValue>
++        </ResourceFeature>
++        <ResourceVersion>
++          <ResourceForm>02</ResourceForm>
++          <ResourceVersionFeature>
++            <ResourceVersionFeatureType>04</ResourceVersionFeatureType>
++            <FeatureValue>filename.jpg</FeatureValue>
++          </ResourceVersionFeature>
++          <ResourceVersionFeature>
++            <ResourceVersionFeatureType>01</ResourceVersionFeatureType>
++            <FeatureValue>D502</FeatureValue>
++          </ResourceVersionFeature>
++          <ResourceVersionFeature>
++            <ResourceVersionFeatureType>03</ResourceVersionFeatureType>
++            <FeatureValue>1800</FeatureValue>
++          </ResourceVersionFeature>
++          <ResourceVersionFeature>
++            <ResourceVersionFeatureType>02</ResourceVersionFeatureType>
++            <FeatureValue>2700</FeatureValue>
++          </ResourceVersionFeature>
++          <ResourceLink>https://www.domain.com/image.jpg</ResourceLink>
++          <ContentDate>
++            <ContentDateRole>17</ContentDateRole>
++            <DateFormat>14</DateFormat>
++            <Date>20150507T174343-0400</Date>
++          </ContentDate>
++        </ResourceVersion>
++      </SupportingResource>
++      <SupportingResource>
++        <ResourceContentType>15</ResourceContentType>
++        <ContentAudience>00</ContentAudience>
++        <ResourceMode>04</ResourceMode>
++        <ResourceVersion>
++          <ResourceForm>02</ResourceForm>
++          <ResourceVersionFeature>
++            <ResourceVersionFeatureType>04</ResourceVersionFeatureType>
++            <FeatureValue>excerpt.pdf</FeatureValue>
++          </ResourceVersionFeature>
++          <ResourceVersionFeature>
++            <ResourceVersionFeatureType>01</ResourceVersionFeatureType>
++            <FeatureValue>D401</FeatureValue>
++          </ResourceVersionFeature>
++          <ResourceLink>https://www.domain.com/excerpt.pdf</ResourceLink>
++          <ContentDate>
++            <ContentDateRole>17</ContentDateRole>
++            <DateFormat>14</DateFormat>
++            <Date>20150507T174602-0400</Date>
++          </ContentDate>
++        </ResourceVersion>
++      </SupportingResource>
++      <SupportingResource>
++        <ResourceContentType>01</ResourceContentType>
++        <ContentAudience>00</ContentAudience>
++        <ResourceMode>03</ResourceMode>
++        <ResourceFeature>
++          <ResourceFeatureType>02</ResourceFeatureType>
++          <FeatureValue>front_cover_small</FeatureValue>
++        </ResourceFeature>
++        <ResourceVersion>
++          <ResourceForm>02</ResourceForm>
++          <ResourceVersionFeature>
++            <ResourceVersionFeatureType>04</ResourceVersionFeatureType>
++            <FeatureValue>https://www.domain.com/image.jpg</FeatureValue>
++          </ResourceVersionFeature>
++          <ResourceVersionFeature>
++            <ResourceVersionFeatureType>01</ResourceVersionFeatureType>
++            <FeatureValue>D502</FeatureValue>
++          </ResourceVersionFeature>
++          <ResourceVersionFeature>
++            <ResourceVersionFeatureType>03</ResourceVersionFeatureType>
++            <FeatureValue>65</FeatureValue>
++          </ResourceVersionFeature>
++          <ResourceLink>https://www.domain.com/image.jpg</ResourceLink>
++          <ContentDate>
++            <ContentDateRole>17</ContentDateRole>
++            <DateFormat>14</DateFormat>
++            <Date>20150908T114133-0400</Date>
++          </ContentDate>
++        </ResourceVersion>
++      </SupportingResource>
++      <SupportingResource>
++        <ResourceContentType>01</ResourceContentType>
++        <ContentAudience>00</ContentAudience>
++        <ResourceMode>03</ResourceMode>
++        <ResourceFeature>
++          <ResourceFeatureType>02</ResourceFeatureType>
++          <FeatureValue>front_cover_medium</FeatureValue>
++        </ResourceFeature>
++        <ResourceVersion>
++          <ResourceForm>02</ResourceForm>
++          <ResourceVersionFeature>
++            <ResourceVersionFeatureType>04</ResourceVersionFeatureType>
++            <FeatureValue>https://www.domain.com/image.jpg</FeatureValue>
++          </ResourceVersionFeature>
++          <ResourceVersionFeature>
++            <ResourceVersionFeatureType>01</ResourceVersionFeatureType>
++            <FeatureValue>D502</FeatureValue>
++          </ResourceVersionFeature>
++          <ResourceVersionFeature>
++            <ResourceVersionFeatureType>03</ResourceVersionFeatureType>
++            <FeatureValue>200</FeatureValue>
++          </ResourceVersionFeature>
++          <ResourceLink>https://www.domain.com/image.jpg</ResourceLink>
++          <ContentDate>
++            <ContentDateRole>17</ContentDateRole>
++            <DateFormat>14</DateFormat>
++            <Date>20150908T114133-0400</Date>
++          </ContentDate>
++        </ResourceVersion>
++      </SupportingResource>
++      <SupportingResource>
++        <ResourceContentType>01</ResourceContentType>
++        <ContentAudience>00</ContentAudience>
++        <ResourceMode>03</ResourceMode>
++        <ResourceFeature>
++          <ResourceFeatureType>02</ResourceFeatureType>
++          <FeatureValue>front_cover_large</FeatureValue>
++        </ResourceFeature>
++        <ResourceVersion>
++          <ResourceForm>02</ResourceForm>
++          <ResourceVersionFeature>
++            <ResourceVersionFeatureType>04</ResourceVersionFeatureType>
++            <FeatureValue>https://www.domain.com/image.jpg</FeatureValue>
++          </ResourceVersionFeature>
++          <ResourceVersionFeature>
++            <ResourceVersionFeatureType>01</ResourceVersionFeatureType>
++            <FeatureValue>D502</FeatureValue>
++          </ResourceVersionFeature>
++          <ResourceVersionFeature>
++            <ResourceVersionFeatureType>03</ResourceVersionFeatureType>
++            <FeatureValue>1000</FeatureValue>
++          </ResourceVersionFeature>
++          <ResourceLink>https://www.domain.com/image.jpg</ResourceLink>
++          <ContentDate>
++            <ContentDateRole>17</ContentDateRole>
++            <DateFormat>14</DateFormat>
++            <Date>20150908T114133-0400</Date>
++          </ContentDate>
++        </ResourceVersion>
++      </SupportingResource>
++      <SupportingResource>
++        <ResourceContentType>16</ResourceContentType>
++        <ContentAudience>00</ContentAudience>
++        <ResourceMode>06</ResourceMode>
++        <ResourceVersion>
++          <ResourceForm>01</ResourceForm>
++          <ResourceLink>https://www.domain.com/whatever</ResourceLink>
++        </ResourceVersion>
++      </SupportingResource>
++    </CollateralDetail>
++    <PublishingDetail>
++      <Imprint>
++        <ImprintName>The Imprint</ImprintName>
++      </Imprint>
++      <Publisher>
++        <PublishingRole>01</PublishingRole>
++        <PublisherIdentifier>
++          <PublisherIDType>01</PublisherIDType>
++          <IDTypeName>Proprietary</IDTypeName>
++          <IDValue>345</IDValue>
++        </PublisherIdentifier>
++        <PublisherName>The Publisher</PublisherName>
++        <Website>
++          <WebsiteRole>01</WebsiteRole>
++          <WebsiteLink>http://www.publisher.com</WebsiteLink>
++        </Website>
++      </Publisher>
++      <PublishingStatus>04</PublishingStatus>
++      <PublishingDate>
++        <PublishingDateRole>01</PublishingDateRole>
++        <DateFormat>14</DateFormat>
++        <Date>20150527T000000-0400</Date>
++      </PublishingDate>
++      <PublishingDate>
++        <PublishingDateRole>19</PublishingDateRole>
++        <DateFormat>14</DateFormat>
++        <Date>20150527T000000-0400</Date>
++      </PublishingDate>
++      <PublishingDate>
++        <PublishingDateRole>09</PublishingDateRole>
++        <DateFormat>14</DateFormat>
++        <Date>20150507T174500-0400</Date>
++      </PublishingDate>
++      <PublishingDate>
++        <PublishingDateRole>02</PublishingDateRole>
++        <DateFormat>14</DateFormat>
++        <Date>20150527T000000-0400</Date>
++      </PublishingDate>
++      <SalesRights>
++        <SalesRightsType>01</SalesRightsType>
++        <Territory>
++          <CountriesIncluded>AD AR AT BE BG BO BR CA CL CO CR CY CZ DE DO EC EE ES FI FR GF GR GT HN HU IE IT LT LU LV MC MT NI NL PA PE PL PT PY RO SI SK SV US VE</CountriesIncluded>
++        </Territory>
++      </SalesRights>
++    </PublishingDetail>
++    <RelatedMaterial>
++      <RelatedProduct>
++        <ProductRelationCode>31</ProductRelationCode>
++        <ProductIdentifier>
++          <ProductIDType>01</ProductIDType>
++          <IDValue>some_other_id</IDValue>
++        </ProductIdentifier>
++        <ProductForm>EA</ProductForm>
++      </RelatedProduct>
++      <RelatedProduct>
++        <ProductRelationCode>13</ProductRelationCode>
++        <ProductIdentifier>
++          <ProductIDType>15</ProductIDType>
++          <IDValue>979XXXXXXXXXX</IDValue>
++        </ProductIdentifier>
++        <ProductForm>BA</ProductForm>
++      </RelatedProduct>
++      <RelatedProduct>
++        <ProductRelationCode>06</ProductRelationCode>
++        <ProductIdentifier>
++          <ProductIDType>15</ProductIDType>
++          <IDValue>979XXXXXXXXXX</IDValue>
++        </ProductIdentifier>
++        <ProductForm>EA</ProductForm>
++        <ProductFormDetail>E107</ProductFormDetail>
++      </RelatedProduct>
++    </RelatedMaterial>
++    <ProductSupply>
++      <Market>
++        <Territory>
++          <CountriesIncluded>AD AR AT BE BG BO BR CA CL CO CR CY CZ DE DO EC EE ES FI FR GF GR GT HN HU IE IT LT LU LV MC MT NI NL PA PE PL PT PY RO SI SK SV US VE</CountriesIncluded>
++        </Territory>
++      </Market>
++      <MarketPublishingDetail>
++        <MarketPublishingStatus>04</MarketPublishingStatus>
++        <MarketDate>
++          <MarketDateRole>01</MarketDateRole>
++          <DateFormat>00</DateFormat>
++          <Date>20150527</Date>
++        </MarketDate>
++      </MarketPublishingDetail>
++      <SupplyDetail>
++        <Supplier>
++          <SupplierRole>01</SupplierRole>
++          <SupplierIdentifier>
++            <SupplierIDType>01</SupplierIDType>
++            <IDTypeName>Proprietary</IDTypeName>
++            <IDValue>345</IDValue>
++          </SupplierIdentifier>
++          <SupplierName>The Supplier</SupplierName>
++          <Website>
++            <WebsiteRole>01</WebsiteRole>
++            <WebsiteLink>http://www.supplier.com</WebsiteLink>
++          </Website>
++        </Supplier>
++        <ProductAvailability>20</ProductAvailability>
++        <SupplyDate>
++          <SupplyDateRole>08</SupplyDateRole>
++          <DateFormat>14</DateFormat>
++          <Date>20150527T000000-0400</Date>
++        </SupplyDate>
++        <Price>
++          <PriceType>04</PriceType>
++          <PriceQualifier>05</PriceQualifier>
++          <PriceStatus>02</PriceStatus>
++          <PriceAmount>13,99</PriceAmount>
++          <CurrencyCode>EUR</CurrencyCode>
++          <Territory>
++            <CountriesIncluded>BG</CountriesIncluded>
++          </Territory>
++        </Price>
++        <Price>
++          <PriceType>04</PriceType>
++          <PriceQualifier>05</PriceQualifier>
++          <PriceStatus>02</PriceStatus>
++          <PriceAmount>13.99</PriceAmount>
++          <CurrencyCode>EUR</CurrencyCode>
++          <Territory>
++            <CountriesIncluded>LU</CountriesIncluded>
++          </Territory>
++        </Price>
++        <Price>
++          <PriceType>04</PriceType>
++          <PriceQualifier>05</PriceQualifier>
++          <PriceStatus>02</PriceStatus>
++          <PriceAmount>13,99</PriceAmount>
++          <CurrencyCode>EUR</CurrencyCode>
++          <Territory>
++            <CountriesIncluded>MC</CountriesIncluded>
++          </Territory>
++          <PriceDate>
++            <PriceDateRole>14</PriceDateRole>
++            <Date>20150527T000000-0400</Date>
++          </PriceDate>
++        </Price>
++        <Price>
++          <PriceType>04</PriceType>
++          <PriceQualifier>05</PriceQualifier>
++          <PriceStatus>02</PriceStatus>
++          <PriceAmount>13,99</PriceAmount>
++          <CurrencyCode>EUR</CurrencyCode>
++          <Territory>
++            <CountriesIncluded>SK</CountriesIncluded>
++          </Territory>
++        </Price>
++        <Price>
++          <PriceType>04</PriceType>
++          <PriceQualifier>05</PriceQualifier>
++          <PriceStatus>02</PriceStatus>
++          <PriceAmount>13,99</PriceAmount>
++          <CurrencyCode>EUR</CurrencyCode>
++          <Territory>
++            <CountriesIncluded>CZ</CountriesIncluded>
++          </Territory>
++        </Price>
++        <Price>
++          <PriceType>04</PriceType>
++          <PriceQualifier>05</PriceQualifier>
++          <PriceStatus>02</PriceStatus>
++          <PriceAmount>16,99</PriceAmount>
++          <CurrencyCode>USD</CurrencyCode>
++          <Territory>
++            <CountriesIncluded>AR</CountriesIncluded>
++          </Territory>
++        </Price>
++        <Price>
++          <PriceType>04</PriceType>
++          <PriceQualifier>05</PriceQualifier>
++          <PriceStatus>02</PriceStatus>
++          <PriceAmount>16,99</PriceAmount>
++          <CurrencyCode>USD</CurrencyCode>
++          <Territory>
++            <CountriesIncluded>PY</CountriesIncluded>
++          </Territory>
++        </Price>
++        <Price>
++          <PriceType>04</PriceType>
++          <PriceQualifier>05</PriceQualifier>
++          <PriceStatus>02</PriceStatus>
++          <PriceAmount>13,99</PriceAmount>
++          <CurrencyCode>EUR</CurrencyCode>
++          <Territory>
++            <CountriesIncluded>PT</CountriesIncluded>
++          </Territory>
++        </Price>
++        <Price>
++          <PriceType>04</PriceType>
++          <PriceQualifier>05</PriceQualifier>
++          <PriceStatus>02</PriceStatus>
++          <PriceAmount>13,99</PriceAmount>
++          <CurrencyCode>EUR</CurrencyCode>
++          <Territory>
++            <CountriesIncluded>FI</CountriesIncluded>
++          </Territory>
++        </Price>
++        <Price>
++          <PriceType>04</PriceType>
++          <PriceQualifier>05</PriceQualifier>
++          <PriceStatus>02</PriceStatus>
++          <PriceAmount>13,99</PriceAmount>
++          <CurrencyCode>EUR</CurrencyCode>
++          <Territory>
++            <CountriesIncluded>EE</CountriesIncluded>
++          </Territory>
++        </Price>
++        <Price>
++          <PriceType>04</PriceType>
++          <PriceQualifier>05</PriceQualifier>
++          <PriceStatus>02</PriceStatus>
++          <PriceAmount>13,99</PriceAmount>
++          <CurrencyCode>EUR</CurrencyCode>
++          <Territory>
++            <CountriesIncluded>ES</CountriesIncluded>
++          </Territory>
++        </Price>
++        <Price>
++          <PriceType>04</PriceType>
++          <PriceQualifier>05</PriceQualifier>
++          <PriceStatus>02</PriceStatus>
++          <PriceAmount>13,99</PriceAmount>
++          <CurrencyCode>EUR</CurrencyCode>
++          <Territory>
++            <CountriesIncluded>DE</CountriesIncluded>
++          </Territory>
++        </Price>
++        <Price>
++          <PriceType>04</PriceType>
++          <PriceQualifier>05</PriceQualifier>
++          <PriceStatus>02</PriceStatus>
++          <PriceAmount>16,99</PriceAmount>
++          <CurrencyCode>USD</CurrencyCode>
++          <Territory>
++            <CountriesIncluded>HN</CountriesIncluded>
++          </Territory>
++        </Price>
++        <Price>
++          <PriceType>04</PriceType>
++          <PriceQualifier>05</PriceQualifier>
++          <PriceStatus>02</PriceStatus>
++          <PriceAmount>16,99</PriceAmount>
++          <CurrencyCode>USD</CurrencyCode>
++          <Territory>
++            <CountriesIncluded>PE</CountriesIncluded>
++          </Territory>
++        </Price>
++        <Price>
++          <PriceType>04</PriceType>
++          <PriceQualifier>05</PriceQualifier>
++          <PriceStatus>02</PriceStatus>
++          <PriceAmount>13,99</PriceAmount>
++          <CurrencyCode>EUR</CurrencyCode>
++          <Territory>
++            <CountriesIncluded>LT</CountriesIncluded>
++          </Territory>
++        </Price>
++        <Price>
++          <PriceType>04</PriceType>
++          <PriceQualifier>05</PriceQualifier>
++          <PriceStatus>02</PriceStatus>
++          <PriceAmount>13,99</PriceAmount>
++          <CurrencyCode>EUR</CurrencyCode>
++          <Territory>
++            <CountriesIncluded>GF</CountriesIncluded>
++          </Territory>
++        </Price>
++        <Price>
++          <PriceType>04</PriceType>
++          <PriceQualifier>05</PriceQualifier>
++          <PriceStatus>02</PriceStatus>
++          <PriceAmount>13,99</PriceAmount>
++          <CurrencyCode>EUR</CurrencyCode>
++          <Territory>
++            <CountriesIncluded>LV</CountriesIncluded>
++          </Territory>
++        </Price>
++        <Price>
++          <PriceType>04</PriceType>
++          <PriceQualifier>05</PriceQualifier>
++          <PriceStatus>02</PriceStatus>
++          <PriceAmount>13,99</PriceAmount>
++          <CurrencyCode>EUR</CurrencyCode>
++          <Territory>
++            <CountriesIncluded>RO</CountriesIncluded>
++          </Territory>
++        </Price>
++        <Price>
++          <PriceType>04</PriceType>
++          <PriceQualifier>05</PriceQualifier>
++          <PriceStatus>02</PriceStatus>
++          <PriceAmount>13,99</PriceAmount>
++          <CurrencyCode>EUR</CurrencyCode>
++          <Territory>
++            <CountriesIncluded>SI</CountriesIncluded>
++          </Territory>
++        </Price>
++        <Price>
++          <PriceType>04</PriceType>
++          <PriceQualifier>05</PriceQualifier>
++          <PriceStatus>02</PriceStatus>
++          <PriceAmount>16,99</PriceAmount>
++          <CurrencyCode>USD</CurrencyCode>
++          <Territory>
++            <CountriesIncluded>EC</CountriesIncluded>
++          </Territory>
++        </Price>
++        <Price>
++          <PriceType>04</PriceType>
++          <PriceQualifier>05</PriceQualifier>
++          <PriceStatus>02</PriceStatus>
++          <PriceAmount>13,99</PriceAmount>
++          <CurrencyCode>EUR</CurrencyCode>
++          <Territory>
++            <CountriesIncluded>AT</CountriesIncluded>
++          </Territory>
++        </Price>
++        <Price>
++          <PriceType>04</PriceType>
++          <PriceQualifier>05</PriceQualifier>
++          <PriceStatus>02</PriceStatus>
++          <PriceAmount>13,99</PriceAmount>
++          <CurrencyCode>EUR</CurrencyCode>
++          <Territory>
++            <CountriesIncluded>HU</CountriesIncluded>
++          </Territory>
++        </Price>
++        <Price>
++          <PriceType>04</PriceType>
++          <PriceQualifier>05</PriceQualifier>
++          <PriceStatus>02</PriceStatus>
++          <PriceAmount>13,99</PriceAmount>
++          <CurrencyCode>EUR</CurrencyCode>
++          <Territory>
++            <CountriesIncluded>IE</CountriesIncluded>
++          </Territory>
++        </Price>
++        <Price>
++          <PriceType>04</PriceType>
++          <PriceQualifier>05</PriceQualifier>
++          <PriceStatus>02</PriceStatus>
++          <PriceAmount>16,99</PriceAmount>
++          <CurrencyCode>USD</CurrencyCode>
++          <Territory>
++            <CountriesIncluded>DO</CountriesIncluded>
++          </Territory>
++        </Price>
++        <Price>
++          <PriceType>04</PriceType>
++          <PriceQualifier>05</PriceQualifier>
++          <PriceStatus>02</PriceStatus>
++          <PriceAmount>13,99</PriceAmount>
++          <CurrencyCode>EUR</CurrencyCode>
++          <Territory>
++            <CountriesIncluded>IT</CountriesIncluded>
++          </Territory>
++        </Price>
++        <Price>
++          <PriceType>04</PriceType>
++          <PriceQualifier>05</PriceQualifier>
++          <PriceStatus>02</PriceStatus>
++          <PriceAmount>13,99</PriceAmount>
++          <CurrencyCode>EUR</CurrencyCode>
++          <Territory>
++            <CountriesIncluded>MT</CountriesIncluded>
++          </Territory>
++        </Price>
++        <Price>
++          <PriceType>04</PriceType>
++          <PriceQualifier>05</PriceQualifier>
++          <PriceStatus>02</PriceStatus>
++          <PriceAmount>16,99</PriceAmount>
++          <CurrencyCode>USD</CurrencyCode>
++          <Territory>
++            <CountriesIncluded>NI</CountriesIncluded>
++          </Territory>
++        </Price>
++        <Price>
++          <PriceType>04</PriceType>
++          <PriceQualifier>05</PriceQualifier>
++          <PriceStatus>02</PriceStatus>
++          <PriceAmount>13,99</PriceAmount>
++          <CurrencyCode>EUR</CurrencyCode>
++          <Territory>
++            <CountriesIncluded>BE</CountriesIncluded>
++          </Territory>
++        </Price>
++        <Price>
++          <PriceType>04</PriceType>
++          <PriceQualifier>05</PriceQualifier>
++          <PriceStatus>02</PriceStatus>
++          <PriceAmount>16,99</PriceAmount>
++          <CurrencyCode>USD</CurrencyCode>
++          <Territory>
++            <CountriesIncluded>PA</CountriesIncluded>
++          </Territory>
++        </Price>
++        <Price>
++          <PriceType>04</PriceType>
++          <PriceQualifier>05</PriceQualifier>
++          <PriceStatus>02</PriceStatus>
++          <PriceAmount>16,99</PriceAmount>
++          <CurrencyCode>USD</CurrencyCode>
++          <Territory>
++            <CountriesIncluded>BR</CountriesIncluded>
++          </Territory>
++        </Price>
++        <Price>
++          <PriceType>04</PriceType>
++          <PriceQualifier>05</PriceQualifier>
++          <PriceStatus>02</PriceStatus>
++          <PriceAmount>13,99</PriceAmount>
++          <CurrencyCode>EUR</CurrencyCode>
++          <Territory>
++            <CountriesIncluded>GR</CountriesIncluded>
++          </Territory>
++        </Price>
++        <Price>
++          <PriceType>04</PriceType>
++          <PriceQualifier>05</PriceQualifier>
++          <PriceStatus>02</PriceStatus>
++          <PriceAmount>13,99</PriceAmount>
++          <CurrencyCode>EUR</CurrencyCode>
++          <Territory>
++            <CountriesIncluded>CY</CountriesIncluded>
++          </Territory>
++        </Price>
++        <Price>
++          <PriceType>04</PriceType>
++          <PriceQualifier>05</PriceQualifier>
++          <PriceStatus>02</PriceStatus>
++          <PriceAmount>16,99</PriceAmount>
++          <CurrencyCode>USD</CurrencyCode>
++          <Territory>
++            <CountriesIncluded>CO</CountriesIncluded>
++          </Territory>
++        </Price>
++        <Price>
++          <PriceType>04</PriceType>
++          <PriceQualifier>05</PriceQualifier>
++          <PriceStatus>02</PriceStatus>
++          <PriceAmount>16,99</PriceAmount>
++          <CurrencyCode>USD</CurrencyCode>
++          <Territory>
++            <CountriesIncluded>GT</CountriesIncluded>
++          </Territory>
++        </Price>
++        <Price>
++          <PriceType>04</PriceType>
++          <PriceQualifier>05</PriceQualifier>
++          <PriceStatus>02</PriceStatus>
++          <PriceAmount>13,99</PriceAmount>
++          <CurrencyCode>EUR</CurrencyCode>
++          <Territory>
++            <CountriesIncluded>PL</CountriesIncluded>
++          </Territory>
++        </Price>
++        <Price>
++          <PriceType>03</PriceType>
++          <PriceQualifier>05</PriceQualifier>
++          <PriceStatus>02</PriceStatus>
++          <PriceAmount>16,99</PriceAmount>
++          <CurrencyCode>USD</CurrencyCode>
++          <Territory>
++            <CountriesIncluded>US</CountriesIncluded>
++          </Territory>
++        </Price>
++        <Price>
++          <PriceType>04</PriceType>
++          <PriceQualifier>05</PriceQualifier>
++          <PriceStatus>02</PriceStatus>
++          <PriceAmount>16,99</PriceAmount>
++          <CurrencyCode>USD</CurrencyCode>
++          <Territory>
++            <CountriesIncluded>CR</CountriesIncluded>
++          </Territory>
++        </Price>
++        <Price>
++          <PriceType>04</PriceType>
++          <PriceQualifier>05</PriceQualifier>
++          <PriceStatus>02</PriceStatus>
++          <PriceAmount>16,99</PriceAmount>
++          <CurrencyCode>USD</CurrencyCode>
++          <Territory>
++            <CountriesIncluded>VE</CountriesIncluded>
++          </Territory>
++        </Price>
++        <Price>
++          <PriceType>04</PriceType>
++          <PriceQualifier>05</PriceQualifier>
++          <PriceStatus>02</PriceStatus>
++          <PriceAmount>16,99</PriceAmount>
++          <CurrencyCode>USD</CurrencyCode>
++          <Territory>
++            <CountriesIncluded>SV</CountriesIncluded>
++          </Territory>
++        </Price>
++        <Price>
++          <PriceType>04</PriceType>
++          <PriceQualifier>05</PriceQualifier>
++          <PriceStatus>02</PriceStatus>
++          <PriceAmount>16,99</PriceAmount>
++          <CurrencyCode>USD</CurrencyCode>
++          <Territory>
++            <CountriesIncluded>BO</CountriesIncluded>
++          </Territory>
++        </Price>
++        <Price>
++          <PriceType>04</PriceType>
++          <PriceQualifier>05</PriceQualifier>
++          <PriceStatus>02</PriceStatus>
++          <PriceAmount>13,99</PriceAmount>
++          <CurrencyCode>EUR</CurrencyCode>
++          <Territory>
++            <CountriesIncluded>AD</CountriesIncluded>
++          </Territory>
++        </Price>
++        <Price>
++          <PriceType>03</PriceType>
++          <PriceQualifier>05</PriceQualifier>
++          <PriceStatus>02</PriceStatus>
++          <PriceAmount>16,99</PriceAmount>
++          <CurrencyCode>CAD</CurrencyCode>
++          <Territory>
++            <CountriesIncluded>CA</CountriesIncluded>
++          </Territory>
++        </Price>
++        <Price>
++          <PriceType>04</PriceType>
++          <PriceQualifier>05</PriceQualifier>
++          <PriceStatus>02</PriceStatus>
++          <PriceAmount>13,99</PriceAmount>
++          <CurrencyCode>EUR</CurrencyCode>
++          <Territory>
++            <CountriesIncluded>FR</CountriesIncluded>
++          </Territory>
++        </Price>
++        <Price>
++          <PriceType>04</PriceType>
++          <PriceQualifier>05</PriceQualifier>
++          <PriceStatus>02</PriceStatus>
++          <PriceAmount>16,99</PriceAmount>
++          <CurrencyCode>USD</CurrencyCode>
++          <Territory>
++            <CountriesIncluded>CL</CountriesIncluded>
++          </Territory>
++        </Price>
++        <Price>
++          <PriceType>04</PriceType>
++          <PriceQualifier>05</PriceQualifier>
++          <PriceStatus>02</PriceStatus>
++          <PriceAmount>13,99</PriceAmount>
++          <CurrencyCode>EUR</CurrencyCode>
++          <Territory>
++            <CountriesIncluded>NL</CountriesIncluded>
++          </Territory>
++        </Price>
++      </SupplyDetail>
++    </ProductSupply>
++    <ProductSupply>
++      <Market>
++        <Territory>
++          <CountriesIncluded>AD AR AT BE BG BO BR CA CL CO CR CY CZ DE DO EC EE ES FI FR GF GR GT HN HU IE IT LT LU LV MC MT NI NL PA PE PL PT PY RO SI SK SV US VE</CountriesIncluded>
++        </Territory>
++        <SalesRestriction>
++          <SalesRestrictionType>06</SalesRestrictionType>
++        </SalesRestriction>
++      </Market>
++      <MarketPublishingDetail>
++        <MarketPublishingStatus>04</MarketPublishingStatus>
++        <MarketDate>
++          <MarketDateRole>01</MarketDateRole>
++          <DateFormat>00</DateFormat>
++          <Date>20150527</Date>
++        </MarketDate>
++      </MarketPublishingDetail>
++      <SupplyDetail>
++        <Supplier>
++          <SupplierRole>01</SupplierRole>
++          <SupplierIdentifier>
++            <SupplierIDType>01</SupplierIDType>
++            <IDTypeName>Proprietary</IDTypeName>
++            <IDValue>345</IDValue>
++          </SupplierIdentifier>
++          <SupplierName>The Supplier</SupplierName>
++          <Website>
++            <WebsiteRole>01</WebsiteRole>
++            <WebsiteLink>http://www.supplier.com</WebsiteLink>
++          </Website>
++        </Supplier>
++        <ProductAvailability>20</ProductAvailability>
++        <SupplyDate>
++          <SupplyDateRole>08</SupplyDateRole>
++          <DateFormat>14</DateFormat>
++          <Date>20150527T000000-0400</Date>
++        </SupplyDate>
++        <Price>
++          <PriceType>04</PriceType>
++          <PriceQualifier>05</PriceQualifier>
++          <PriceStatus>02</PriceStatus>
++          <PriceAmount>13,99</PriceAmount>
++          <CurrencyCode>EUR</CurrencyCode>
++          <Territory>
++            <CountriesIncluded>BG</CountriesIncluded>
++          </Territory>
++        </Price>
++      </SupplyDetail>
++    </ProductSupply>
++  </Product>
+   <Product>
+     <RecordReference>Record-Ref</RecordReference>
+     <NotificationType>03</NotificationType>
+diff --git a/test/parse.js b/test/parse.js
+index dc0e9bd..a187d4c 100644
+--- a/test/parse.js
++++ b/test/parse.js
+@@ -5,16 +5,22 @@ var path = require('path');
+ var onix = require('../');
+ 
+ describe('Parsing', function () {
+-    var EPUBDIRECT = fs.readFileSync(path.join(__dirname, './fixtures/epubDirect.onx'), { encoding: 'utf-8' });
++    var EPUBDIRECT = fs.readFileSync(path.join(__dirname, './fixtures/MacmillanMetadata.xml'), { encoding: 'utf-8' });
++    // var EPUBDIRECT = fs.readFileSync(path.join(__dirname, './fixtures/epubDirect.xml'), { encoding: 'utf-8' });
+     var feed;
+ 
+     it('should correctly parse xml', function() {
+-        feed = onix.parse(EPUBDIRECT);
+-        // console.log(JSON.stringify(feed, null, 4));
++        feed = onix.parse(EPUBDIRECT, "2.1");
++        var products = feed.products;
++        console.log("\n");
++        console.log("Products len = " + products.length); 
++        console.log(JSON.stringify(feed, null, 4));
++        console.log("\n");
+         // console.log(onix.create(feed));
+     });
+ });
+ 
++/*
+ describe('Parsing ONIX 3', function() {
+     var onix3sample = fs.readFileSync(path.join(__dirname, './fixtures/onix3sample.xml'), { encoding: 'utf-8' });
+     var o3feed;
+@@ -162,3 +168,4 @@ describe('Parsing ONIX 3', function() {
+       product.description.collection[0].titleDetail[0].titleElement[0].titleText.should.equal('Collection name');
+     });
+ });
++*/
+\ No newline at end of file
