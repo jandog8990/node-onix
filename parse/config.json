@@ -1,0 +1,9 @@
+{
+	"GCLOUD_PROJECT": "abantu-audio",
+	"MONGO_HOST": "abantu-main.lbe8k.mongodb.net",
+	"MONGO_PORT": "51598",
+	"MONGO_DB_NAME": "abantu-main",
+	"MONGO_USER": "jandog8990",
+	"MONGO_PW": "Scratch_4475",
+	"MONGO_PARAMS": "?retryWrites=true&w=majority"
+}

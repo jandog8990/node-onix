@@ -11,8 +11,10 @@
     },
     "dependencies": {
         "lodash": "^3.9.3",
-        "xml-schema": "git://github.com/christianroy/xml-schema.git",
-        "subjects-utils": "0.0.1"
+        "mongoose": "^5.11.12",
+        "nconf": "^0.11.1",
+        "subjects-utils": "0.0.1",
+        "xml-schema": "git://github.com/christianroy/xml-schema.git"
     },
     "devDependencies": {
         "mocha": "2.2.1",
