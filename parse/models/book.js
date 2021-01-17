@@ -1,0 +1,41 @@
+// Model will use the wp_BOOKS table
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+
+// Join query for BOOKS and AUDIO tables
+/*
+const bookAudioList = db.wp_BOOKS.aggregate([ { $lookup: { from: "wp_AUDIO", localField: "ISBN", foreignField: "ISBN", as: "audio_list" } }, { $unwind: '$audio_list' }, { $sort: {  'audio_list.CHAPTER':1 } }, { $project: { "ISBN": 1, "TITLE": 1, "SUMMARY": 1, "audio_list.TITLE": 1, "audio_list.CHAPTER": 1, "audio_list.AUDIO_LOC": 1, "audio_list.NARRATOR": 1, "audio_list.DEMO_LOC": 1 } }, { $group: { _id: '$_id', ISBN: { $first: "$ISBN" }, TITLE: { $first: "$TITLE" }, SUMMARY: { $first: "$SUMMARY" }, 'audio_list': { $push: '$audio_list' } } } ] ).toArray();
+*/
+
+const bookSchema = new Schema(
+	{
+		//ISBN: { type: Number, default: null, required: true },
+		ISBN: Number,
+		TITLE: String,
+		EDITION: Object,
+		AUTHOR_ID: Number,
+		GENRES: Object,
+		PUBLISHER_ID: Object, 
+		PRICE: Object,
+		COPYRIGHT_NAME: String,
+		COPYRIGHT_YEAR: Object,
+		SUMMARY: String,
+		PHOTO_ID: Number,
+		SEARCH_ID: String,
+		NUM_CHAPTERS: Number,
+		TOTAL_TIME: String,
+	},
+	{
+		// set the collection to our wp_BOOKS table
+		collection: 'wp_BOOKS'
+	}
+);
+// function for linking multiple tables using aggregate and $lookup
+
+// Virtual for book's URL
+bookSchema.virtual('url').get(function() {
+	return '/books/' + this._id;
+});
+
+// export the Books model for the API
+module.exports = mongoose.model('Books', bookSchema); 
