@@ -24,6 +24,7 @@ const bookSchema = new Schema(
 		SEARCH_ID: String,
 		NUM_CHAPTERS: Number,
 		TOTAL_TIME: String,
+		PUBLICATION_DATE: String 
 	},
 	{
 		// set the collection to our wp_BOOKS table
