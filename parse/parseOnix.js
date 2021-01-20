@@ -2,18 +2,22 @@ var fs = require('fs');
 var should = require('should');
 var path = require('path');
 var onix = require('../');
-var libxml = require('libxmljs');
 var xsd = require('xsd');
-// var xsd2json = require('xsd2json');
 var _ = require('lodash');
+const onixLookup = require("./onixKeyLookup");
 
 // Mongoose and database connection configs
 const mongoose = require('mongoose');
 const secrets = require('./secrets');
 const db_url = secrets.db_url;
 
+// XS2JS
+const Xsd2JsonSchema = require('xsd2jsonschema').Xsd2JsonSchema;
+const xs2js = new Xsd2JsonSchema();
+
 // DB Models for Mongo tables
 var Book = require('./models/book');
+const onixKeyLookup = require('./onixKeyLookup');
 
 var macXml = fs.readFileSync('./xml/MacmillanMetadata.xml', { encoding: 'utf-8' });
 var onix21Xsd = fs.readFileSync('./ONIX2.1/ONIX_BookProduct_CodeLists.xsd', { encoding: 'utf-8' });
@@ -21,8 +25,39 @@ var onix21Xsd = fs.readFileSync('./ONIX2.1/ONIX_BookProduct_CodeLists.xsd', { en
 
 var xmlFeed = onix.parse(macXml, "2.1");
 
+const convertedSchemas = xs2js.processAllSchemas({
+	schemas: {'onix.xsd': onix21Xsd}
+});
+const jsonSchema = convertedSchemas['onix.xsd'].getJsonSchema();
+console.log("JSON Schema:");
+console.log(JSON.stringify(jsonSchema, null, 2));
+console.log("\n");
+
+console.log("JSON Schema Keys:");
+for(key in jsonSchema) {
+	console.log(key);
+}
+console.log(jsonSchema['description']);
+console.log("\n");
+var properties = jsonSchema["properties"];
+var definitions = jsonSchema["definitions"];
+console.log("\n");
+console.log(definitions["List2"]);
+console.log("\n");
+
+// Process the ONIX XML Feed
+processOnixJson(xmlFeed, jsonSchema);
+
+// Lookup the key value pairs
+console.log("ONIX Key Lookup:");
+console.log(onixLookup.onixKeyLookup);
+console.log("\n");
+
+// Converts XSD File to JSON Schema type (this didnt expand objects in the XSD Schema)
+/*
 xsdFile = './ONIX2.1/ONIX_BookProduct_CodeLists.xsd';
 xsd.fileToFlatJSON(xsdFile, function (err, xsdObject) {
+xsd.stringToFlatJSON(onix21Xsd, function (err, xsdObject) {
 	if (err) {
 		console.error("XSD Error:");
 		console.error(err);
@@ -35,42 +70,58 @@ xsd.fileToFlatJSON(xsdFile, function (err, xsdObject) {
 	console.log("\n");
 
 	// read the json file and pass xsdObject
+	processOnixJson(xmlFeed, xsdObject);
 });
-
 function getValue(obj, searchKey) {
+	console.log("GET VALUE!");	
 	return obj.hasOwnProperty(searchKey) ? obj[searchKey] : "";
 }
-
-// XSD processing
-/*
-xsd2json(xsdFile, function(err, schemaObject) {
-	if (err) {
-		console.error("XSD Error:");
-		console.error(err);
-		console.error("\n");
-	}	
-	console.log("Schema object read");	
-	console.log(JSON.stringify(schemaObject, null, 2));
-});
 */
 
-/*
-var xsdFeed = libxml.parseXmlString(onix21Xsd);
-console.log("XSD Feed:");
-console.log(xsdFeed);
-console.log("\n");
-*/
+/**
+ * Process the json data onix xml feed 
+ * @param {*} jsonData - parsed onix source 
+ * @param {*} xsdSchema - xsd schema for code list 
+ */
+function processOnixJson(onixJson, xsdJson) {
+	var products = onixJson.products;
+	var testBook = products[0];
 
-var products = xmlFeed.products;
-var testBook = products[0];
-console.log("JSON Test Book:");
-console.log(testBook);
-console.log("\n");
-// console.log("JSON Stringify:");
-// console.log(JSON.stringify(products[0], null, 4));
-// console.log("\n");
-console.log("Products len = " + products.length);
-console.log("\n");
+	console.log("Process ONIX Json data:");
+	console.log("Products len = " + products.length);
+	console.log("\n");
+
+	// TODO: Loop through all products and attache the XSD CodeLists for search
+	console.log("JSON Test Book:");
+	console.log(testBook);
+	console.log("\n");
+
+	// loop through object and look up the code lists
+	console.log("Test Book keys:")	
+	for (key in testBook) {
+		console.log(key);
+	}
+	console.log("\n");
+
+	// console.log("JSON Stringify:");
+	// console.log(JSON.stringify(products[0], null, 4));
+	// console.log("\n");
+
+	// Loop through the lists (restriction is 1??)
+	/*	
+	console.log("XSD List 1:");
+	var xsd1 = getValue(xsdSchema, "xs:List1");
+	console.log(xsd1);
+	console.log("\n");
+
+	// loop through the keys of the schema
+	console.log("Schema Keys:");	
+	Object.keys(xsdSchema).forEach(function(key, index) {
+		console.log(key + " : " + index);
+	});	
+	console.log("\n");
+	*/
+}
 
 // Local MongoDB connection
 /*
@@ -106,9 +157,6 @@ mongoose.connect(mongoUri, {
 });
 */
 
-// Parse the XSD schema for 2.1 or 3.0
-
-
 // TEST: Find book
 /*
 ISBN = 9374281;
@@ -124,7 +172,7 @@ Book.findOne({ 'ISBN': ISBN }, { SUMMARY: 0 }, function (err, book) {
 	console.log("\n");
 
 	// Build up a book using the ONIX parsed file
-	let obj = testBook.id.find(o => o.type === 15);
+	let obj = book.id.find(o => o.type === 15);
 	let isbn = obj.value;
 	console.log("Object:"); console.log(obj); console.log("\n");
 

@@ -1,0 +1,69 @@
+{ record: "9781427277237",
+  notification: 3,
+  publishingStatus: 4,
+  id:
+   [ { type: 15, value: "9781427277237" },
+     { type: 2, value: "1427277230" },
+     { type: 1, value: "900164368" },
+     { type: 3, value: "9781427277237" },
+     { type: 1, value: "9781427277244" } ],
+  workId: { type: 1, value: "9781250098641" },
+  form: "AJ",
+  cityOfPublication: "New York",
+  publicationDate: 2016-06-07T06:00:00.000Z,
+  title: { type: 1, text: "You Know Me Well", subtitle: "A Novel" },
+  language: { role: 1, code: NaN },
+  contributors:
+   [ { sequence: 1,
+       role: "E07",
+       name: "Emma Galvin",
+       nameInverted: "Galvin, Emma" },
+     { sequence: 2,
+       role: "E07",
+       name: "Matthew Brown",
+       nameInverted: "Brown, Matthew",
+       note:
+        "<![CDATA[<b>Matthew Brown</b> has voiceover experience in many different areas, including commercials (national and regional), audiobooks, ESL, feature film ADR/looping and animated projects both feature film and television. His narration credits include Matthew Dicks’s <i>Memoirs of an Imaginary </i>Friend and Mary E. Pearson’s <i>Fox </i>series. He received a 2011 <i>AudioFile</i> Best Audiobook Award for Young Adult & Fantasy for his reading of <i>The Adoration of Jenna Fox</i>.]]>" },
+     { sequence: 3,
+       role: "A01",
+       name: "Nina LaCour",
+       nameInverted: "LaCour, Nina",
+       note:
+        "<![CDATA[NINA LACOUR is the award-winning author of <i>Hold Still</i>, <i>The Disenchantments</i>, and <i>Everything Leads to You</i>. A former indie bookseller and high school English teacher, she lives with her family in the San Francisco Bay Area.]]>" },
+     { sequence: 4,
+       role: "A01",
+       name: "David Levithan",
+       nameInverted: "Levithan, David",
+       note:
+        "<![CDATA[<b>David Levithan</b> is the author of <i>The Lover\"s Dictionary </i>and many acclaimed young-adult novels, including the <i>New York Times </i>bestselling <i>Nick & Norah’s Infinite Playlist </i>(with Rachel Cohn), which was adapted into a popular movie. He is also an editorial director at Scholastic.]]>" } ],
+  subjects:
+   [ { identifier: 10,
+       code: "YAF058120",
+       heading: "Social Themes / Friendship",
+       main: false },
+     { identifier: 20,
+       heading:
+        "gay teen romance; self discovery; coming of age; diversity; friendship; high school; love story; pride; queer; realistic; relationships; ya romance; san francisco; award winning author; best selling author; audiobooks; audio books; books on tape",
+       main: false } ],
+  audiences: [ { type: 1, value: 3 } ],
+  medias:
+   [ { type: 4,
+       linkType: 1,
+       link:
+        "https://www.biblioimages.com/macmillanusa-dam/getimage.aspx?class=books&amp;assetversionid=1401803&amp;cat=default&amp;size=origjpg&amp;id=900164368" } ],
+  supply:
+   { name: "MPS",
+     availability: "IP",
+     saleDate: 2016-06-07T06:00:00.000Z,
+     prices: [ [Object], [Object], [Object] ] },
+  texts:
+   [ { type: 1,
+       content:
+        "<p><b><i>You Know Me Well</i> is a deeply honest story about navigating the joys and heartaches of first love, one truth at a time. </b><br><br>Who knows you well? Your best friend? Your boyfriend or girlfriend? A stranger you meet on a crazy night? No one, really?<br><br>Mark and Kate have sat next to each other for an entire year, but have never spoken. For whatever reason, their paths outside of class have never crossed. <br><br>That is until Kate spots Mark miles away from home, out in the city for a wild, unexpected night. Kate is lost, having just run away from a chance to finally meet the girl she has been in love with from afar. Mark, meanwhile, is in love with his best friend Ryan, who may or may not feel the same way. <br><br>When Kate and Mark meet up, little do they know how important they will become to each other -- and how, in a very short time, they will know each other better than any of the people who are supposed to know them more.<br><br>An audiobook told in alternating points of view by Nina LaCour, the award-winning author of <i>Hold Still </i>and <i>The Disenchantments</i>, and David Levithan, the best-selling author of <i>Every Day </i>and co-author of <i>Nick and Norah\"s Infinite Playlist </i>(with Rachel Cohn) and <i>Will Grayson, Will Grayson </i>(with John Green)<i>.</i></p>" },
+     { type: 13,
+       content:
+        "<p>NINA LACOUR is the award-winning author of <i>Hold Still</i>, <i>The Disenchantments</i>, and <i>Everything Leads to You</i>. A former indie bookseller and high school English teacher, she lives with her family in the San Francisco Bay Area.<br><br>DAVID LEVITHAN is the <i>New York Times</i> bestselling author of many YA novels, including <i>Another Day</i>, <i>Two Boys Kissing</i>, <i>Every Day</i>, <i>Boy Meets Boy</i>, <i>Nick & Norah\"s Infinite Playlist </i>(written with Rachel Cohn) and <i>Will Grayson, Will Grayson</i> (written with John Green). By day, he works as an editor. By night, he lives in New Jersey.</p>" } ],
+  imprint: { name: "Macmillan Audio" },
+  publisher: { role: 1, name: "Macmillan Audio" },
+  salesRights: [ { type: 1 }, { type: 3 }, { type: 2 } ] 
+}

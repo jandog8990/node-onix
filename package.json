@@ -18,7 +18,9 @@
         "subjects-utils": "0.0.1",
         "xml-schema": "git://github.com/christianroy/xml-schema.git",
         "xsd": "0.0.2",
-        "xsd2json": "^1.12.17"
+        "xsd2json": "^1.12.17",
+        "xsd2jsonschema": "^0.3.7",
+        "xsdlibrary": "^1.3.6"
     },
     "devDependencies": {
         "mocha": "2.2.1",

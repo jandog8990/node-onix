@@ -178,6 +178,9 @@
 
 -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:annotation>
+		<xs:documentation source="ONIX Annotate Test">TEST</xs:documentation>
+	</xs:annotation>
 	<xs:simpleType name="List1">
 		<xs:annotation>
 			<xs:documentation source="ONIX Code List 1">Notification or update type code</xs:documentation>
