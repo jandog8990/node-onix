@@ -13,7 +13,7 @@ const authorSchema = new Schema(
 		GENDER: String, 
 		BIRTH_DATE: Object, 
 		ADDRESS: String, 
-		BIOGRAPHY: String, 
+		BIOGRAPHY: String,	// ONIX Biographical Note 
 	},
 	{
 		// set collection to wp_AUDIO table

@@ -5,12 +5,12 @@ module.exports = {
     onixKeyLookup: {
         // This will be a map from Keys to Functions for each object type 
         notification: {
-            1: "early", // show book 
-            3: "advanced-confirmation", // book ready
-            4: "confirmed", // book ready
-            5: "update",
-            88: "test-update",  // test processing (disregard data)
-            89: "test-record"   // test record (disregard data)
+            1: () =>  { return "early"; }, // show book 
+            3: () => "advanced-confirmation", // book ready
+            4: () => "confirmed", // book ready
+            5: () => "update",
+            88: () => "test-update",  // test processing (disregard data)
+            89: () => "test-record"   // test record (disregard data)
         },   // List 1 (notification types) 
         publishingStatus: {
             0: "unspecified",
@@ -40,7 +40,9 @@ module.exports = {
                 15: "isbn-13"
             }
         }, // List 5 (product ids)
-        cityOfPublication: {},  // function should assign string
+        cityOfPublication: (val) => {
+            return { "cityOfPublication": val };
+        },  // function should assign string
         publicationDate: {},    // func assigns UTC date (check db date elements)
         title: {    // type/text/subtitle keys 
             type: {
@@ -56,6 +58,7 @@ module.exports = {
                 "A01": "author",
                 "A02": "ghost-author",
                 "A09": "created-by",
+                "B06": "translated-by", 
                 "E03": "narrator",
                 "E07": "read-by",   // as in audiobook
             } 

@@ -16,42 +16,62 @@ const Xsd2JsonSchema = require('xsd2jsonschema').Xsd2JsonSchema;
 const xs2js = new Xsd2JsonSchema();
 
 // DB Models for Mongo tables
+var Author = require('./models/author');
 var Book = require('./models/book');
-const onixKeyLookup = require('./onixKeyLookup');
+var Narrator = require('./models/narrator');
+
+const onixlookup = require('./onixKeyLookup');
+const notification = require('../lib/codes/notification');
+const onixKeyLookup = onixlookup.onixKeyLookup;
 
 var macXml = fs.readFileSync('./xml/MacmillanMetadata.xml', { encoding: 'utf-8' });
 var onix21Xsd = fs.readFileSync('./ONIX2.1/ONIX_BookProduct_CodeLists.xsd', { encoding: 'utf-8' });
 // var EPUBDIRECT = fs.readFileSync(path.join(__dirname, './fixtures/epubDirect.xml'), { encoding: 'utf-8' });
 
+// Local MongoDB connection
+console.log("db_url = " + db_url);
+mongoose.connect(db_url, {
+	useCreateIndex: true,
+	useNewUrlParser: true,
+	useFindAndModify: false,
+	useUnifiedTopology: true
+}).then(({ db: abantu }) => console.log('Connected to ${abantu}'))
+	.catch(err => console.error(err));
+
+// Atlas MongoDB connection
+/*
+const configDB = require('./config');
+const mongoUri = configDB.get("MONGO_URI");
+console.log("\nMongo URI:");
+console.log(mongoUri);
+console.log("\n");
+mongoose.connect(mongoUri, {
+    reconnectTries: 80,
+    reconnectInterval: 1000,
+    useCreateIndex: true,
+    useNewUrlParser: true
+},  (err, client) => {
+	if (err) {
+		console.log("Mongoose Connect Err:");
+		console.log(err);
+		console.log("\n");
+	}
+	console.log("Mongoose mLab Connect Successful!\n");
+});
+*/
+
+// Parse the input onix xml file
 var xmlFeed = onix.parse(macXml, "2.1");
 
 const convertedSchemas = xs2js.processAllSchemas({
-	schemas: {'onix.xsd': onix21Xsd}
+	schemas: { 'onix.xsd': onix21Xsd }
 });
 const jsonSchema = convertedSchemas['onix.xsd'].getJsonSchema();
-console.log("JSON Schema:");
-console.log(JSON.stringify(jsonSchema, null, 2));
-console.log("\n");
 
-console.log("JSON Schema Keys:");
-for(key in jsonSchema) {
-	console.log(key);
-}
-console.log(jsonSchema['description']);
-console.log("\n");
-var properties = jsonSchema["properties"];
-var definitions = jsonSchema["definitions"];
-console.log("\n");
-console.log(definitions["List2"]);
-console.log("\n");
+// printJsonSchema(jsonSchema);
 
 // Process the ONIX XML Feed
 processOnixJson(xmlFeed, jsonSchema);
-
-// Lookup the key value pairs
-console.log("ONIX Key Lookup:");
-console.log(onixLookup.onixKeyLookup);
-console.log("\n");
 
 // Converts XSD File to JSON Schema type (this didnt expand objects in the XSD Schema)
 /*
@@ -85,7 +105,7 @@ function getValue(obj, searchKey) {
  */
 function processOnixJson(onixJson, xsdJson) {
 	var products = onixJson.products;
-	var testBook = products[0];
+	var testBook = products[1];
 
 	console.log("Process ONIX Json data:");
 	console.log("Products len = " + products.length);
@@ -97,11 +117,49 @@ function processOnixJson(onixJson, xsdJson) {
 	console.log("\n");
 
 	// loop through object and look up the code lists
-	console.log("Test Book keys:")	
+	console.log("Test Book keys:")
+	var mongoBook = {};
+	var mongoAuthor = {};
+	var mongoNarrator = {};	
 	for (key in testBook) {
-		console.log(key);
+		var fieldVal = testBook[key];
+		console.log("------------------------------------------");
+		console.log("Book field:");
+		console.log("key = " + key);
+		console.log("field is Array = " + Array.isArray(fieldVal));
+		console.log("field value:");
+		console.log(fieldVal);
+		console.log("\n");
+
+		// Call the notification function
+		if (key == "notification") {
+			var notificationReturn = onixKeyLookup[key][fieldVal]();
+			console.log("Notification return = " + notificationReturn + "\n");
+		}	
+
+		if (key == "cityOfPublication") {
+			var cityPub = onixKeyLookup[key](fieldVal);
+			console.log("City of pub = " + JSON.stringify(cityPub));
+		}
+		
+		console.log("Onix Key/Val:");
+		var onixKeyVal = onixKeyLookup[key];
+		console.log(onixKeyVal);
+		console.log("\n");
+
+		// check what type of field
 	}
+
+	// Lookup the key value pairs
+	/*	
+	console.log("ONIX Key Lookup:");
+	console.log(onixLookup.onixKeyLookup);
 	console.log("\n");
+	*/
+
+	// Query the database and INSERT new document to a collection
+	ISBN = 9374281;
+	updateMongoCollection(ISBN);
 
 	// console.log("JSON Stringify:");
 	// console.log(JSON.stringify(products[0], null, 4));
@@ -123,61 +181,42 @@ function processOnixJson(onixJson, xsdJson) {
 	*/
 }
 
-// Local MongoDB connection
-/*
-console.log("db_url = " + db_url);
-mongoose.connect(db_url, {
-	useCreateIndex: true,
-	useNewUrlParser: true,
-	useFindAndModify: false,
-	useUnifiedTopology: true
-}).then(({ db: abantu }) => console.log('Connected to ${abantu}'))
-	.catch(err => console.error(err));
-*/
-
-// Atlas MongoDB connection
-/*
-const configDB = require('./config');
-const mongoUri = configDB.get("MONGO_URI");
-console.log("\nMongo URI:");
-console.log(mongoUri);
-console.log("\n");
-mongoose.connect(mongoUri, {
-    reconnectTries: 80,
-    reconnectInterval: 1000,
-    useCreateIndex: true,
-    useNewUrlParser: true
-},  (err, client) => {
-	if (err) {
-		console.log("Mongoose Connect Err:");
-		console.log(err);
-		console.log("\n");
-	}
-	console.log("Mongoose mLab Connect Successful!\n");
-});
-*/
-
 // TEST: Find book
-/*
-ISBN = 9374281;
-Book.findOne({ 'ISBN': ISBN }, { SUMMARY: 0 }, function (err, book) {
-	if (err) {
-		console.error("Find error:");
-		console.error(err);
-		console.error("\n");
-	}
+function updateMongoCollection(ISBN) {
+	Book.findOne({ 'ISBN': ISBN }, { SUMMARY: 0 }, function (err, book) {
+		if (err) {
+			console.error("Find error:");
+			console.error(err);
+			console.error("\n");
+		}
 
-	console.log("Book find:");
-	console.log(book);
+		console.log("Book find:");
+		console.log(book);
+		console.log("\n");
+
+		// Build up a book using the ONIX parsed file
+		/*	
+		let obj = book.id.find(o => o.type === 15);
+		let isbn = obj.value;
+		console.log("Object:"); console.log(obj); console.log("\n");
+
+		var myBook = {
+			ISBN: isbn
+		}
+		*/
+	});
+}
+
+function printJsonSchema(jsonSchema) {
+	console.log("JSON Schema Keys:");
+	for (key in jsonSchema) {
+		console.log(key);
+	}
+	console.log(jsonSchema['description']);
 	console.log("\n");
-
-	// Build up a book using the ONIX parsed file
-	let obj = book.id.find(o => o.type === 15);
-	let isbn = obj.value;
-	console.log("Object:"); console.log(obj); console.log("\n");
-
-	var myBook = {
-		ISBN: isbn
-	}
-});
-*/
+	var properties = jsonSchema["properties"];
+	var definitions = jsonSchema["definitions"];
+	console.log("\n");
+	console.log(definitions["List2"]);
+	console.log("\n");
+}

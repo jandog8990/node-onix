@@ -9,8 +9,8 @@ const bookAudioList = db.wp_BOOKS.aggregate([ { $lookup: { from: "wp_AUDIO", loc
 
 const bookSchema = new Schema(
 	{
-		// ISBN: Number,
-		ISBN: { type: Number, default: null, required: true },
+		// ISBN: { type: Number, default: null, required: true },
+		ISBN: Number,
 		TITLE: String,
 		EDITION: Object,
 		AUTHOR_ID: Number,	// user._id.toString() from other table
