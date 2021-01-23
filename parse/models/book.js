@@ -9,14 +9,17 @@ const bookAudioList = db.wp_BOOKS.aggregate([ { $lookup: { from: "wp_AUDIO", loc
 
 const bookSchema = new Schema(
 	{
-		//ISBN: { type: Number, default: null, required: true },
-		ISBN: Number,
+		// ISBN: Number,
+		ISBN: { type: Number, default: null, required: true },
 		TITLE: String,
 		EDITION: Object,
-		AUTHOR_ID: Number,
-		GENRES: Object,
+		AUTHOR_ID: Number,	// user._id.toString() from other table
+		AUTHORS: {type: Array, default: []},	// array of author ids	
+		NARRATORS: {type: Array, default: []},	// array of narrator ids 
+		GENRES: {type: Array, default: []},	// array of strings of genres
+		AUDIENCE: String,	
 		PUBLISHER_ID: Object, 
-		PRICE: Object,
+		PRICE: Number,
 		COPYRIGHT_NAME: String,
 		COPYRIGHT_YEAR: Object,
 		SUMMARY: String,
@@ -24,7 +27,10 @@ const bookSchema = new Schema(
 		SEARCH_ID: String,
 		NUM_CHAPTERS: Number,
 		TOTAL_TIME: String,
-		PUBLICATION_DATE: String 
+		CREATED: {type: Date, default: Date.now},
+		UPDATED: {type: Date, default: Date.now},
+		PUBLICATION_DATE: {type: Date, default: Date.now},
+		SALES_RIGHTS: String 
 	},
 	{
 		// set the collection to our wp_BOOKS table
