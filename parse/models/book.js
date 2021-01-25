@@ -30,6 +30,9 @@ const bookSchema = new Schema(
 		CREATED: {type: Date, default: Date.now},
 		UPDATED: {type: Date, default: Date.now},
 		PUBLICATION_DATE: {type: Date, default: Date.now},
+		NOTIFICATION: String,		// checks the publication availability flag (TODO: Check notification and pub status)	
+		PUBLISHING_STATUS: Boolean,	// checks publishing status flag	
+		CITY_OF_PUBLICATION: String,
 		SALES_RIGHTS: String 
 	},
 	{

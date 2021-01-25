@@ -116,39 +116,14 @@ function processOnixJson(onixJson, xsdJson) {
 	console.log(testBook);
 	console.log("\n");
 
+	// TODO: Loop through all books and feed to the update objects
+
 	// loop through object and look up the code lists
 	console.log("Test Book keys:")
 	var mongoBook = {};
 	var mongoAuthor = {};
-	var mongoNarrator = {};	
-	for (key in testBook) {
-		var fieldVal = testBook[key];
-		console.log("------------------------------------------");
-		console.log("Book field:");
-		console.log("key = " + key);
-		console.log("field is Array = " + Array.isArray(fieldVal));
-		console.log("field value:");
-		console.log(fieldVal);
-		console.log("\n");
-
-		// Call the notification function
-		if (key == "notification") {
-			var notificationReturn = onixKeyLookup[key][fieldVal]();
-			console.log("Notification return = " + notificationReturn + "\n");
-		}	
-
-		if (key == "cityOfPublication") {
-			var cityPub = onixKeyLookup[key](fieldVal);
-			console.log("City of pub = " + JSON.stringify(cityPub));
-		}
-		
-		console.log("Onix Key/Val:");
-		var onixKeyVal = onixKeyLookup[key];
-		console.log(onixKeyVal);
-		console.log("\n");
-
-		// check what type of field
-	}
+	var mongoNarrator = {};
+	updateObjects(testBook, mongoBook, mongoAuthor, mongoNarrator);
 
 	// Lookup the key value pairs
 	/*	
@@ -180,6 +155,65 @@ function processOnixJson(onixJson, xsdJson) {
 	console.log("\n");
 	*/
 }
+// check Array.isArray() for imported objects
+function updateObjects(book, bookTable, authorTable, narratorTable) {
+	for (key in book) {
+		var fieldVal = book[key];
+		var isArray = Array.isArray(fieldVal);
+		console.log("------------------------------------------");
+		console.log("Book field:");
+		console.log("key = " + key);
+		console.log("field is Array = " + isArray);
+
+		// Check the field type Number, String, Object, Array
+		if (isArray) {
+			// loop through the array and process the objects
+			console.log("field array length = " + fieldVal.length);
+			console.log("Array types:");
+			for (var i = 0; i < fieldVal.length; i++) {
+				console.log(typeof fieldVal[i]);
+			}
+			console.log("\n");
+		} else {
+			// check the type of the field
+			var fieldType = typeof fieldVal;
+			console.log("field type = " + fieldType);
+
+			/*
+			console.log("field value:");
+			console.log(fieldVal);
+			console.log("\n");
+			*/
+
+			// Call the notification function
+			if (key == "notification") {
+				onixKeyLookup[key][fieldVal](bookTable,
+					authorTable, narratorTable);
+
+				console.log("Book notification update:");
+				console.log(bookTable);
+				console.log("\n");
+			} else {
+
+				if (onixKeyLookup[key] != undefined && onixKeyLookup[key] != null) {
+
+					// Check the field type for Object vs Primitive types
+					if (fieldType == "object") {
+						console.log("field type IS OBJECT!");
+					} else {
+						// This block will take care of simple key/value pairs in the fields
+						onixKeyLookup[key](fieldVal, bookTable, authorTable, narratorTable);
+						console.log("Book update:");
+						console.log(bookTable);
+						console.log("\n");
+					}
+				}
+			}
+		}
+
+		// check what type of field
+	}
+}
 
 // TEST: Find book
 function updateMongoCollection(ISBN) {
@@ -204,6 +238,8 @@ function updateMongoCollection(ISBN) {
 			ISBN: isbn
 		}
 		*/
+
+		process.exit();
 	});
 }
 
