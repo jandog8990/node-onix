@@ -2,6 +2,8 @@ const notificationKey = "NOTIFICATION";
 const publishingStatusKey = "PUBLISHING_STATUS";
 const cityOfPublicationKey = "CITY_OF_PUBLICATION";
 const publicationDateKey = "PUBLICATION_DATE";
+const publisherNameKey = "PUBLISHER_NAME";
+const publisherSearchKey = "SEARCH_ID";
 
 module.exports = {
     // Key lookup for ONIX Elements to Types, Values, Etc in the XSD Schema 
@@ -129,7 +131,7 @@ module.exports = {
             }
 
         }, // List 38-40 (image/audio/video file type, format, link type)
-        supply: {}, // List58 (keys: prices is the main key)
+        // supply: {}, // List58 (keys: prices is the main key)
         texts: {    // is array, keys: type/content (NOTE: all text is given in HTML parse??)
             type: {
                 1: "Main description",  // Main summary
@@ -156,8 +158,12 @@ module.exports = {
                 44: "Long description for series",
             }
         },  // List 33 (Text type code ie main summary)
-        imprint: {},   // keys: "name" keyPublisher name??
-        publisher: {},  // keys: "role/name" Publisher name and role (seems more legit)
+        // imprint: {},   // keys: "name" keyPublisher name??
+        publisher: (publisherName, publisher) => {
+            var searchId = publisherName.replace(/\s+/g, '-');
+            publisher[publisherNameKey] = publisherName;
+            publisher[publisherSearchKey] = searchId;
+        },  // keys: "role/name" Publisher name and role (seems more legit)
         salesRights: {  // is array, keys: type
             type: {
                 0: "unknown",

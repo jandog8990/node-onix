@@ -123,7 +123,8 @@ function processOnixJson(onixJson, xsdJson) {
 	var mongoBook = {};
 	var mongoAuthor = {};
 	var mongoNarrator = {};
-	updateObjects(testBook, mongoBook, mongoAuthor, mongoNarrator);
+	var mongoPublisher = {};
+	updateObjects(testBook, mongoBook, mongoAuthor, mongoNarrator, mongoPublisher);
 
 	// Lookup the key value pairs
 	/*	
@@ -156,7 +157,7 @@ function processOnixJson(onixJson, xsdJson) {
 	*/
 }
 // check Array.isArray() for imported objects
-function updateObjects(book, bookTable, authorTable, narratorTable) {
+function updateObjects(book, bookTable, authorTable, narratorTable, publisherTable) {
 	for (key in book) {
 		var fieldVal = book[key];
 		var isArray = Array.isArray(fieldVal);
@@ -200,6 +201,27 @@ function updateObjects(book, bookTable, authorTable, narratorTable) {
 					// Check the field type for Object vs Primitive types
 					if (fieldType == "object") {
 						console.log("field type IS OBJECT!");
+
+						// check for the publisher since it's a single key object
+						if (key == "publisher") {
+							var publisherName = fieldVal["name"];
+							console.log("Key IS PUBLISHER:");
+							console.log("publisherName = " + publisherName);
+							onixKeyLookup[key](publisherName, publisherTable);
+
+							console.log("Publisher update:");
+							console.log(publisherTable);
+							console.log("\n");
+						} else {
+
+							// loop through the keys in the object
+							console.log("Field for " + key + " has object sub-keys:");
+							for (var subKey in fieldVal) {
+								var eval = fieldVal[subKey];
+								console.log(subKey + " - " + eval);
+							}
+							console.log("\n");
+						}
 					} else {
 						// This block will take care of simple key/value pairs in the fields
 						onixKeyLookup[key](fieldVal, bookTable, authorTable, narratorTable);
