@@ -124,7 +124,15 @@ function processOnixJson(onixJson, xsdJson) {
 	var mongoAuthor = {};
 	var mongoNarrator = {};
 	var mongoPublisher = {};
-	updateObjects(testBook, mongoBook, mongoAuthor, mongoNarrator, mongoPublisher);
+
+	// table to edit when looking up the role, type and identifier
+	var tablesToEdit = {
+		"BOOK_TABLE": mongoBook,
+		"AUTHOR_TABLE": mongoAuthor,
+		"NARRATOR_TABLE": mongoNarrator,
+		"PUBLISHER_TABLE": mongoPublisher
+	}
+	updateObjects(testBook, tablesToEdit, mongoBook, mongoAuthor, mongoNarrator, mongoPublisher);
 
 	// Lookup the key value pairs
 	/*	
@@ -156,11 +164,21 @@ function processOnixJson(onixJson, xsdJson) {
 	console.log("\n");
 	*/
 }
-// check Array.isArray() for imported objects
-function updateObjects(book, bookTable, authorTable, narratorTable, publisherTable) {
+
+/**
+ * Update the specified table with fields to insert into the DB 
+ * @param {*} book 
+ * @param {*} tablesToEdit 
+ * @param {*} bookTable 
+ * @param {*} authorTable 
+ * @param {*} narratorTable 
+ * @param {*} publisherTable 
+ */
+function updateObjects(book, tablesToEdit, bookTable, authorTable, narratorTable, publisherTable) {
+	// check Array.isArray() for imported objects
 	for (key in book) {
-		var fieldVal = book[key];
-		var isArray = Array.isArray(fieldVal);
+		var bookField = book[key];
+		var isArray = Array.isArray(bookField);
 		console.log("------------------------------------------");
 		console.log("Book field:");
 		console.log("key = " + key);
@@ -169,26 +187,26 @@ function updateObjects(book, bookTable, authorTable, narratorTable, publisherTab
 		// Check the field type Number, String, Object, Array
 		if (isArray) {
 			// loop through the array and process the objects
-			console.log("field array length = " + fieldVal.length);
+			console.log("field array length = " + bookField.length);
 			console.log("Array types:");
-			for (var i = 0; i < fieldVal.length; i++) {
-				console.log(typeof fieldVal[i]);
+			for (var i = 0; i < bookField.length; i++) {
+				console.log(typeof bookField[i]);
 			}
 			console.log("\n");
 		} else {
 			// check the type of the field
-			var fieldType = typeof fieldVal;
+			var fieldType = typeof bookField;
 			console.log("field type = " + fieldType);
 
 			/*
 			console.log("field value:");
-			console.log(fieldVal);
+			console.log(bookField);
 			console.log("\n");
 			*/
 
 			// Call the notification function
 			if (key == "notification") {
-				onixKeyLookup[key][fieldVal](bookTable,
+				onixKeyLookup[key][bookField](bookTable,
 					authorTable, narratorTable);
 
 				console.log("Book notification update:");
@@ -204,7 +222,7 @@ function updateObjects(book, bookTable, authorTable, narratorTable, publisherTab
 
 						// check for the publisher since it's a single key object
 						if (key == "publisher") {
-							var publisherName = fieldVal["name"];
+							var publisherName = bookField["name"];
 							console.log("Key IS PUBLISHER:");
 							console.log("publisherName = " + publisherName);
 							onixKeyLookup[key](publisherName, publisherTable);
@@ -215,29 +233,30 @@ function updateObjects(book, bookTable, authorTable, narratorTable, publisherTab
 						} else {
 
 							// Get the length of the object and parse
-							var objSize = getObjectSize(fieldVal);
+							var objSize = getObjectSize(bookField);
 							console.log("field value length = " + objSize);
 
 							if (objSize == 0) {
 								// The case of an object not being a hashmap (regular object ie Date)
-						// This block will take care of simple key/value pairs in the fields
-						onixKeyLookup[key](fieldVal, bookTable, authorTable, narratorTable);
-						console.log("Book update:");
-						console.log(bookTable);
-						console.log("\n");
+								// This block will take care of simple key/value pairs in the fields
+								onixKeyLookup[key](bookField, bookTable, authorTable, narratorTable);
+								console.log("Book update:");
+								console.log(bookTable);
+								console.log("\n");
 							} else {
 								// loop through the keys in the object
 								console.log("Field for " + key + " has object sub-keys:");
-								for (var subKey in fieldVal) {
-									var eval = fieldVal[subKey];
-									console.log(subKey + " - " + eval);
+
+								// first try with the title field
+								if (key == "title") {
+									checkUpdateObjectTable(key, bookField, tablesToEdit,
+										bookTable, authorTable, narratorTable, publisherTable);
 								}
-								console.log("\n");
 							}
 						}
 					} else {
 						// This block will take care of simple key/value pairs in the fields
-						onixKeyLookup[key](fieldVal, bookTable, authorTable, narratorTable);
+						onixKeyLookup[key](bookField, bookTable, authorTable, narratorTable);
 						console.log("Book update:");
 						console.log(bookTable);
 						console.log("\n");
@@ -245,9 +264,52 @@ function updateObjects(book, bookTable, authorTable, narratorTable, publisherTab
 				}
 			}
 		}
-
-		// check what type of field
 	}
+}
+
+/**
+ * Update the MongoTable using the object and book fields/keys 
+ * @param {*} mainKey 
+ * @param {*} bookField 
+ * @param {*} tablesToEdit 
+ */
+function checkUpdateObjectTable(mainKey, bookField, tablesToEdit, 
+	bookTable, authorTable, narratorTable, publisherTable) {
+
+	// 1: First find type, identifier, role
+	var typeKeys = ["role", "type", "identifier"];
+	var mongoTable;
+	var fieldToEdit;
+	var editTable = false;
+	for (var tt in typeKeys) {
+		var typeKey = typeKeys[tt];
+
+		if (typeKey in bookField) {
+			var subVal = bookField[typeKey];
+			var tableKeyArray = onixKeyLookup[mainKey][typeKey][subVal]();
+
+			if (tableKeyArray.length != 0) {
+				mongoTable = tablesToEdit[tableKeyArray[0]];
+				fieldToEdit = tableKeyArray[1];
+				editTable = true;
+			}
+			delete bookField[typeKey];
+			break;
+		}
+	}
+
+	// now loop through the remaining keys and update table if needed
+	if (editTable) {
+		for (var subKey in bookField) {
+			var eval = bookField[subKey];
+			console.log(subKey + " - " + eval);
+			onixKeyLookup[mainKey][subKey](mongoTable, fieldToEdit, eval);
+		}
+		console.log("Updated " + fieldToEdit + ":"); 
+		console.log(bookTable);
+		console.log("\n");
+	}
+
 }
 
 // Check the size of the Object

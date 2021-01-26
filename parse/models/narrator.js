@@ -4,8 +4,9 @@ const Schema = mongoose.Schema;
 
 const narratorSchema = new Schema(
     {
-        FIRSTNAME: String,
         LASTNAME: String,
+        FIRSTNAME: String,
+        MI: String, 
         BIOGRAPHY: String,
     },
     {

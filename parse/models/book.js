@@ -12,6 +12,8 @@ const bookSchema = new Schema(
 		// ISBN: { type: Number, default: null, required: true },
 		ISBN: Number,
 		TITLE: String,
+		TITLE_ACRONYM: String,
+		TITLE_ABBREVIATED: String,	
 		EDITION: Object,
 		AUTHOR_ID: Number,	// user._id.toString() from other table
 		AUTHORS: {type: Array, default: []},	// array of author ids	

@@ -64,11 +64,18 @@ module.exports = {
         },    // func assigns UTC date (check db date elements)
         title: {    // type/text/subtitle keys 
             type: {
-                0: "undefined",
-                1: "full-title",    // full title 
-                2: "issn-title",
-                4: "title-acronym",
-                5: "abbreviated",
+                0: () => { return []; }, //"undefined",
+                1: () => { return ["BOOK_TABLE", "TITLE"]; }, //"full-title",    
+                2: () => { return []; }, //"issn-title",
+                4: () => { return ["BOOK_TABLE", "TITLE_ACRONYM"]; },
+                5: () => { return ["BOOK_TABLE", "TITLE_ABBREVIATED"]; }
+            },
+            text: (table, field, val) => {
+                console.log("Title text = " + val); 
+                var title = String(val); 
+                console.log("title string = " + title); 
+                // table[field] = title.split('\\').join('').trim(); 
+                table[field] = title; 
             }
         },  // List 15 (title type) 
         contributors: { // check for arrays (keys: role/name/nameInverted) 
@@ -79,6 +86,9 @@ module.exports = {
                 "B06": "translated-by",
                 "E03": "narrator",
                 "E07": "read-by",   // as in audiobook
+            },
+            name: () => {
+
             }
         },   // List 17 (contributor code ie author) 
         subjects: { // is array , keys: identifier/code/heading 

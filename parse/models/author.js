@@ -6,9 +6,9 @@ const authorSchema = new Schema(
 	{
 		//AUTHOR_ID: { type: Number, default: null, required: true },
 		AUTHOR_ID: Number,
-		MI: String, 
 		LASTNAME: String, 
 		FIRSTNAME: String, 
+		MI: String, 
 		NICKNAME: String, 
 		GENDER: String, 
 		BIRTH_DATE: Object, 
