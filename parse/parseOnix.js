@@ -214,13 +214,26 @@ function updateObjects(book, bookTable, authorTable, narratorTable, publisherTab
 							console.log("\n");
 						} else {
 
-							// loop through the keys in the object
-							console.log("Field for " + key + " has object sub-keys:");
-							for (var subKey in fieldVal) {
-								var eval = fieldVal[subKey];
-								console.log(subKey + " - " + eval);
+							// Get the length of the object and parse
+							var objSize = getObjectSize(fieldVal);
+							console.log("field value length = " + objSize);
+
+							if (objSize == 0) {
+								// The case of an object not being a hashmap (regular object ie Date)
+						// This block will take care of simple key/value pairs in the fields
+						onixKeyLookup[key](fieldVal, bookTable, authorTable, narratorTable);
+						console.log("Book update:");
+						console.log(bookTable);
+						console.log("\n");
+							} else {
+								// loop through the keys in the object
+								console.log("Field for " + key + " has object sub-keys:");
+								for (var subKey in fieldVal) {
+									var eval = fieldVal[subKey];
+									console.log(subKey + " - " + eval);
+								}
+								console.log("\n");
 							}
-							console.log("\n");
 						}
 					} else {
 						// This block will take care of simple key/value pairs in the fields
@@ -235,6 +248,15 @@ function updateObjects(book, bookTable, authorTable, narratorTable, publisherTab
 
 		// check what type of field
 	}
+}
+
+// Check the size of the Object
+function getObjectSize(obj) {
+	var size = 0, key;
+	for (key in obj) {
+		if (obj.hasOwnProperty(key)) size++;
+	}
+	return size;
 }
 
 // TEST: Find book

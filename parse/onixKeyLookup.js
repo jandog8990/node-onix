@@ -58,7 +58,9 @@ module.exports = {
             book[cityOfPublicationKey] = city;
         },  // function should assign string
         publicationDate: (date, book, author, narrator) => {
-            book[publicationDateKey] = Date.parse(date); 
+            var isDate = date instanceof Date;
+            console.log("object isDate = " + isDate); 
+            book[publicationDateKey] = date; 
         },    // func assigns UTC date (check db date elements)
         title: {    // type/text/subtitle keys 
             type: {
