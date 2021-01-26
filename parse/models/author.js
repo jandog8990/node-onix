@@ -9,7 +9,9 @@ const authorSchema = new Schema(
 		LASTNAME: String, 
 		FIRSTNAME: String, 
 		MI: String, 
-		NICKNAME: String, 
+		GHOST: {type: Boolean, default: false},	// ghost author 
+		TRANSLATOR: {type: Boolean, default: false},	// translator 
+		NICKNAME: String,	
 		GENDER: String, 
 		BIRTH_DATE: Object, 
 		ADDRESS: String, 

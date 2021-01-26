@@ -80,16 +80,43 @@ module.exports = {
         },  // List 15 (title type) 
         contributors: { // check for arrays (keys: role/name/nameInverted) 
             role: { // there could be other roles like forward and intro
-                "A01": "author",
-                "A02": "ghost-author",
-                "A09": "created-by",
-                "B06": "translated-by",
-                "E03": "narrator",
-                "E07": "read-by",   // as in audiobook
+                "A01": () => { 
+                    return ["AUTHOR_TABLES", "AUTHOR"];
+                }, // "author",
+                "A02": () => {
+                    return ["AUTHOR_TABLES", "GHOST"]; 
+                },//"ghost-author",  // not handled yet (should still be an author: hidden??)
+                "A09": () => {
+                    return [];
+                },  //"created-by",    // is this an author?
+                "B06": () => {
+                    return ["AUTHOR_TABLES", "TRANSLATOR"];
+                },  // "translated-by", // this should be another author field
+                "E03": () => {
+                    return ["NARRATOR_TABLES", "NARRATOR"];
+                },  // "narrator",
+                "E07": () => {
+                    return ["NARRATOR_TABLES", "NARRATOR"];
+                },  // "read-by",   // as in audiobook
             },
-            name: () => {
-
-            }
+            nameInverted: (table, field, val) => {
+                if (field == "GHOST" || field == "TRANSLATOR") {
+                    // set the author hidden field
+                    table[field] = true;
+                }
+           
+                // split the name and create first/lastname/mi
+               var arr = val.split(",", 3).map(function(item) {
+                   return item.trim();
+                }); 
+                console.log("name arr:");
+                console.log(arr);
+            },
+            note: (table, field, val) => {
+                console.log("Note field:");
+                console.log(val);
+                console.log("\n");
+            } 
         },   // List 17 (contributor code ie author) 
         subjects: { // is array , keys: identifier/code/heading 
             identifier: {
