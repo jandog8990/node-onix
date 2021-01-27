@@ -194,9 +194,25 @@ function updateObjects(book, tablesToEdit, bookTable, authorTables, narratorTabl
 					// for each field object process and update tables accordingly	
 					var fieldObj = bookField[i];
 
+					console.log("Field obj to store:");
+					console.log(fieldObj);
+					console.log("\n");
+
 					// TODO: here depending on the type we need to create new objects 
+					checkUpdateObjectTable(key, fieldObj, tablesToEdit,
+						bookTable, authorTables, narratorTables, publisherTable);
+
+					// show the author tables
+					console.log("Updated Author Tables:");
+					console.log(JSON.stringify(authorTables));
+					console.log("\n");
+
+					// show the narrator tables
+					console.log("Updated Narrator Tables:");
+					console.log(JSON.stringify(narratorTables));
+					console.log("\n");
 				}
-				console.log("\n");
+				// console.log("\n");
 			}
 		} else {
 			// check the type of the field
@@ -253,6 +269,10 @@ function updateObjects(book, tablesToEdit, bookTable, authorTables, narratorTabl
 								if (key == "title") {
 									checkUpdateObjectTable(key, bookField, tablesToEdit,
 										bookTable, authorTables, narratorTables, publisherTable);
+
+									console.log("Updated Book Table:"); 
+									console.log(bookTable);
+									console.log("\n");
 								}
 							}
 						}
@@ -304,14 +324,11 @@ function checkUpdateObjectTable(mainKey, bookField, tablesToEdit,
 	if (editTable) {
 		for (var subKey in bookField) {
 			var eval = bookField[subKey];
-			console.log(subKey + " - " + eval);
-			onixKeyLookup[mainKey][subKey](mongoTable, fieldToEdit, eval);
+			if (subKey in onixKeyLookup[mainKey]) {
+				onixKeyLookup[mainKey][subKey](mongoTable, fieldToEdit, eval);
+			}
 		}
-		console.log("Updated " + fieldToEdit + ":");
-		console.log(bookTable);
-		console.log("\n");
 	}
-
 }
 
 // Check the size of the Object

@@ -99,7 +99,12 @@ module.exports = {
                     return ["NARRATOR_TABLES", "NARRATOR"];
                 },  // "read-by",   // as in audiobook
             },
-            nameInverted: (table, field, val) => {
+            nameInverted: (tableArr, field, val) => {
+                var FIRSTNAME = "";
+                var LASTNAME = "";
+                var MI = "";
+               
+                var table = {};
                 if (field == "GHOST" || field == "TRANSLATOR") {
                     // set the author hidden field
                     table[field] = true;
@@ -111,11 +116,27 @@ module.exports = {
                 }); 
                 console.log("name arr:");
                 console.log(arr);
+                
+                if (arr.length == 3) {
+                    LASTNAME = arr[0];
+                    MI = arr[1];
+                    FIRSTNAME = arr[2]; 
+                } else {
+                    LASTNAME = arr[0];
+                    FIRSTNAME = arr[1]; 
+                }
+                table["FIRSTNAME"] = FIRSTNAME;
+                table["MI"] = MI;
+                table["LASTNAME"] = LASTNAME;
+                
+                tableArr.push(table);
             },
             note: (table, field, val) => {
                 console.log("Note field:");
                 console.log(val);
                 console.log("\n");
+                
+                return {};
             } 
         },   // List 17 (contributor code ie author) 
         subjects: { // is array , keys: identifier/code/heading 
