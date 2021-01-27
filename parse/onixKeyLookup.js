@@ -4,6 +4,11 @@ const cityOfPublicationKey = "CITY_OF_PUBLICATION";
 const publicationDateKey = "PUBLICATION_DATE";
 const publisherNameKey = "PUBLISHER_NAME";
 const publisherSearchKey = "SEARCH_ID";
+const firstNameKey = "FIRSTNAME";
+const lastNameKey = "LASTNAME";
+const miNameKey = "MI";
+const bioKey = "BIOGRAPHY";
+
 
 module.exports = {
     // Key lookup for ONIX Elements to Types, Values, Etc in the XSD Schema 
@@ -125,18 +130,20 @@ module.exports = {
                     LASTNAME = arr[0];
                     FIRSTNAME = arr[1]; 
                 }
-                table["FIRSTNAME"] = FIRSTNAME;
-                table["MI"] = MI;
-                table["LASTNAME"] = LASTNAME;
+                table[firstNameKey] = FIRSTNAME;
+                table[miNameKey] = MI;
+                table[lastNameKey] = LASTNAME;
                 
                 tableArr.push(table);
             },
-            note: (table, field, val) => {
+            note: (tableArr, field, val) => {
                 console.log("Note field:");
                 console.log(val);
                 console.log("\n");
-                
-                return {};
+              
+                // get the last pushed element in the table array and update 
+                var lastEditedTable = tableArr[tableArr.length - 1];
+                lastEditedTable[bioKey] = val; 
             } 
         },   // List 17 (contributor code ie author) 
         subjects: { // is array , keys: identifier/code/heading 

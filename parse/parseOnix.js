@@ -204,15 +204,16 @@ function updateObjects(book, tablesToEdit, bookTable, authorTables, narratorTabl
 
 					// show the author tables
 					console.log("Updated Author Tables:");
+					console.log("author tables len = " + authorTables.length);
 					console.log(JSON.stringify(authorTables));
 					console.log("\n");
 
 					// show the narrator tables
 					console.log("Updated Narrator Tables:");
+					console.log("narrator tables len = " + narratorTables.length);
 					console.log(JSON.stringify(narratorTables));
 					console.log("\n");
 				}
-				// console.log("\n");
 			}
 		} else {
 			// check the type of the field
