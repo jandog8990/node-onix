@@ -11,6 +11,7 @@ const bookSchema = new Schema(
 	{
 		// ISBN: { type: Number, default: null, required: true },
 		ISBN: Number,
+		ISBN13: String,	
 		TITLE: String,
 		TITLE_ACRONYM: String,
 		TITLE_ABBREVIATED: String,	

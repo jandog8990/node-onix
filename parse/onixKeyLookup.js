@@ -1,13 +1,20 @@
-const notificationKey = "NOTIFICATION";
-const publishingStatusKey = "PUBLISHING_STATUS";
-const cityOfPublicationKey = "CITY_OF_PUBLICATION";
-const publicationDateKey = "PUBLICATION_DATE";
-const publisherNameKey = "PUBLISHER_NAME";
-const publisherSearchKey = "SEARCH_ID";
-const firstNameKey = "FIRSTNAME";
-const lastNameKey = "LASTNAME";
-const miNameKey = "MI";
-const bioKey = "BIOGRAPHY";
+// Table keys for each mongo table (makes it easier)
+const BOOK_TABLE = "BOOK_TABLE";
+const AUTHOR_TABLES = "AUTHOR_TABLES";
+const NARRATOR_TABLES = "NARRATOR_TABLES"; 
+const PUBLISHER_TABLE = "PUBLISHER_TABLE"; 
+
+// Field keys for each table
+const NOTIFICATION = "NOTIFICATION";
+const PUBLISHING_STATUS = "PUBLISHING_STATUS";
+const CITY_OF_PUBLICATION = "CITY_OF_PUBLICATION";
+const PUBLICATION_DATE = "PUBLICATION_DATE";
+const PUBLISHER_NAME = "PUBLISHER_NAME";
+const SEARCH_ID = "SEARCH_ID";
+const FIRSTNAME = "FIRSTNAME";
+const LASTNAME = "LASTNAME";
+const MI = "MI";
+const BIOGRAPHY = "BIOGRAPHY";
 
 
 module.exports = {
@@ -15,19 +22,19 @@ module.exports = {
     onixKeyLookup: {
         // This will be a map from Keys to Functions for each object type 
         notification: {
-            1: (book, author, narrator) => { book[notificationKey] = "early"; }, // early 
-            3: (book, author, narrator) => { book[notificationKey] = "advanced-confirmation"; }, // book ready
-            4: (book, author, narrator) => { book[notificationKey] = "confirmed"; }, // book ready
-            5: (book, author, narrator) => { book[notificationKey] = "update" },
-            88: (book, author, narrator) => { book[notificationKey] = "test-update" },  // test processing (disregard data)
-            89: (book, author, narrator) => { book[notificationKey] = "test-record" }// test record (disregard data)
+            1: (book, author, narrator) => { book[NOTIFICATION] = "early"; }, // early 
+            3: (book, author, narrator) => { book[NOTIFICATION] = "advanced-confirmation"; }, // book ready
+            4: (book, author, narrator) => { book[NOTIFICATION] = "confirmed"; }, // book ready
+            5: (book, author, narrator) => { book[NOTIFICATION] = "update" },
+            88: (book, author, narrator) => { book[NOTIFICATION] = "test-update" },  // test processing (disregard data)
+            89: (book, author, narrator) => { book[NOTIFICATION] = "test-record" }// test record (disregard data)
         },   // List 1 (notification types) 
         publishingStatus: (status, book, author, narrator) => {
             
             if (status == 4) {//"active", 
-                book[publishingStatusKey] = true;
+                book[PUBLISHING_STATUS] = true;
             } else {    // all else not available
-                book[publishingStatusKey] = false;
+                book[PUBLISHING_STATUS] = false;
             }
             
             /* 
@@ -53,61 +60,61 @@ module.exports = {
         }, // List 64 (publishing status) 
         id: {   // type/value keys
             type: {
-                1: "proprietary",
-                2: "isbn-10",
-                3: "gtin-13",
-                15: "isbn-13"
+                1: () => { return []; }, //"proprietary",
+                2: () => { return []; }, //"isbn-10",
+                3: () => { return []; }, //"gtin-13",
+                15: () => { return [BOOK_TABLE, "ISBN13"];} // "isbn-13"
+            },
+            value: (table, field, val) => {
+                table[field] = val; // store the ISBN13 as a string
             }
         }, // List 5 (product ids)
         cityOfPublication: (city, book, author, narrator) => {
-            book[cityOfPublicationKey] = city;
+            book[CITY_OF_PUBLICATION] = city;
         },  // function should assign string
         publicationDate: (date, book, author, narrator) => {
             var isDate = date instanceof Date;
             console.log("object isDate = " + isDate); 
-            book[publicationDateKey] = date; 
+            book[PUBLICATION_DATE] = date; 
         },    // func assigns UTC date (check db date elements)
         title: {    // type/text/subtitle keys 
             type: {
                 0: () => { return []; }, //"undefined",
-                1: () => { return ["BOOK_TABLE", "TITLE"]; }, //"full-title",    
+                1: () => { return [BOOK_TABLE, "TITLE"]; }, //"full-title",    
                 2: () => { return []; }, //"issn-title",
-                4: () => { return ["BOOK_TABLE", "TITLE_ACRONYM"]; },
-                5: () => { return ["BOOK_TABLE", "TITLE_ABBREVIATED"]; }
+                4: () => { return [BOOK_TABLE, "TITLE_ACRONYM"]; },
+                5: () => { return [BOOK_TABLE, "TITLE_ABBREVIATED"]; }
             },
             text: (table, field, val) => {
-                console.log("Title text = " + val); 
                 var title = String(val); 
-                console.log("title string = " + title); 
-                // table[field] = title.split('\\').join('').trim(); 
                 table[field] = title; 
             }
         },  // List 15 (title type) 
         contributors: { // check for arrays (keys: role/name/nameInverted) 
             role: { // there could be other roles like forward and intro
                 "A01": () => { 
-                    return ["AUTHOR_TABLES", "AUTHOR"];
+                    return [AUTHOR_TABLES, "AUTHOR"];
                 }, // "author",
                 "A02": () => {
-                    return ["AUTHOR_TABLES", "GHOST"]; 
+                    return [AUTHOR_TABLES, "GHOST"]; 
                 },//"ghost-author",  // not handled yet (should still be an author: hidden??)
                 "A09": () => {
                     return [];
                 },  //"created-by",    // is this an author?
                 "B06": () => {
-                    return ["AUTHOR_TABLES", "TRANSLATOR"];
+                    return [AUTHOR_TABLES, "TRANSLATOR"];
                 },  // "translated-by", // this should be another author field
                 "E03": () => {
-                    return ["NARRATOR_TABLES", "NARRATOR"];
+                    return [NARRATOR_TABLES, "NARRATOR"];
                 },  // "narrator",
                 "E07": () => {
-                    return ["NARRATOR_TABLES", "NARRATOR"];
+                    return [NARRATOR_TABLES, "NARRATOR"];
                 },  // "read-by",   // as in audiobook
             },
             nameInverted: (tableArr, field, val) => {
-                var FIRSTNAME = "";
-                var LASTNAME = "";
-                var MI = "";
+                var first = "";
+                var last = "";
+                var mi = "";
                
                 var table = {};
                 if (field == "GHOST" || field == "TRANSLATOR") {
@@ -123,16 +130,16 @@ module.exports = {
                 console.log(arr);
                 
                 if (arr.length == 3) {
-                    LASTNAME = arr[0];
-                    MI = arr[1];
-                    FIRSTNAME = arr[2]; 
+                    last = arr[0];
+                    mi = arr[1];
+                    first = arr[2]; 
                 } else {
-                    LASTNAME = arr[0];
-                    FIRSTNAME = arr[1]; 
+                    last = arr[0];
+                    first = arr[1]; 
                 }
-                table[firstNameKey] = FIRSTNAME;
-                table[miNameKey] = MI;
-                table[lastNameKey] = LASTNAME;
+                table[FIRSTNAME] = first;
+                table[MI] = mi;
+                table[LASTNAME] = last;
                 
                 tableArr.push(table);
             },
@@ -143,7 +150,7 @@ module.exports = {
               
                 // get the last pushed element in the table array and update 
                 var lastEditedTable = tableArr[tableArr.length - 1];
-                lastEditedTable[bioKey] = val; 
+                lastEditedTable[BIOGRAPHY] = val; 
             } 
         },   // List 17 (contributor code ie author) 
         subjects: { // is array , keys: identifier/code/heading 
@@ -228,8 +235,8 @@ module.exports = {
         // imprint: {},   // keys: "name" keyPublisher name??
         publisher: (publisherName, publisher) => {
             var searchId = publisherName.replace(/\s+/g, '-');
-            publisher[publisherNameKey] = publisherName;
-            publisher[publisherSearchKey] = searchId;
+            publisher[PUBLISHER_NAME] = publisherName;
+            publisher[SEARCH_ID] = searchId;
         },  // keys: "role/name" Publisher name and role (seems more legit)
         salesRights: {  // is array, keys: type
             type: {

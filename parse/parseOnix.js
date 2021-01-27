@@ -187,33 +187,39 @@ function updateObjects(book, tablesToEdit, bookTable, authorTables, narratorTabl
 		// Check the field type Number, String, Object, Array
 		if (isArray) {
 			// loop through the array and process the objects
+			console.log("field array length = " + bookField.length);
+			console.log("Array types:");
+			for (var i = 0; i < bookField.length; i++) {
+				// for each field object process and update tables accordingly	
+				var fieldObj = bookField[i];
+
+				console.log("Field obj to store:");
+				console.log(fieldObj);
+				console.log("\n");
+
+				// TODO: here depending on the type we need to create new objects 
+				checkUpdateObjectTable(key, fieldObj, tablesToEdit,
+					bookTable, authorTables, narratorTables, publisherTable);
+			}
+
 			if (key == "contributors") {
-				console.log("field array length = " + bookField.length);
-				console.log("Array types:");
-				for (var i = 0; i < bookField.length; i++) {
-					// for each field object process and update tables accordingly	
-					var fieldObj = bookField[i];
+				// show the author tables
+				console.log("Updated Author Tables:");
+				console.log("author tables len = " + authorTables.length);
+				console.log(JSON.stringify(authorTables));
+				console.log("\n");
 
-					console.log("Field obj to store:");
-					console.log(fieldObj);
-					console.log("\n");
+				// show the narrator tables
+				console.log("Updated Narrator Tables:");
+				console.log("narrator tables len = " + narratorTables.length);
+				console.log(JSON.stringify(narratorTables));
+				console.log("\n");
+			} else if (key == "id") {
+				// show the book table
+				console.log("Updated Book Table:");
+				console.log(JSON.stringify(bookTable));
+				console.log("\n");
 
-					// TODO: here depending on the type we need to create new objects 
-					checkUpdateObjectTable(key, fieldObj, tablesToEdit,
-						bookTable, authorTables, narratorTables, publisherTable);
-
-					// show the author tables
-					console.log("Updated Author Tables:");
-					console.log("author tables len = " + authorTables.length);
-					console.log(JSON.stringify(authorTables));
-					console.log("\n");
-
-					// show the narrator tables
-					console.log("Updated Narrator Tables:");
-					console.log("narrator tables len = " + narratorTables.length);
-					console.log(JSON.stringify(narratorTables));
-					console.log("\n");
-				}
 			}
 		} else {
 			// check the type of the field
@@ -271,7 +277,7 @@ function updateObjects(book, tablesToEdit, bookTable, authorTables, narratorTabl
 									checkUpdateObjectTable(key, bookField, tablesToEdit,
 										bookTable, authorTables, narratorTables, publisherTable);
 
-									console.log("Updated Book Table:"); 
+									console.log("Updated Book Table:");
 									console.log(bookTable);
 									console.log("\n");
 								}
