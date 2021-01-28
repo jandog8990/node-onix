@@ -19,6 +19,7 @@ const xs2js = new Xsd2JsonSchema();
 var Author = require('./models/author');
 var Book = require('./models/book');
 var Narrator = require('./models/narrator');
+var Genre = require('./models/genre');
 
 const onixlookup = require('./onixKeyLookup');
 const notification = require('../lib/codes/notification');
@@ -124,15 +125,17 @@ function processOnixJson(onixJson, xsdJson) {
 	var mongoAuthors = [];	// array of objs as there could be mult authors
 	var mongoNarrators = [];	// array of objs as there could be mult narrators 
 	var mongoPublisher = {};
+	var mongoGenres = [];
 
 	// table to edit when looking up the role, type and identifier
 	var tablesToEdit = {
 		"BOOK_TABLE": mongoBook,
 		"AUTHOR_TABLES": mongoAuthors,
 		"NARRATOR_TABLES": mongoNarrators,
-		"PUBLISHER_TABLE": mongoPublisher
+		"PUBLISHER_TABLE": mongoPublisher,
+		"GENRE_TABLES": mongoGenres
 	}
-	updateObjects(testBook, tablesToEdit, mongoBook, mongoAuthors, mongoNarrators, mongoPublisher);
+	updateObjects(testBook, tablesToEdit, mongoBook, mongoAuthors, mongoNarrators, mongoPublisher, mongoGenres);
 
 	// Lookup the key value pairs
 	/*	
@@ -173,8 +176,9 @@ function processOnixJson(onixJson, xsdJson) {
  * @param {*} authorTables 
  * @param {*} narratorTables 
  * @param {*} publisherTable 
+ * @param {*} genreTables 
  */
-function updateObjects(book, tablesToEdit, bookTable, authorTables, narratorTables, publisherTable) {
+function updateObjects(book, tablesToEdit, bookTable, authorTables, narratorTables, publisherTable, genreTables) {
 	// check Array.isArray() for imported objects
 	for (key in book) {
 		var bookField = book[key];
@@ -218,6 +222,11 @@ function updateObjects(book, tablesToEdit, bookTable, authorTables, narratorTabl
 				// show the book table
 				console.log("Updated Book Table:");
 				console.log(JSON.stringify(bookTable));
+				console.log("\n");
+
+			} else if (key == "subjects") {
+				console.log("Updated Genre Table:");
+				console.log(JSON.stringify(genreTables));
 				console.log("\n");
 
 			}

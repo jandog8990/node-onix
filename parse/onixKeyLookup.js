@@ -1,21 +1,35 @@
+const { KEYWORDS } = require("../lib/codes/subject");
+
 // Table keys for each mongo table (makes it easier)
 const BOOK_TABLE = "BOOK_TABLE";
 const AUTHOR_TABLES = "AUTHOR_TABLES";
 const NARRATOR_TABLES = "NARRATOR_TABLES"; 
 const PUBLISHER_TABLE = "PUBLISHER_TABLE"; 
+const GENRE_TABLES = "GENRE_TABLES";
 
 // Field keys for each table
+
+// BOOK fields
 const NOTIFICATION = "NOTIFICATION";
 const PUBLISHING_STATUS = "PUBLISHING_STATUS";
 const CITY_OF_PUBLICATION = "CITY_OF_PUBLICATION";
 const PUBLICATION_DATE = "PUBLICATION_DATE";
+
+// PUBLISHER fields
 const PUBLISHER_NAME = "PUBLISHER_NAME";
 const SEARCH_ID = "SEARCH_ID";
+
+// AUTHOR/NARRATOR fields
 const FIRSTNAME = "FIRSTNAME";
 const LASTNAME = "LASTNAME";
 const MI = "MI";
 const BIOGRAPHY = "BIOGRAPHY";
 
+// GENRE fields
+const BISAC_SUBJECTS = "BISAC_SUBJECTS";
+const BIC_SUBJECTS = "BIC_SUBJECTS";
+const BIC_READING_LEVEL = "BIC_READING_LEVEL";
+const KEYWORDS_KEY = "KEYWORDS";
 
 module.exports = {
     // Key lookup for ONIX Elements to Types, Values, Etc in the XSD Schema 
@@ -155,17 +169,36 @@ module.exports = {
         },   // List 17 (contributor code ie author) 
         subjects: { // is array , keys: identifier/code/heading 
             identifier: {
-                10: "bisac-subject",    // bisac genre category "/" delimited https://www.bisg.org/complete-bisac-subject-headings-2013-edition
-                11: "bisac-region",     // region of the book (categories based on published area??)
-                12: "bic-subject",      // bic genre categories https://bic.org.uk/files/pdfs/101201%20bic2.1%20complete%20rev.pdf
-                13: "bic-geography",    // again geo tagging
-                14: "bic-language",     // language qualifier
-                15: "bic-time-period",  // time period for BIC std
-                16: "bic-education",    // educational purpose
-                17: "bic-reading-level",
-                20: "keywords", // multiple keywords and phrases (not usually shown)
+                10: () => { return [GENRE_TABLES, BISAC_SUBJECTS];}, //bisac-subject",    // bisac genre category "/" delimited https://www.bisg.org/complete-bisac-subject-headings-2013-edition
+                11: () => { return []; },   //"bisac-region",     // region of the book (categories based on published area??)
+                12: () => { return [GENRE_TABLES, BIC_SUBJECTS]; },  //"bic-subject",      // bic genre categories https://bic.org.uk/files/pdfs/101201%20bic2.1%20complete%20rev.pdf
+                13: () => { return []; }, //"bic-geography",    // again geo tagging
+                14: () => { return []; },//"bic-language",     // language qualifier
+                15: () => { return []; },//"bic-time-period",  // time period for BIC std
+                16: () => { return []; },//"bic-education",    // educational purpose
+                17: () => { return []; },//"bic-reading-level",
+                20: () => { return [GENRE_TABLES, KEYWORDS_KEY]; },//"keywords", // multiple keywords and phrases (not usually shown)
+            },
+            heading: (tableArr, field, val) => {
+                // check if we are parsing subjects or keywords
+                var table = {}; //empty genre table 
+                var arr; 
+                if (field == BISAC_SUBJECTS || field == BIC_SUBJECTS) {
+                    // parse on a forward slash
+                    arr = val.split("/").map(function(item) {
+                        return item.trim();
+                    }); 
+                } else if(field == KEYWORDS_KEY) {
+                    // parse on ;
+                    arr = val.split(";").map(function(item) {
+                        return item.trim();
+                    }); 
+                }
+                table[field] = arr;
+                tableArr.push(table);
             }
         },   // List 26 (main subject id ie genres)
+        /* 
         audiences: {    // is array, type/value keys
             type: {
                 1: "General/trade",
@@ -179,6 +212,7 @@ module.exports = {
                 9: "Second language teaching"
             }
         },  // List28 (intended audience) 
+        */ 
         medias: {   // is array, keys: type/linkType/link 
             type: {
                 1: "Whole product",
