@@ -21,6 +21,7 @@ const audioSchema = new Schema(
 		DATE: {type: Date, default: Date.now},
 		CREATED: {type: Date, default: Date.now},
 		UPDATED: {type: Date, default: Date.now},
+		LINK_TYPE: String,	
 		COMPANY: String,
 		COMPANY_URL: String,
 		ISBN: Number,

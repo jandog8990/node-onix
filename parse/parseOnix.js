@@ -17,13 +17,19 @@ const xs2js = new Xsd2JsonSchema();
 
 // DB Models for Mongo tables
 var Author = require('./models/author');
+var Audio = require('./models/audio');
 var Book = require('./models/book');
+var BookPhotos = require('./models/book_photos');
 var Narrator = require('./models/narrator');
 var Genre = require('./models/genre');
 
 const onixlookup = require('./onixKeyLookup');
 const notification = require('../lib/codes/notification');
 const onixKeyLookup = onixlookup.onixKeyLookup;
+const dbLookup = require('./mongoLookup');
+const tables = dbLookup.tables;
+const {BOOK_TABLE, AUTHOR_TABLES, NARRATOR_TABLES, 
+	PUBLISHER_TABLE, GENRE_TABLES, BOOK_PHOTO_TABLES, AUDIO_TABLES} = tables;
 
 var macXml = fs.readFileSync('./xml/MacmillanMetadata.xml', { encoding: 'utf-8' });
 var onix21Xsd = fs.readFileSync('./ONIX2.1/ONIX_BookProduct_CodeLists.xsd', { encoding: 'utf-8' });
@@ -126,16 +132,21 @@ function processOnixJson(onixJson, xsdJson) {
 	var mongoNarrators = [];	// array of objs as there could be mult narrators 
 	var mongoPublisher = {};
 	var mongoGenres = [];
+	var mongoBookPhotos = [];
+	var mongoAudioTables = []; 
 
 	// table to edit when looking up the role, type and identifier
 	var tablesToEdit = {
-		"BOOK_TABLE": mongoBook,
-		"AUTHOR_TABLES": mongoAuthors,
-		"NARRATOR_TABLES": mongoNarrators,
-		"PUBLISHER_TABLE": mongoPublisher,
-		"GENRE_TABLES": mongoGenres
+		BOOK_TABLE: mongoBook,
+		AUTHOR_TABLES: mongoAuthors,
+		NARRATOR_TABLES: mongoNarrators,
+		PUBLISHER_TABLE: mongoPublisher,
+		GENRE_TABLES: mongoGenres,
+		BOOK_PHOTO_TABLES: mongoBookPhotos,
+		AUDIO_TABLES: mongoAudioTables
 	}
-	updateObjects(testBook, tablesToEdit, mongoBook, mongoAuthors, mongoNarrators, mongoPublisher, mongoGenres);
+	updateObjects(testBook, tablesToEdit, mongoBook, mongoAuthors, 
+		mongoNarrators, mongoPublisher, mongoGenres, mongoBookPhotos, mongoAudioTables);
 
 	// Lookup the key value pairs
 	/*	
@@ -178,7 +189,8 @@ function processOnixJson(onixJson, xsdJson) {
  * @param {*} publisherTable 
  * @param {*} genreTables 
  */
-function updateObjects(book, tablesToEdit, bookTable, authorTables, narratorTables, publisherTable, genreTables) {
+function updateObjects(book, tablesToEdit, bookTable, authorTables, 
+	narratorTables, publisherTable, genreTables, bookPhotoTables, audioTables) {
 	// check Array.isArray() for imported objects
 	for (key in book) {
 		var bookField = book[key];

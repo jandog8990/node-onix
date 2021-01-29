@@ -1,54 +1,32 @@
 const { KEYWORDS } = require("../lib/codes/subject");
+const dbLookup = require('./mongoLookup');
 
-// Table keys for each mongo table (makes it easier)
-const BOOK_TABLE = "BOOK_TABLE";
-const AUTHOR_TABLES = "AUTHOR_TABLES";
-const NARRATOR_TABLES = "NARRATOR_TABLES"; 
-const PUBLISHER_TABLE = "PUBLISHER_TABLE"; 
-const GENRE_TABLES = "GENRE_TABLES";
-
-// Field keys for each table
-
-// BOOK fields
-const NOTIFICATION = "NOTIFICATION";
-const PUBLISHING_STATUS = "PUBLISHING_STATUS";
-const CITY_OF_PUBLICATION = "CITY_OF_PUBLICATION";
-const PUBLICATION_DATE = "PUBLICATION_DATE";
-
-// PUBLISHER fields
-const PUBLISHER_NAME = "PUBLISHER_NAME";
-const SEARCH_ID = "SEARCH_ID";
-
-// AUTHOR/NARRATOR fields
-const FIRSTNAME = "FIRSTNAME";
-const LASTNAME = "LASTNAME";
-const MI = "MI";
-const BIOGRAPHY = "BIOGRAPHY";
-
-// GENRE fields
-const BISAC_SUBJECTS = "BISAC_SUBJECTS";
-const BIC_SUBJECTS = "BIC_SUBJECTS";
-const BIC_READING_LEVEL = "BIC_READING_LEVEL";
-const KEYWORDS_KEY = "KEYWORDS";
+// import the tables and field objects
+const tables = dbLookup.tables;
+const bookFields = dbLookup.bookFields;
+const publisherFields = dbLookup.publisherFields;
+const contributorFields = dbLookup.contributorFields;
+const genreFields = dbLookup.genreFields;
+const mediaFields = dbLookup.mediaFields;
 
 module.exports = {
     // Key lookup for ONIX Elements to Types, Values, Etc in the XSD Schema 
     onixKeyLookup: {
-        // This will be a map from Keys to Functions for each object type 
+        // This ill be a map from Keys to Functions for each object type 
         notification: {
-            1: (book, author, narrator) => { book[NOTIFICATION] = "early"; }, // early 
-            3: (book, author, narrator) => { book[NOTIFICATION] = "advanced-confirmation"; }, // book ready
-            4: (book, author, narrator) => { book[NOTIFICATION] = "confirmed"; }, // book ready
-            5: (book, author, narrator) => { book[NOTIFICATION] = "update" },
-            88: (book, author, narrator) => { book[NOTIFICATION] = "test-update" },  // test processing (disregard data)
-            89: (book, author, narrator) => { book[NOTIFICATION] = "test-record" }// test record (disregard data)
+            1: (book, author, narrator) => { book[bookFields.NOTIFICATION] = "early"; }, // early 
+            3: (book, author, narrator) => { book[bookFields.NOTIFICATION] = "advanced-confirmation"; }, // book ready
+            4: (book, author, narrator) => { book[bookFields.NOTIFICATION] = "confirmed"; }, // book ready
+            5: (book, author, narrator) => { book[bookFields.NOTIFICATION] = "update" },
+            88: (book, author, narrator) => { book[bookFields.NOTIFICATION] = "test-update" },  // test processing (disregard data)
+            89: (book, author, narrator) => { ok[bookFields.NOTIFICATION] = "test-record" }// test record (disregard data)
         },   // List 1 (notification types) 
         publishingStatus: (status, book, author, narrator) => {
             
             if (status == 4) {//"active", 
-                book[PUBLISHING_STATUS] = true;
+                book[bookFields.PUBLISHING_STATUS] = true;
             } else {    // all else not available
-                book[PUBLISHING_STATUS] = false;
+                book[bookFields.PUBLISHING_STATUS] = false;
             }
             
             /* 
@@ -77,27 +55,27 @@ module.exports = {
                 1: () => { return []; }, //"proprietary",
                 2: () => { return []; }, //"isbn-10",
                 3: () => { return []; }, //"gtin-13",
-                15: () => { return [BOOK_TABLE, "ISBN13"];} // "isbn-13"
+                15: () => { return [tables.BOOK_TABLE, "ISBN13"];} // "isbn-13"
             },
             value: (table, field, val) => {
                 table[field] = val; // store the ISBN13 as a string
             }
         }, // List 5 (product ids)
         cityOfPublication: (city, book, author, narrator) => {
-            book[CITY_OF_PUBLICATION] = city;
+            book[bookFields.CITY_OF_PUBLICATION] = city;
         },  // function should assign string
         publicationDate: (date, book, author, narrator) => {
             var isDate = date instanceof Date;
             console.log("object isDate = " + isDate); 
-            book[PUBLICATION_DATE] = date; 
+            book[bookFields.PUBLICATION_DATE] = date; 
         },    // func assigns UTC date (check db date elements)
         title: {    // type/text/subtitle keys 
             type: {
                 0: () => { return []; }, //"undefined",
-                1: () => { return [BOOK_TABLE, "TITLE"]; }, //"full-title",    
+                1: () => { return [tables.BOOK_TABLE, "TITLE"]; }, //"full-title",    
                 2: () => { return []; }, //"issn-title",
-                4: () => { return [BOOK_TABLE, "TITLE_ACRONYM"]; },
-                5: () => { return [BOOK_TABLE, "TITLE_ABBREVIATED"]; }
+                4: () => { return [tables.BOOK_TABLE, "TITLE_ACRONYM"]; },
+                5: () => { return [tables.BOOK_TABLE, "TITLE_ABBREVIATED"]; }
             },
             text: (table, field, val) => {
                 var title = String(val); 
@@ -105,24 +83,24 @@ module.exports = {
             }
         },  // List 15 (title type) 
         contributors: { // check for arrays (keys: role/name/nameInverted) 
-            role: { // there could be other roles like forward and intro
+            role: { // there could be other roles like forard and intro
                 "A01": () => { 
-                    return [AUTHOR_TABLES, "AUTHOR"];
+                    return [tables.AUTHOR_TABLES, "AUTHOR"];
                 }, // "author",
                 "A02": () => {
-                    return [AUTHOR_TABLES, "GHOST"]; 
+                    return [tables.AUTHOR_TABLES, "GHOST"]; 
                 },//"ghost-author",  // not handled yet (should still be an author: hidden??)
                 "A09": () => {
                     return [];
                 },  //"created-by",    // is this an author?
                 "B06": () => {
-                    return [AUTHOR_TABLES, "TRANSLATOR"];
+                    return [tables.AUTHOR_TABLES, "TRANSLATOR"];
                 },  // "translated-by", // this should be another author field
                 "E03": () => {
-                    return [NARRATOR_TABLES, "NARRATOR"];
+                    return [tables.NARRATOR_TABLES, "NARRATOR"];
                 },  // "narrator",
                 "E07": () => {
-                    return [NARRATOR_TABLES, "NARRATOR"];
+                    return [tables.NARRATOR_TABLES, "NARRATOR"];
                 },  // "read-by",   // as in audiobook
             },
             nameInverted: (tableArr, field, val) => {
@@ -131,7 +109,7 @@ module.exports = {
                 var mi = "";
                
                 var table = {};
-                if (field == "GHOST" || field == "TRANSLATOR") {
+                if (field == contributorFields.GHOST || field == contributorFields.TRANSLATOR) {
                     // set the author hidden field
                     table[field] = true;
                 }
@@ -151,9 +129,9 @@ module.exports = {
                     last = arr[0];
                     first = arr[1]; 
                 }
-                table[FIRSTNAME] = first;
-                table[MI] = mi;
-                table[LASTNAME] = last;
+                table[contributorFields.FIRSTNAME] = first;
+                table[contributorFields.MI] = mi;
+                table[contributorFields.LASTNAME] = last;
                 
                 tableArr.push(table);
             },
@@ -164,31 +142,31 @@ module.exports = {
               
                 // get the last pushed element in the table array and update 
                 var lastEditedTable = tableArr[tableArr.length - 1];
-                lastEditedTable[BIOGRAPHY] = val; 
+                lastEditedTable[contributorFields.BIOGRAPHY] = val; 
             } 
         },   // List 17 (contributor code ie author) 
         subjects: { // is array , keys: identifier/code/heading 
             identifier: {
-                10: () => { return [GENRE_TABLES, BISAC_SUBJECTS];}, //bisac-subject",    // bisac genre category "/" delimited https://www.bisg.org/complete-bisac-subject-headings-2013-edition
+                10: () => { return [tables.GENRE_TABLES, genreFields.BISAC_SUBJECTS];}, //bisac-subject",    // bisac genre category "/" delimited https://ww.bisg.org/complete-bisac-subject-headings-2013-edition
                 11: () => { return []; },   //"bisac-region",     // region of the book (categories based on published area??)
-                12: () => { return [GENRE_TABLES, BIC_SUBJECTS]; },  //"bic-subject",      // bic genre categories https://bic.org.uk/files/pdfs/101201%20bic2.1%20complete%20rev.pdf
+                12: () => { return [tables.GENRE_TABLES, genreFields.BIC_SUBJECTS]; },  //"bic-subject",      // bic genre categories https://bic.org.uk/files/pdfs/101201%20bic2.1%20complete%20rev.pdf
                 13: () => { return []; }, //"bic-geography",    // again geo tagging
                 14: () => { return []; },//"bic-language",     // language qualifier
                 15: () => { return []; },//"bic-time-period",  // time period for BIC std
                 16: () => { return []; },//"bic-education",    // educational purpose
                 17: () => { return []; },//"bic-reading-level",
-                20: () => { return [GENRE_TABLES, KEYWORDS_KEY]; },//"keywords", // multiple keywords and phrases (not usually shown)
+                20: () => { return [tables.GENRE_TABLES, genreFields.KEYWORDS_KEY]; },//"keyords", // multiple keywords and phrases (not usually shown)
             },
             heading: (tableArr, field, val) => {
-                // check if we are parsing subjects or keywords
+                // check if e are parsing subjects or keywords
                 var table = {}; //empty genre table 
                 var arr; 
-                if (field == BISAC_SUBJECTS || field == BIC_SUBJECTS) {
-                    // parse on a forward slash
+                if (field == genreFields.BISAC_SUBJECTS || field == genreFields.BIC_SUBJECTS) {
+                    // parse on a forard slash
                     arr = val.split("/").map(function(item) {
                         return item.trim();
                     }); 
-                } else if(field == KEYWORDS_KEY) {
+                } else if(field == genreFields.KEYWORDS_KEY) {
                     // parse on ;
                     arr = val.split(";").map(function(item) {
                         return item.trim();
@@ -198,25 +176,23 @@ module.exports = {
                 tableArr.push(table);
             }
         },   // List 26 (main subject id ie genres)
-        /* 
         audiences: {    // is array, type/value keys
             type: {
-                1: "General/trade",
-                2: "Children/juvenile",
-                3: "Young adult",
-                4: "Primary/secondary",
-                5: "College/higher education",
-                6: "Professional/scholarly",
-                7: "ELT/ESL",   // english as a second language
-                8: "Adult education",
-                9: "Second language teaching"
+                1: () => {return []; }, //"General/trade",
+                2: () => {return []; }, //"Children/juvenile",
+                3: () => {return []; }, // "Young adult",
+                4: () => {return []; }, // "Primary/secondary",
+                5: () => {return []; }, //"College/higher education",
+                6: () => {return []; }, //"Professional/scholarly",
+                7: () => {return []; }, //"ELT/ESL",   // english as a second language
+                8: () => {return []; }, //"Adult education",
+                9: () => {return []; }, //"Second language teaching"
             }
         },  // List28 (intended audience) 
-        */ 
         medias: {   // is array, keys: type/linkType/link 
             type: {
-                1: "Whole product",
-                4: "Image: front cover",    // digital cover (std quality)
+                1: () => {return []; }, //"Whole product",
+                4: () => {return []; }, //"Image: front cover",    // digital cover (std quality)
                 6: "Image: front cover HQ", // high quality 
                 7: "Image: front cover thumb",  // thumb can be used for app
                 8: "Image: contributor(s)", // place this in wp_BOOK_PHOTOS.CONTRIBUTOR
@@ -269,8 +245,8 @@ module.exports = {
         // imprint: {},   // keys: "name" keyPublisher name??
         publisher: (publisherName, publisher) => {
             var searchId = publisherName.replace(/\s+/g, '-');
-            publisher[PUBLISHER_NAME] = publisherName;
-            publisher[SEARCH_ID] = searchId;
+            publisher[publisherFields.PUBLISHER_NAME] = publisherName;
+            publisher[publisherFields.SEARCH_ID] = searchId;
         },  // keys: "role/name" Publisher name and role (seems more legit)
         salesRights: {  // is array, keys: type
             type: {
