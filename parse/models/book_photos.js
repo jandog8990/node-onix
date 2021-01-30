@@ -11,7 +11,8 @@ const bookPhotosSchema = new Schema(
 		PHOTO_TYPE: Object, 
 		DESCRIPTION: Object, 
 		THUMBNAIL_LOC: String, 
-		LINK_TYPE: String
+		HQ_LOC: String,	
+		LINK_TYPE: String,
 	},
 	{
 		// set collection to wp_BOOK_PHOTOS table

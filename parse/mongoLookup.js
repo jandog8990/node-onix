@@ -45,7 +45,9 @@ module.exports = {
         // MEDIA fields
         LINK_TYPE: "LINK_TYPE",
         AUDIO_LOC: "AUDIO_LOC",
+        DEMO_LOC: "DEMO_LOC", 
         PHOTO_LOC: "PHOTO_LOC",
-
+        THUMBNAIL_LOC: "THUMBNAIL_LOC",
+        HQ_LOC: "HQ_LOC"
     }
 }

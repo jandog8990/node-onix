@@ -241,6 +241,14 @@ function updateObjects(book, tablesToEdit, bookTable, authorTables,
 				console.log(JSON.stringify(genreTables));
 				console.log("\n");
 
+			} else if (key == "medias") {
+				console.log("Updated BookPhotos Tables:");
+				console.log(JSON.stringify(bookPhotoTables));
+				console.log("\n");
+				
+				console.log("Updated Audio Tables:");
+				console.log(JSON.stringify(audioTables));
+				console.log("\n");
 			}
 		} else {
 			// check the type of the field
