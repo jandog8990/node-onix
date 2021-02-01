@@ -18,6 +18,7 @@ const bookSchema = new Schema(
 		EDITION: Object,
 		AUTHOR_ID: Number,	// user._id.toString() from other table
 		AUTHORS: {type: Array, default: []},	// array of author ids	
+		BIOGRAPHICAL_NOTE: String,	
 		NARRATORS: {type: Array, default: []},	// array of narrator ids 
 		GENRES: {type: Array, default: []},	// array of strings of genres
 		AUDIENCE: String,	
@@ -26,6 +27,8 @@ const bookSchema = new Schema(
 		COPYRIGHT_NAME: String,
 		COPYRIGHT_YEAR: Object,
 		SUMMARY: String,
+		SHORT_SUMMARY: String,
+		LONG_SUMMARY: String,	
 		PHOTO_ID: Number,
 		SEARCH_ID: String,
 		NUM_CHAPTERS: Number,

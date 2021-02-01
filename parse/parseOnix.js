@@ -22,6 +22,8 @@ var Book = require('./models/book');
 var BookPhotos = require('./models/book_photos');
 var Narrator = require('./models/narrator');
 var Genre = require('./models/genre');
+var BookReview = require('./models/book_review');
+var BookExtra = require('./models/book_extra');
 
 const onixlookup = require('./onixKeyLookup');
 const notification = require('../lib/codes/notification');
@@ -29,7 +31,7 @@ const onixKeyLookup = onixlookup.onixKeyLookup;
 const dbLookup = require('./mongoLookup');
 const tables = dbLookup.tables;
 const {BOOK_TABLE, AUTHOR_TABLES, NARRATOR_TABLES, 
-	PUBLISHER_TABLE, GENRE_TABLES, BOOK_PHOTO_TABLES, AUDIO_TABLES} = tables;
+	PUBLISHER_TABLE, GENRE_TABLES, BOOK_PHOTO_TABLES, AUDIO_TABLES, BOOK_EXTRA, BOOK_REVIEW} = tables;
 
 var macXml = fs.readFileSync('./xml/MacmillanMetadata.xml', { encoding: 'utf-8' });
 var onix21Xsd = fs.readFileSync('./ONIX2.1/ONIX_BookProduct_CodeLists.xsd', { encoding: 'utf-8' });
@@ -134,6 +136,8 @@ function processOnixJson(onixJson, xsdJson) {
 	var mongoGenres = [];
 	var mongoBookPhotos = [];
 	var mongoAudioTables = []; 
+	var mongoBookReviews = [];
+	var mongoBookExtras = [];
 
 	// table to edit when looking up the role, type and identifier
 	var tablesToEdit = {
@@ -143,10 +147,13 @@ function processOnixJson(onixJson, xsdJson) {
 		PUBLISHER_TABLE: mongoPublisher,
 		GENRE_TABLES: mongoGenres,
 		BOOK_PHOTO_TABLES: mongoBookPhotos,
-		AUDIO_TABLES: mongoAudioTables
+		AUDIO_TABLES: mongoAudioTables,
+		BOOK_REVIEW_TABLES: mongoBookReviews,
+		BOOK_EXTRA_TABLES: mongoBookExtras
 	}
 	updateObjects(testBook, tablesToEdit, mongoBook, mongoAuthors, 
-		mongoNarrators, mongoPublisher, mongoGenres, mongoBookPhotos, mongoAudioTables);
+		mongoNarrators, mongoPublisher, mongoGenres, mongoBookPhotos, 
+		mongoAudioTables, mongoBookReviews, mongoBookExtras);
 
 	// Lookup the key value pairs
 	/*	
@@ -190,7 +197,8 @@ function processOnixJson(onixJson, xsdJson) {
  * @param {*} genreTables 
  */
 function updateObjects(book, tablesToEdit, bookTable, authorTables, 
-	narratorTables, publisherTable, genreTables, bookPhotoTables, audioTables) {
+	narratorTables, publisherTable, genreTables, bookPhotoTables, 
+	audioTables, bookReviewTables, bookExtraTables) {
 	// check Array.isArray() for imported objects
 	for (key in book) {
 		var bookField = book[key];
@@ -214,8 +222,8 @@ function updateObjects(book, tablesToEdit, bookTable, authorTables,
 				console.log("\n");
 
 				// TODO: here depending on the type we need to create new objects 
-				checkUpdateObjectTable(key, fieldObj, tablesToEdit,
-					bookTable, authorTables, narratorTables, publisherTable);
+				checkUpdateObjectTable(key, fieldObj, tablesToEdit);
+					// bookTable, authorTables, narratorTables, publisherTable);
 			}
 
 			if (key == "contributors") {
@@ -248,6 +256,18 @@ function updateObjects(book, tablesToEdit, bookTable, authorTables,
 				
 				console.log("Updated Audio Tables:");
 				console.log(JSON.stringify(audioTables));
+				console.log("\n");
+			} else if (key == "texts") {
+				console.log("Updated Book Table:");
+				console.log(JSON.stringify(bookTable));
+				console.log("\n");
+				
+				console.log("Updated Book Review Table:");
+				console.log(JSON.stringify(bookReviewTables));
+				console.log("\n");
+				
+				console.log("Updated Book Review Table:");
+				console.log(JSON.stringify(bookExtraTables));
 				console.log("\n");
 			}
 		} else {
@@ -303,8 +323,8 @@ function updateObjects(book, tablesToEdit, bookTable, authorTables,
 
 								// Object is a hashmap - process type and update mongo table 
 								if (key == "title") {
-									checkUpdateObjectTable(key, bookField, tablesToEdit,
-										bookTable, authorTables, narratorTables, publisherTable);
+									checkUpdateObjectTable(key, bookField, tablesToEdit);
+										// bookTable, authorTables, narratorTables, publisherTable);
 
 									console.log("Updated Book Table:");
 									console.log(bookTable);
@@ -331,8 +351,8 @@ function updateObjects(book, tablesToEdit, bookTable, authorTables,
  * @param {*} bookField 
  * @param {*} tablesToEdit 
  */
-function checkUpdateObjectTable(mainKey, bookField, tablesToEdit,
-	bookTable, authorTables, narratorTables, publisherTable) {
+function checkUpdateObjectTable(mainKey, bookField, tablesToEdit) {
+	// bookTable, authorTables, narratorTables, publisherTable) {
 
 	// 1: First find type, identifier, role
 	var typeKeys = ["role", "type", "identifier"];

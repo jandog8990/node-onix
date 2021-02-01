@@ -2,12 +2,14 @@ const { KEYWORDS } = require("../lib/codes/subject");
 const dbLookup = require('./mongoLookup');
 
 // import the tables and field objects
-const { BOOK_TABLE, AUTHOR_TABLES, NARRATOR_TABLES, PUBLISHER_TABLE, GENRE_TABLES, BOOK_PHOTO_TABLES, AUDIO_TABLES } = dbLookup.tables;
-const { NOTIFICATION, PUBLISHING_STATUS, CITY_OF_PUBLICATION, PUBLICATION_DATE } = dbLookup.bookFields;
+const { BOOK_TABLE, AUTHOR_TABLES, NARRATOR_TABLES, PUBLISHER_TABLE, GENRE_TABLES, BOOK_PHOTO_TABLES, AUDIO_TABLES, BOOK_EXTRA_TABLES, BOOK_REVIEW_TABLES} = dbLookup.tables;
+const { NOTIFICATION, PUBLISHING_STATUS, CITY_OF_PUBLICATION, PUBLICATION_DATE, SUMMARY, SHORT_SUMMARY, LONG_SUMMARY, BIOGRAPHICAL_NOTE } = dbLookup.bookFields;
 const { PUBLISHER_NAME, SEARCH_ID } = dbLookup.publisherFields;
 const { FIRSTNAME, LASTNAME, MI, BIOGRAPHY, GHOST, TRANSLATOR } = dbLookup.contributorFields;
 const { BISAC_SUBJECTS, BIC_SUBJECTS, BIC_READING_LEVEL, KEYWORDS_KEY } = dbLookup.genreFields;
 const { LINK_TYPE, AUDIO_LOC, DEMO_LOC, PHOTO_LOC, THUMBNAIL_LOC, HQ_LOC } = dbLookup.mediaFields;
+const { REVIEW_QUOTE, REVIEW_PREVIOUS_EDITION, REVIEW_TEXT, PROMOTIONAL_HEADLINE, PREVIOUS_REVIEW_QUOTE, AUTHOR_COMMENTS} = dbLookup.bookReviewFields;
+const { GROUP_DISCUSSION, GROUP_DISCUSSION_QUESTION, EXCERPT, COMMENTARY, FIRST_CHAPTER, AUTHOR_INTERVIEW } = dbLookup.bookExtraFields;
 
 module.exports = {
     // Key lookup for ONIX Elements to Types, Values, Etc in the XSD Schema 
@@ -238,28 +240,42 @@ module.exports = {
         // supply: {}, // List58 (keys: prices is the main key)
         texts: {    // is array, keys: type/content (NOTE: all text is given in HTML parse??)
             type: {
-                1: "Main description",  // Main summary
-                2: "Short description",
-                3: "Long description",
-                4: "Table of contents",
-                5: "Review quote",
-                6: "Review previous edition",
-                7: "Review text",   // full text of a review
-                8: "Review quote",
-                9: "Promotional headline",
-                10: "Previous review quote",
-                11: "Author comments",
-                13: "Biographical note",    // author bio
-                14: "Reading Group description",
-                15: "Reading Group discussion question",
+                1: () => { return [BOOK_TABLE, SUMMARY]; }, //"Main description",  // Main summary
+                2: () => { return [BOOK_TABLE, SHORT_SUMMARY]; },//"Short description",
+                3: () => { return [BOOK_TABLE, LONG_SUMMARY]; },//"Long description",
+                5: () => { return [BOOK_REVIEW_TABLES, REVIEW_QUOTE]; },//"Review quote",
+                6: () => { return [BOOK_REVIEW_TABLES, REVIEW_PREVIOUS_EDITION]; },//"Review previous edition",
+                7: () => { return [BOOK_REVIEW_TABLES, REVIEW_TEXT]; },//"Review text",   // full text of a review
+                8: () => { return [BOOK_REVIEW_TABLES, REVIEW_QUOTE]; },//"Review quote",
+                9: () => { return [BOOK_REVIEW_TABLES, PROMOTIONAL_HEADLINE]; },//"Promotional headline",
+                10: () => { return [BOOK_REVIEW_TABLES, PREVIOUS_REVIEW_QUOTE]; },//"Previous review quote",
+                11: () => { return [BOOK_EXTRA_TABLES, AUTHOR_COMMENTS]; },//"Author comments",
+                13: () => { return [BOOK_TABLE, BIOGRAPHICAL_NOTE]; },//"Biographical note",    // author bio
+                14: () => { return [BOOK_EXTRA_TABLES, GROUP_DISCUSSION]; },//"Reading Group discussion",
+                15: () => { return [BOOK_EXTRA_TABLES, GROUP_DISCUSSION_QUESTION]; },//"Reading Group discussion question",
+                23: () => { return [BOOK_EXTRA_TABLES, EXCERPT]; },//"Excerpt from book",
+                42: () => { return [BOOK_EXTRA_TABLES, COMMENTARY]; },//"Commentary / discussion",
+                24: () => { return [BOOK_EXTRA_TABLES, FIRST_CHAPTER]; },//"First chapter",
+                40: () => { return [BOOK_EXTRA_TABLES, AUTHOR_INTERVIEW]; },//"Author interview",
+                /* 
                 16: "Competing titles", // could be important for recommendations
-                23: "Excerpt from book",
-                24: "First chapter",
-                28: "Description for teachers/educators",
-                40: "Author interview",
-                42: "Commentary / discussion",
                 43: "Short description for series",
                 44: "Long description for series",
+                4: "Table of contents",
+                28: "Description for teachers/educators",
+                */
+            },
+            content: (tableArr, field, val) => {
+                // Check if the table array is a single entry or an array
+                if (Array.isArray(tableArr)) {
+                    // we have a REVIEWS or EXTRA table
+                    var table = {};
+                    table[field] = val; 
+                    tableArr.push(table);
+                } else {
+                    // we have asingle table (ie BOOK_TABLE)
+                    tableArr[field] = val;
+                }
             }
         },  // List 33 (Text type code ie main summary)
         // imprint: {},   // keys: "name" keyPublisher name??
@@ -270,10 +286,10 @@ module.exports = {
         },  // keys: "role/name" Publisher name and role (seems more legit)
         salesRights: {  // is array, keys: type
             type: {
-                0: "unknown",
-                1: "exclusive rights in specified countries or territories",
-                2: "non-exclusive rights in specified countries or territories",
-                3: "not for sale in specified countries or territories",
+                0: () => { return []; },//"unknown",
+                1: () => { return []; },//"exclusive rights in specified countries or territories",
+                2: () => { return []; },//"non-exclusive rights in specified countries or territories",
+                3: () => { return []; }//"not for sale in specified countries or territories",
             }
         } // List 46 (sales rights type code)
     }
