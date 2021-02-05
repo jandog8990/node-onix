@@ -5,6 +5,7 @@ const Schema = mongoose.Schema;
 const bookPhotosSchema = new Schema(
 	{
 		//PHOTO_ID: { type: Number, default: null, required: true },
+		ISBN13: String, // FK to the BOOK Schema	
 		PHOTO_ID: Number,
 		PHOTO_DATE: Object, 
 		PHOTO_LOC: String, 

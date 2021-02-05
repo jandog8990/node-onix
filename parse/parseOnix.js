@@ -8,6 +8,7 @@ const onixLookup = require("./onixKeyLookup");
 
 // Mongoose and database connection configs
 const mongoose = require('mongoose');
+const ObjectId = require('mongodb').ObjectId;
 const secrets = require('./secrets');
 const db_url = secrets.db_url;
 
@@ -30,8 +31,8 @@ const notification = require('../lib/codes/notification');
 const onixKeyLookup = onixlookup.onixKeyLookup;
 const dbLookup = require('./mongoLookup');
 const tables = dbLookup.tables;
-const {BOOK_TABLE, AUTHOR_TABLES, NARRATOR_TABLES, 
-	PUBLISHER_TABLE, GENRE_TABLES, BOOK_PHOTO_TABLES, AUDIO_TABLES, BOOK_EXTRA, BOOK_REVIEW} = tables;
+const { BOOK_TABLE, AUTHOR_TABLES, NARRATOR_TABLES,
+	PUBLISHER_TABLE, GENRE_TABLES, BOOK_PHOTO_TABLES, AUDIO_TABLES, BOOK_EXTRA, BOOK_REVIEW } = tables;
 
 var macXml = fs.readFileSync('./xml/MacmillanMetadata.xml', { encoding: 'utf-8' });
 var onix21Xsd = fs.readFileSync('./ONIX2.1/ONIX_BookProduct_CodeLists.xsd', { encoding: 'utf-8' });
@@ -112,7 +113,7 @@ function getValue(obj, searchKey) {
  * @param {*} jsonData - parsed onix source 
  * @param {*} xsdSchema - xsd schema for code list 
  */
-function processOnixJson(onixJson, xsdJson) {
+async function processOnixJson(onixJson, xsdJson) {
 	var products = onixJson.products;
 	var testBook = products[1];
 
@@ -128,16 +129,16 @@ function processOnixJson(onixJson, xsdJson) {
 	// TODO: Loop through all books and feed to the update objects
 
 	// loop through object and look up the code lists
-	console.log("Test Book keys:")
 	var mongoBook = {};
 	var mongoAuthors = [];	// array of objs as there could be mult authors
 	var mongoNarrators = [];	// array of objs as there could be mult narrators 
 	var mongoPublisher = {};
 	var mongoGenres = [];
 	var mongoBookPhotos = [];
-	var mongoAudioTables = []; 
+	var mongoAudioTables = [];
 	var mongoBookReviews = [];
 	var mongoBookExtras = [];
+	var mongoGenre = {};
 
 	// table to edit when looking up the role, type and identifier
 	var tablesToEdit = {
@@ -151,38 +152,73 @@ function processOnixJson(onixJson, xsdJson) {
 		BOOK_REVIEW_TABLES: mongoBookReviews,
 		BOOK_EXTRA_TABLES: mongoBookExtras
 	}
-	updateObjects(testBook, tablesToEdit, mongoBook, mongoAuthors, 
-		mongoNarrators, mongoPublisher, mongoGenres, mongoBookPhotos, 
+	updateObjects(testBook, tablesToEdit, mongoBook, mongoAuthors,
+		mongoNarrators, mongoPublisher, mongoGenres, mongoBookPhotos,
 		mongoAudioTables, mongoBookReviews, mongoBookExtras);
 
-	// Lookup the key value pairs
-	/*	
-	console.log("ONIX Key Lookup:");
-	console.log(onixLookup.onixKeyLookup);
-	console.log("\n");
-	*/
 
-	// Query the database and INSERT new document to a collection
+	// Update the GENRE table since it has all fields for one table
+	for (const obj of mongoGenres) {
+		for (var key in obj) {
+			mongoGenre[key] = obj[key];
+		}
+	}
+
+	// Update the BOOK_PHOTOS with the ISBN13 from the main book 
+	ISBN13 = mongoBook.ISBN13;
+	for (const obj of mongoBookPhotos) {
+		obj["ISBN13"] = ISBN13;
+	}
+
+	// First show the updates to the tables
+	console.log("Book Table:");
+	console.log(mongoBook);
+	console.log("\n");
+
+	console.log("Authors:");
+	console.log(mongoAuthors);
+	console.log("\n");
+
+	console.log("Narrators:");
+	console.log(mongoNarrators);
+	console.log("\n");
+
+	console.log("Publisher:");
+	console.log(mongoPublisher);
+	console.log("\n");
+
+	console.log("Genre Table:");
+	console.log(mongoGenre);
+	console.log("\n");
+
+	console.log("Book Photos:");
+	console.log(mongoBookPhotos);
+	console.log("\n");
+
+	console.log("Audio Tables:");
+	console.log(mongoAudioTables);
+	console.log("\n");
+
+	console.log("Book Reviews:");
+	console.log(mongoBookReviews);
+	console.log("\n");
+
+	console.log("Book Extras:");
+	console.log(mongoBookExtras);
+	console.log("\n");
+
+	// INSERT new collections into the mongo db 
+	try {
+		await insertMongoCollections(mongoBook, mongoAuthors, mongoNarrators, mongoPublisher,
+			mongoGenre, mongoBookPhotos, mongoAudioTables, mongoBookReviews, mongoBookExtras);
+		} catch(err) {
+			console.error(err.message);
+		}
+
+	// Test for checking a BOOK can be queried
+	/*	
 	ISBN = 9374281;
 	updateMongoCollection(ISBN);
-
-	// console.log("JSON Stringify:");
-	// console.log(JSON.stringify(products[0], null, 4));
-	// console.log("\n");
-
-	// Loop through the lists (restriction is 1??)
-	/*	
-	console.log("XSD List 1:");
-	var xsd1 = getValue(xsdSchema, "xs:List1");
-	console.log(xsd1);
-	console.log("\n");
-
-	// loop through the keys of the schema
-	console.log("Schema Keys:");	
-	Object.keys(xsdSchema).forEach(function(key, index) {
-		console.log(key + " : " + index);
-	});	
-	console.log("\n");
 	*/
 }
 
@@ -196,154 +232,112 @@ function processOnixJson(onixJson, xsdJson) {
  * @param {*} publisherTable 
  * @param {*} genreTables 
  */
-function updateObjects(book, tablesToEdit, bookTable, authorTables, 
-	narratorTables, publisherTable, genreTables, bookPhotoTables, 
+function updateObjects(book, tablesToEdit, bookTable, authorTables,
+	narratorTables, publisherTable, genreTables, bookPhotoTables,
 	audioTables, bookReviewTables, bookExtraTables) {
+
 	// check Array.isArray() for imported objects
 	for (key in book) {
 		var bookField = book[key];
 		var isArray = Array.isArray(bookField);
-		console.log("------------------------------------------");
-		console.log("Book field:");
-		console.log("key = " + key);
-		console.log("field is Array = " + isArray);
 
 		// Check the field type Number, String, Object, Array
 		if (isArray) {
+
 			// loop through the array and process the objects
-			console.log("field array length = " + bookField.length);
-			console.log("Array types:");
 			for (var i = 0; i < bookField.length; i++) {
 				// for each field object process and update tables accordingly	
 				var fieldObj = bookField[i];
 
-				console.log("Field obj to store:");
-				console.log(fieldObj);
-				console.log("\n");
-
-				// TODO: here depending on the type we need to create new objects 
+				// TODO: here depending on the type we need to create new objects
 				checkUpdateObjectTable(key, fieldObj, tablesToEdit);
-					// bookTable, authorTables, narratorTables, publisherTable);
-			}
-
-			if (key == "contributors") {
-				// show the author tables
-				console.log("Updated Author Tables:");
-				console.log("author tables len = " + authorTables.length);
-				console.log(JSON.stringify(authorTables));
-				console.log("\n");
-
-				// show the narrator tables
-				console.log("Updated Narrator Tables:");
-				console.log("narrator tables len = " + narratorTables.length);
-				console.log(JSON.stringify(narratorTables));
-				console.log("\n");
-			} else if (key == "id") {
-				// show the book table
-				console.log("Updated Book Table:");
-				console.log(JSON.stringify(bookTable));
-				console.log("\n");
-
-			} else if (key == "subjects") {
-				console.log("Updated Genre Table:");
-				console.log(JSON.stringify(genreTables));
-				console.log("\n");
-
-			} else if (key == "medias") {
-				console.log("Updated BookPhotos Tables:");
-				console.log(JSON.stringify(bookPhotoTables));
-				console.log("\n");
-				
-				console.log("Updated Audio Tables:");
-				console.log(JSON.stringify(audioTables));
-				console.log("\n");
-			} else if (key == "texts") {
-				console.log("Updated Book Table:");
-				console.log(JSON.stringify(bookTable));
-				console.log("\n");
-				
-				console.log("Updated Book Review Table:");
-				console.log(JSON.stringify(bookReviewTables));
-				console.log("\n");
-				
-				console.log("Updated Book Review Table:");
-				console.log(JSON.stringify(bookExtraTables));
-				console.log("\n");
 			}
 		} else {
 			// check the type of the field
 			var fieldType = typeof bookField;
-			console.log("field type = " + fieldType);
-
-			/*
-			console.log("field value:");
-			console.log(bookField);
-			console.log("\n");
-			*/
 
 			// Call the notification function
 			if (key == "notification") {
 				onixKeyLookup[key][bookField](bookTable,
 					authorTables, narratorTables);
-
-				console.log("Book notification update:");
-				console.log(bookTable);
-				console.log("\n");
 			} else {
 
 				if (onixKeyLookup[key] != undefined && onixKeyLookup[key] != null) {
 
 					// Check the field type for Object vs Primitive types
 					if (fieldType == "object") {
-						console.log("field type IS OBJECT!");
 
 						// check for the publisher since it's a single key object
 						if (key == "publisher") {
 							var publisherName = bookField["name"];
-							console.log("Key IS PUBLISHER:");
-							console.log("publisherName = " + publisherName);
 							onixKeyLookup[key](publisherName, publisherTable);
-
-							console.log("Publisher update:");
-							console.log(publisherTable);
-							console.log("\n");
 						} else {
 
 							// Get the length of the object and parse
 							var objSize = getObjectSize(bookField);
-							console.log("field value length = " + objSize);
 
 							if (objSize == 0) {
 								// This block will take care of single key/value pair in the fields
 								onixKeyLookup[key](bookField, bookTable, authorTables, narratorTables);
-								console.log("Book update:");
-								console.log(bookTable);
-								console.log("\n");
 							} else {
 
 								// Object is a hashmap - process type and update mongo table 
 								if (key == "title") {
 									checkUpdateObjectTable(key, bookField, tablesToEdit);
-										// bookTable, authorTables, narratorTables, publisherTable);
-
-									console.log("Updated Book Table:");
-									console.log(bookTable);
-									console.log("\n");
 								}
 							}
 						}
 					} else {
 						// This block will take care of simple key/value pairs in the fields
 						onixKeyLookup[key](bookField, bookTable, authorTables, narratorTables);
-						console.log("Book update:");
-						console.log(bookTable);
-						console.log("\n");
 					}
 				}
 			}
 		}
 	}
 }
+
+async function insertMongoCollections(mongoBook, mongoAuthors, mongoNarrators, mongoPublisher,
+	mongoGenre, mongoBookPhotos, mongoAudioTables, mongoBookReviews, mongoBookExtras) {
+
+	try {
+		/*	
+		ISBN = 9374281;
+		const bookResult = await Book.findOne({ 'ISBN': ISBN }, { SUMMARY: 0 });//function (err, book) {
+		console.log("Book Mongo:");
+		console.log(bookResult);
+		console.log("\n");
+		*/
+		var authorIds = [];	// received from mongo after insertion	
+		const authorResult = await Author.insertMany(mongoAuthors);
+		console.log("Author Result:");
+		console.log(authorResult);
+		console.log("\n");
+		for (const obj of authorResult) {
+			authorIds.push(new ObjectId(obj["_id"]));
+		}
+		console.log("Author ids:");
+		console.log(authorIds);
+		console.log("\n");
+
+		// update the book table with AUTHOR_IDS array
+		mongoBook.AUTHORS = authorIds;
+		console.log("MOngo Book w Authors:");
+		console.log(mongoBook);
+		console.log("\n");
+		const bookResult = await Book.create(mongoBook);
+		console.log("Book Result:");
+		console.log(bookResult);
+		console.log("\n");
+
+		console.log("STORAGE SUCCESSFUL! -> EXIT()")
+		process.exit(0);
+	} catch (err) {
+		console.error("Mongo err:", err);	
+		process.exit(1);
+	}
+}
+
 
 /**
  * Update the MongoTable using the object and book fields/keys 
@@ -408,17 +402,6 @@ function updateMongoCollection(ISBN) {
 		console.log("Book find:");
 		console.log(book);
 		console.log("\n");
-
-		// Build up a book using the ONIX parsed file
-		/*	
-		let obj = book.id.find(o => o.type === 15);
-		let isbn = obj.value;
-		console.log("Object:"); console.log(obj); console.log("\n");
-
-		var myBook = {
-			ISBN: isbn
-		}
-		*/
 
 		process.exit();
 	});

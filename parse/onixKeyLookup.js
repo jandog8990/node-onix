@@ -68,7 +68,6 @@ module.exports = {
         },  // function should assign string
         publicationDate: (date, book, author, narrator) => {
             var isDate = date instanceof Date;
-            console.log("object isDate = " + isDate);
             book[PUBLICATION_DATE] = date;
         },    // func assigns UTC date (check db date elements)
         title: {    // type/text/subtitle keys 
@@ -81,6 +80,7 @@ module.exports = {
             },
             text: (table, field, val) => {
                 var title = String(val);
+                title = title.replace(/\\/g, '')
                 table[field] = title;
             }
         },  // List 15 (title type) 
@@ -120,8 +120,6 @@ module.exports = {
                 var arr = val.split(",", 3).map(function (item) {
                     return item.trim();
                 });
-                console.log("name arr:");
-                console.log(arr);
 
                 if (arr.length == 3) {
                     last = arr[0];
@@ -138,9 +136,6 @@ module.exports = {
                 tableArr.push(table);
             },
             note: (tableArr, field, val) => {
-                console.log("Note field:");
-                console.log(val);
-                console.log("\n");
 
                 // get the last pushed element in the table array and update 
                 var lastEditedTable = tableArr[tableArr.length - 1];
@@ -227,9 +222,6 @@ module.exports = {
                 */
             },
             link: (tableArr, field, val) => {
-                console.log("Link field:");
-                console.log(val);
-                console.log("\n");
 
                 // get the last pushed element in the table array and update 
                 var lastEditedTable = tableArr[tableArr.length - 1];
