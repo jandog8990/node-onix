@@ -23,6 +23,7 @@ var Book = require('./models/book');
 var BookPhotos = require('./models/book_photos');
 var Narrator = require('./models/narrator');
 var Genre = require('./models/genre');
+var Publisher = require('./models/publisher');
 var BookReview = require('./models/book_review');
 var BookExtra = require('./models/book_extra');
 
@@ -308,6 +309,8 @@ async function insertMongoCollections(mongoBook, mongoAuthors, mongoNarrators, m
 		console.log(bookResult);
 		console.log("\n");
 		*/
+		
+		// Save the AUTHOR tables to the DB	
 		var authorIds = [];	// received from mongo after insertion	
 		const authorResult = await Author.insertMany(mongoAuthors);
 		console.log("Author Result:");
@@ -319,9 +322,58 @@ async function insertMongoCollections(mongoBook, mongoAuthors, mongoNarrators, m
 		console.log("Author ids:");
 		console.log(authorIds);
 		console.log("\n");
+		
+		// Save the NARRATOR tables to the DB	
+		var narratorIds = [];	// received from mongo after insertion	
+		const narratorsResult = await Narrator.insertMany(mongoNarrators);
+		console.log("Narrators Result:");
+		console.log(narratorsResult);
+		console.log("\n");
+		for (const obj of narratorsResult) {
+			narratorIds.push(new ObjectId(obj["_id"]));
+		}
+		console.log("Narrator ids:");
+		console.log(narratorIds);
+		console.log("\n");
 
-		// update the book table with AUTHOR_IDS array
+		// Save the PUBLISHER table to the DB
+		const publisherResult = await Publisher.create(mongoPublisher);
+		console.log("Publisher Result:");
+		console.log(publisherResult);
+		console.log("\n");
+		var	publisherId = new ObjectId(publisherResult["_id"]);
+		console.log("Publisher id:");
+		console.log(publisherId);
+		console.log("\n");
+
+		// Save the GENRE tables to the DB
+		const genreResult = await Genre.create(mongoGenre);
+		console.log("Genre Result:");
+		console.log(genreResult);
+		console.log("\n");
+		var genreId = new ObjectId(genreResult["_id"]);
+		console.log("Genre id:");
+		console.log(genreId);
+		console.log("\n");
+
+		// Save the BOOK_PHOTOS to the DB
+		var bookPhotoIds = [];	// received from mongo after insertion	
+		const bookPhotosResult = await BookPhotos.insertMany(mongoBookPhotos);
+		console.log("Book Photos Result:");
+		console.log(bookPhotosResult);
+		console.log("\n");
+		for (const obj of bookPhotosResult) {
+			bookPhotoIds.push(new ObjectId(obj["_id"]));
+		}
+		console.log("BookPhotos Result:");
+		console.log(bookPhotosResult);
+		console.log("\n");
+
+		// update the BOOK table with AUTHOR_IDS array and everything else
 		mongoBook.AUTHORS = authorIds;
+		mongoBook.NARRATORS = narratorIds;
+		mongoBook.PUBLISHER_ID = publisherId;
+		mongoBook.GENRES = new Array(genreId);
 		console.log("MOngo Book w Authors:");
 		console.log(mongoBook);
 		console.log("\n");
@@ -329,7 +381,7 @@ async function insertMongoCollections(mongoBook, mongoAuthors, mongoNarrators, m
 		console.log("Book Result:");
 		console.log(bookResult);
 		console.log("\n");
-
+		
 		console.log("STORAGE SUCCESSFUL! -> EXIT()")
 		process.exit(0);
 	} catch (err) {

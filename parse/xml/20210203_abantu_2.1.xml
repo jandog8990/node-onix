@@ -1,0 +1,1729 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE ONIXmessage SYSTEM "http://bsa-dtd.s3.amazonaws.com/onix/2.1/short/onix-international.dtd">
+<ONIXmessage release="2.1">
+	<header>
+		<m174>Blackstone Publishing</m174>
+		<m175>Megan Wahrenbrock</m175>
+		<m283>Megan.Wahrenbrock@blackstoneaudio.com</m283>
+		<m182>20210203</m182>
+	</header>
+	<product>
+		<a001>9781483063270</a001>
+		<a002>03</a002>
+		<productidentifier>
+			<b221>01</b221>
+			<b244>DT7276</b244>
+		</productidentifier>
+		<productidentifier>
+			<b221>02</b221>
+			<b244>1483063275</b244>
+		</productidentifier>
+		<productidentifier>
+			<b221>15</b221>
+			<b244>9781483063270</b244>
+		</productidentifier>
+		<b012>AJ</b012>
+		<b210>154</b210>
+		<b211>099</b211>
+		<b280>DRM=NO;US=NO;STREAMING=NO</b280>
+		<series>
+			<b018>The V Wars Series</b018>
+			<b019>1</b019>
+		</series>
+		<title>
+			<b202>01</b202>
+			<b203>V Wars</b203>
+			<b029>A Chronicle of the Vampire Wars</b029>
+		</title>
+		<contributor>
+			<b034>1</b034>
+			<b035>A01</b035>
+			<b035>B01</b035>
+			<b036>Jonathan Maberry</b036>
+			<b037>Maberry, Jonathan</b037>
+			<b039>Jonathan</b039>
+			<b040>Maberry</b040>
+			<b044><![CDATA[<p><b>Jonathan Maberry </b>is a <i>New York Times </i>bestselling author and five-time Bram Stoker Award winner. He writes in multiple genres including suspense, thriller, horror, science fiction, fantasy, action, and steampunk for adults, teens, and middle grade. His works include the Joe Ledger thrillers, <i>Rot &amp; Ruin</i>, <i>Mars One</i>, and <i>Captain America</i>, which is in development for a feature film. He writes comics for Marvel, Dark Horse, and IDW and is the editor of such high-profile anthologies as <i>The X-Files</i>,<i> V-Wars</i>, <i>Out of Tune</i>,<i> Baker Street Irregular</i>, <i>Nights of the Living Dead</i>, and <i>Scary Out There</i>.</p>]]></b044>
+		</contributor>
+		<contributor>
+			<b034>2</b034>
+			<b035>A32</b035>
+			<b036>Nancy Holder</b036>
+			<b037>Holder, Nancy</b037>
+			<b039>Nancy</b039>
+			<b040>Holder</b040>
+			<b044><![CDATA[<p><b>Nancy Holder</b> is
+the coauthor of the new Crusade series. She has published sixty books and more
+than two hundred short stories. She has received four Bram Stoker awards for
+fiction from the Horror Writers Association, and her books have been translated
+into more than two dozen languages. Holder has written or&nbsp;cowritten&nbsp;twenty Buffy
+and Angel projects. Her books include the <i>New York Times</i>
+bestselling series Wicked and the novel <i>The Rose Bride</i>. A graduate of the
+University of California at San Diego, Holder is currently a writing teacher at
+the school. She lives in San Diego with her daughter, Belle, and their growing
+assortment of pets.</p>]]></b044>
+		</contributor>
+		<contributor>
+			<b034>3</b034>
+			<b035>A32</b035>
+			<b036>John Everson</b036>
+			<b037>Everson, John</b037>
+			<b039>John</b039>
+			<b040>Everson</b040>
+			<b044><![CDATA[<p><b>John Everson</b> is the Bram Stoker Award–winning author of nine novels of erotic horror and the macabre, including the Bram Stoker Award–nominated tour de force<i> Nightwhere.&nbsp;</i>John shares a deep purple den in Naperville, Illinois with a cockatoo and cockatiel, a disparate collection of fake skulls, twisted skeletal fairies, Alan Clark illustrations and a large stuffed Eeyore. There’s also a mounted Chinese fowling spider named Stoker, an ever-growing shelf of custom mix CDs and an acoustic guitar that he can’t really play but that his son likes to hear him beat on anyway. Sometimes his wife is surprised to find him shuffling through more public areas of the house, but it’s usually only to brew another cup of coffee.&nbsp;</p>]]></b044>
+		</contributor>
+		<contributor>
+			<b034>4</b034>
+			<b035>A32</b035>
+			<b036>Yvonne Navarro</b036>
+			<b037>Navarro, Yvonne</b037>
+			<b039>Yvonne</b039>
+			<b040>Navarro</b040>
+		</contributor>
+		<contributor>
+			<b034>5</b034>
+			<b035>A32</b035>
+			<b036>Scott Nicholson</b036>
+			<b037>Nicholson, Scott</b037>
+			<b039>Scott</b039>
+			<b040>Nicholson</b040>
+			<b044><![CDATA[<p><b>Scott Nicholson</b>
+is author of more than a dozen novels and seventy short stories, as well as six
+screenplays, four children’s books, and three comic book series. His novel <i>The Red Church</i> was a finalist for the
+Bram Stoker Award and an alternate selection of the Mystery Guild. He also has
+collaborated with bestselling author J.R. Rain on several paranormal novels. He
+has served with the Mystery Writers of America, the Horror Writers Association,
+and International Thriller Writers. A former journalist, radio broadcaster, and
+musician, Nicholson won three North Carolina Press Association awards.</p>]]></b044>
+		</contributor>
+		<contributor>
+			<b034>6</b034>
+			<b035>A32</b035>
+			<b036>James A. Moore</b036>
+			<b037>Moore, James A.</b037>
+			<b039>James A.</b039>
+			<b040>Moore</b040>
+			<b044><![CDATA[<p><b>James A. Moore</b> is the bestselling author of more than forty novels, including <i>Alien: Sea of Sorrows</i>, <i>Fireworks</i>, <i>Under the Overtree</i>, <i>Blood Red</i>, the Serenity Falls trilogy, <i>City of Wonders</i>, and <i>The Last Sacrifice</i>. A contributor to<i> Aliens: Bug Hunt</i>, he has twice been nominated for the Bram Stoker Award. He spent three years as an officer in the Horror Writers Association, first as secretary and later as vice president.</p>]]></b044>
+		</contributor>
+		<contributor>
+			<b034>7</b034>
+			<b035>A32</b035>
+			<b036>Keith R. A. DeCandido</b036>
+			<b037>DeCandido, Keith R. A.</b037>
+			<b039>Keith R. A.</b039>
+			<b040>DeCandido</b040>
+			<b044><![CDATA[<p><b>Keith R.A. DeCandido </b>was born, raised, educated, and still lives in the Bronx. Keith has published over thirty novels, most of them in the realm of media tie-ins. Several of his <i>Star Trek</i> novels have hit the USA Today bestseller list, and received critical acclaim from all over the map, both online and in print. He has also written in the worlds of Blizzard Games, <i>Buffy the Vampire Slayer, Command and Conquer, CSI, Doctor Who, Farscape, Gene Roddenberry’s Andromeda, Marvel Comics, Young Hercules</i>, and many more.</p>]]></b044>
+		</contributor>
+		<contributor>
+			<b034>8</b034>
+			<b035>A32</b035>
+			<b036>Gregory Frost</b036>
+			<b037>Frost, Gregory</b037>
+			<b039>Gregory</b039>
+			<b040>Frost</b040>
+		</contributor>
+		<contributor>
+			<b034>9</b034>
+			<b035>E07</b035>
+			<b036>Cassandra Campbell</b036>
+			<b037>Campbell, Cassandra</b037>
+			<b039>Cassandra</b039>
+			<b040>Campbell</b040>
+			<b044><![CDATA[<p>Original bio sent from Cassandra:</p>
+<p>Cassandra Campbell began doing voice overs as the voice for Calvin Klein’s Italian commercials. This was followed by commercial and documentary recording in both English and Italian. She has recorded many audiobooks and has received several AudioFile Earphones Awards as well as an Audie® Award nomination. As an actress and director, she has worked at the Public, the Mint, the Berkshire Theatre Festival, Stagewest, Theatreworks, the Baltimore Shakespeare Festival, Millmountain Theatre, the National Shakespeare Company, and the New York Fringe Festival. &nbsp;</p>
+]]></b044>
+		</contributor>
+		<contributor>
+			<b034>10</b034>
+			<b035>E07</b035>
+			<b036>Gabrielle de Cuir</b036>
+			<b037>de Cuir, Gabrielle</b037>
+			<b039>Gabrielle</b039>
+			<b040>de Cuir</b040>
+			<b044><![CDATA[<p><strong>Gabrielle de Cuir</strong>, award-winning narrator, has narrated over two hundred titles and specializes in fantasy, humor, and titles requiring extensive foreign language and accent skills. She was a cowinner of the Audie Award for best narration in 2011 and a three-time finalist for the Audie and has garnered six AudioFile Earphones Awards. Her “velvet touch” as an actor’s director has earned her a special place in the audiobook world as the foremost producer for bestselling authors and celebrities.</p>]]></b044>
+		</contributor>
+		<contributor>
+			<b034>11</b034>
+			<b035>E07</b035>
+			<b036>Roxanne Hernandez</b036>
+			<b037>Hernandez, Roxanne</b037>
+			<b039>Roxanne</b039>
+			<b040>Hernandez</b040>
+			<b044><![CDATA[<p><b>Roxanne Hernandez</b> is an audio narrator and a top narrator choice for young adult, adult drama, and Latin American/Chicano literature. She was a finalist for the prestigious Audie Award for best narration in 2011.</p>]]></b044>
+		</contributor>
+		<contributor>
+			<b034>12</b034>
+			<b035>E07</b035>
+			<b036>Arte Johnson</b036>
+			<b037>Johnson, Arte</b037>
+			<b039>Arte</b039>
+			<b040>Johnson</b040>
+			<b044><![CDATA[<p><b>Arte Johnson</b> is an award-winning narrator and an American comic actor who won an Emmy Award for his role in the television series <i>Rowan &amp; Martin’s </i><i>Laugh-In</i>. His audiobook narations have won two AudioFile Earphones Awards, and he placed as a finalist for the Audie Award for best narration in 2003 and 2007. </p>]]></b044>
+		</contributor>
+		<contributor>
+			<b034>13</b034>
+			<b035>E07</b035>
+			<b036>Lisa Reneé Pitts</b036>
+			<b037>Pitts, Lisa Reneé</b037>
+			<b039>Lisa Reneé</b039>
+			<b040>Pitts</b040>
+			<b044><![CDATA[<p><strong>Lisa Rene&eacute; Pitts</strong> is an accomplished actress in theater, film, and television, appearing in <em>The Practice</em>, <em>The Shield</em>, and <em>Law &amp; Order</em>. A native New Yorker, she holds a BFA in theater arts from Rutgers University and resides in Burbank, California.</p>]]></b044>
+		</contributor>
+		<contributor>
+			<b034>14</b034>
+			<b035>E07</b035>
+			<b036>John Rubinstein</b036>
+			<b037>Rubinstein, John</b037>
+			<b039>John</b039>
+			<b040>Rubinstein</b040>
+			<b044><![CDATA[<p><strong>John Rubinstein</strong> is an actor, composer, and director who won a Tony Award for his starring role in Broadway’s <em>Children of a Lesser God</em>. He has narrated dozens of audiobooks, earning several AudioFile Earphones Awards and being named a finalist for the prestigious Audie Award for best narration in 2013.</p>]]></b044>
+		</contributor>
+		<contributor>
+			<b034>15</b034>
+			<b035>E07</b035>
+			<b036>Stefan Rudnicki</b036>
+			<b037>Rudnicki, Stefan</b037>
+			<b039>Stefan</b039>
+			<b040>Rudnicki</b040>
+			<b044><![CDATA[<p><strong>Stefan Rudnicki</strong> first became involved with audiobooks in 1994. Now a Grammy-winning audiobook producer, he has worked on more than three thousand audiobooks as a narrator, writer, producer, or director. He has narrated more than three hundred audiobooks. A recipient of multiple AudioFile Earphones Awards, he was presented the coveted Audie Award for solo narration in 2005, 2007, and 2014, and was named one of <em>AudioFile</em>’s Golden Voices in 2012.</p>]]></b044>
+		</contributor>
+		<contributor>
+			<b034>16</b034>
+			<b035>E07</b035>
+			<b036>Wil Wheaton</b036>
+			<b037>Wheaton, Wil</b037>
+			<b039>Wil</b039>
+			<b040>Wheaton</b040>
+			<b044><![CDATA[<p><b>Wil Wheaton</b> is an award–winning actor, voice artist, author, and audiobook narrator. Among his movie credits are <i>Stand by Me</i> and <i>Toy Soldiers</i>. His many television credits include <i>Star Trek: The Next Generation</i>, <i>The Big Bang Theory</i>, and<i> Generator Rex. </i>As a narrator of more than a dozen audiobooks, he has twice won the prestigious Audie Award, twice been a finalist for the Audie, and earned an Earphones Award from <i>AudioFile </i>magazine.</p>]]></b044>
+		</contributor>
+		<contributor>
+			<b034>17</b034>
+			<b035>E07</b035>
+			<b036>various narrators</b036>
+			<b037>various narrators</b037>
+			<b044><![CDATA[Coming soon...]]></b044>
+		</contributor>
+		<b056>UBR</b056>
+		<language>
+			<b253>01</b253>
+			<b252>eng</b252>
+		</language>
+		<extent>
+			<b218>09</b218>
+			<b219>1108</b219>
+			<b220>05</b220>
+		</extent>
+		<extent>
+			<b218>22</b218>
+			<b219>154</b219>
+			<b220>11</b220>
+		</extent>
+		<b064>FIC015000</b064>
+		<subject>
+			<b067>10</b067>
+			<b069>FIC015000</b069>
+		</subject>
+		<subject>
+			<b067>10</b067>
+			<b069>FIC000000</b069>
+		</subject>
+		<subject>
+			<b067>10</b067>
+			<b069>FIC003000</b069>
+		</subject>
+		<subject>
+			<b067>10</b067>
+			<b069>FIC009000</b069>
+		</subject>
+		<subject>
+			<b067>10</b067>
+			<b069>FIC028000</b069>
+		</subject>
+		<subject>
+			<b067>10</b067>
+			<b069>FIC030000</b069>
+		</subject>
+		<subject>
+			<b067>10</b067>
+			<b069>FIC031000</b069>
+		</subject>
+		<subject>
+			<b067>10</b067>
+			<b069>FIC032000</b069>
+		</subject>
+		<subject>
+			<b067>20</b067>
+			<b069>vampires;vampire;werewolf;werewolves;supernatural;sci fi;fantasy;science fiction;horror;thriller;suspense;stories;collection;anthology;legend;legends;myth;mythological;infection;tales;short story;short stories</b069>
+		</subject>
+		<b073>01</b073>
+		<audience>
+			<b204>02</b204>
+			<b205>Adult</b205>
+			<b206>Adult</b206>
+		</audience>
+		<othertext>
+			<d102>01</d102>
+			<d103>06</d103>
+			<d104><![CDATA[ <p>They are hunting us.<br> </p><p>In this sweeping, threaded narrative of the global phenomenon known as the Vampire Wars, mankind is unwittingly infected by a millennia-old bacteria unknowingly exhumed by a scientific expedition in Antarctica. Now, in some rare cases, a person's so-called junk DNA becomes activated. Depending on their racial and ethnic heritage, they begin to manifest one of the many diverse forms of the "others" that are the true basis for the legends of supernatural creatures. These aren't your usual vampires and werewolves—it goes much deeper than that.</p><p>Conceived by Jonathan Maberry, <i>V Wars</i> features stories from various frontlines as reported by such contributors as Nancy Holder, Yvonne Navarro, James A. Moore, Gregory Frost, John Everson, Keith R. A. DeCandido, and Scott Nicholson—as well as Maberry himself, of course. The result is a compelling series of tales that creates a unique chronicle of mankind's response to this sudden, hidden threat to humanity.</p><p>The narrators of this audio production include Grammy, Emmy, Tony, and Audie award winners.</p>]]></d104>
+		</othertext>
+		<mediafile>
+			<f114>06</f114>
+			<f115>03</f115>
+			<f116>01</f116>
+			<f117>https://cdn.blackstonepublishing.com/7/2/7276/7276-square-final.jpg</f117>
+			<f373>20150328</f373>
+		</mediafile>
+		<mediafile>
+			<f114>44</f114>
+			<f115>07</f115>
+			<f116>01</f116>
+			<f117>https://cdn.blackstonepublishing.com/7/2/7276/7276-sample.mp3</f117>
+		</mediafile>
+		<prize>
+			<g126>AudioFile Earphones Award</g126>
+			<g127>2012</g127>
+		</prize>
+		<imprint>
+			<b079>Blackstone Publishing</b079>
+		</imprint>
+		<publisher>
+			<b291>01</b291>
+			<b081>Blackstone Publishing</b081>
+		</publisher>
+		<b394>04</b394>
+		<b003>20120927</b003>
+		<copyrightstatement>
+			<b087>2012</b087>
+			<copyrightowner>
+				<b047>Blackstone Audio, Inc.</b047>
+			</copyrightowner>
+		</copyrightstatement>
+		<salesrights>
+			<b089>01</b089>
+			<b090>AD AE AF AG AI AL AM AO AQ AR AS AT AU AW AX AZ BA BB BD BE BF BG BH BI BJ BL BM BN BO BQ BR BS BT BV BW BY BZ CA CC CD CF CG CH CI CK CL CM CN CO CR CU CV CW CX CY CZ DE DJ DK DM DO DZ EC EE EG EH ER ES ET FI FJ FK FM FO FR GA GB GD GE GF GG GH GI GL GM GN GP GQ GR GS GT GU GW GY HK HM HN HR HT HU ID IE IL IM IN IO IQ IR IS IT JE JM JO JP KE KG KH KI KM KN KP KR KW KY KZ LA LB LC LI LK LR LS LT LU LV LY MA MC MD ME MF MG MH MK ML MM MN MO MP MQ MR MS MT MU MV MW MX MY MZ NA NC NE NF NG NI NL NO NP NR NU NZ OM PA PE PF PG PH PK PL PM PN PR PS PT PW PY QA RE RO RS RU RW SA SB SC SD SE SG SH SI SJ SK SL SM SN SO SR SS ST SV SX SY SZ TC TD TF TG TH TJ TK TL TM TN TO TR TT TV TW TZ UA UG UM US UY UZ VA VC VE VG VI VN VU WF WS YE YT ZA ZM ZW</b090>
+		</salesrights>
+		<relatedproduct>
+			<h208>06</h208>
+			<productidentifier>
+				<b221>01</b221>
+				<b244>ZP7276</b244>
+			</productidentifier>
+			<productidentifier>
+				<b221>02</b221>
+				<b244>1470829355</b244>
+			</productidentifier>
+			<productidentifier>
+				<b221>15</b221>
+				<b244>9781470829353</b244>
+			</productidentifier>
+			<b012>AC</b012>
+			<b333>A101</b333>
+		</relatedproduct>
+		<relatedproduct>
+			<h208>06</h208>
+			<productidentifier>
+				<b221>01</b221>
+				<b244>ZE7276</b244>
+			</productidentifier>
+			<productidentifier>
+				<b221>02</b221>
+				<b244>1470829339</b244>
+			</productidentifier>
+			<productidentifier>
+				<b221>15</b221>
+				<b244>9781470829339</b244>
+			</productidentifier>
+			<b012>AC</b012>
+			<b333>A101</b333>
+		</relatedproduct>
+		<relatedproduct>
+			<h208>06</h208>
+			<productidentifier>
+				<b221>01</b221>
+				<b244>ZM7276</b244>
+			</productidentifier>
+			<productidentifier>
+				<b221>02</b221>
+				<b244>1470829312</b244>
+			</productidentifier>
+			<productidentifier>
+				<b221>15</b221>
+				<b244>9781470829315</b244>
+			</productidentifier>
+			<b012>AC</b012>
+			<b333>A103</b333>
+		</relatedproduct>
+		<relatedproduct>
+			<h208>06</h208>
+			<productidentifier>
+				<b221>01</b221>
+				<b244>DR7276</b244>
+			</productidentifier>
+			<productidentifier>
+				<b221>02</b221>
+				<b244>1482141604</b244>
+			</productidentifier>
+			<productidentifier>
+				<b221>15</b221>
+				<b244>9781482141603</b244>
+			</productidentifier>
+			<b012>AJ</b012>
+		</relatedproduct>
+		<relatedproduct>
+			<h208>06</h208>
+			<productidentifier>
+				<b221>01</b221>
+				<b244>DZ7276</b244>
+			</productidentifier>
+			<productidentifier>
+				<b221>02</b221>
+				<b244>1483063267</b244>
+			</productidentifier>
+			<productidentifier>
+				<b221>15</b221>
+				<b244>9781483063263</b244>
+			</productidentifier>
+			<b012>AJ</b012>
+		</relatedproduct>
+		<relatedproduct>
+			<h208>06</h208>
+			<productidentifier>
+				<b221>01</b221>
+				<b244>DM7276</b244>
+			</productidentifier>
+			<productidentifier>
+				<b221>02</b221>
+				<b244>1470829355</b244>
+			</productidentifier>
+			<productidentifier>
+				<b221>15</b221>
+				<b244>9781470829353</b244>
+			</productidentifier>
+			<b012>AJ</b012>
+		</relatedproduct>
+		<relatedproduct>
+			<h208>06</h208>
+			<productidentifier>
+				<b221>01</b221>
+				<b244>DP7276</b244>
+			</productidentifier>
+			<productidentifier>
+				<b221>02</b221>
+				<b244>1538592223</b244>
+			</productidentifier>
+			<productidentifier>
+				<b221>15</b221>
+				<b244>9781538592229</b244>
+			</productidentifier>
+			<b012>AJ</b012>
+		</relatedproduct>
+		<supplydetail>
+			<j137>Blackstone Publishing</j137>
+			<j292>09</j292>
+			<j268>04</j268>
+			<j269>00</j269>
+			<j141>IP</j141>
+			<j396>20</j396>
+			<price>
+				<j148>01</j148>
+				<j261>05</j261>
+				<j151>23.95</j151>
+				<j152>USD</j152>
+			</price>
+		</supplydetail>
+	</product>
+	<product>
+		<a001>9781483030166</a001>
+		<a002>03</a002>
+		<productidentifier>
+			<b221>01</b221>
+			<b244>DT9975</b244>
+		</productidentifier>
+		<productidentifier>
+			<b221>02</b221>
+			<b244>1483030164</b244>
+		</productidentifier>
+		<productidentifier>
+			<b221>15</b221>
+			<b244>9781483030166</b244>
+		</productidentifier>
+		<b012>AJ</b012>
+		<b210>70</b210>
+		<b211>099</b211>
+		<b280>DRM=NO;US=NO;STREAMING=NO</b280>
+		<title>
+			<b202>01</b202>
+			<b203>What If?</b203>
+			<b029>Serious Scientific Answers to Absurd Hypothetical Questions</b029>
+		</title>
+		<contributor>
+			<b034>1</b034>
+			<b035>A01</b035>
+			<b036>Randall Munroe</b036>
+			<b037>Munroe, Randall</b037>
+			<b039>Randall</b039>
+			<b040>Munroe</b040>
+			<b044><![CDATA[<p><b>Randall Munroe</b> is
+the author of the popular webcomic <i>xkcd</i> and the science question-and-answer
+blog <i>What If?</i> Randall was born in Easton, Pennsylvania, and grew up outside
+Richmond. After graduating with a degree in physics from Christopher Newport University in Newport News, Virginia, he got a job building robots at NASA’s Langley Research Center. In 2006 he left
+NASA to draw comics on the Internet full time, supporting himself through the
+sale of <i>xkcd</i> t-shirts, prints, posters, and books. He likes candlelight dinners
+and long walks on the beach—very long walks. Lots of people say they like long
+walks on the beach, but then they get out on the beach, and after just an hour
+or two, they say they’re getting tired. Bring a tent. He lives in
+Massachusetts.</p>]]></b044>
+		</contributor>
+		<contributor>
+			<b034>2</b034>
+			<b035>E07</b035>
+			<b036>Wil Wheaton</b036>
+			<b037>Wheaton, Wil</b037>
+			<b039>Wil</b039>
+			<b040>Wheaton</b040>
+			<b044><![CDATA[<p><b>Wil Wheaton</b> is an award–winning actor, voice artist, author, and audiobook narrator. Among his movie credits are <i>Stand by Me</i> and <i>Toy Soldiers</i>. His many television credits include <i>Star Trek: The Next Generation</i>, <i>The Big Bang Theory</i>, and<i> Generator Rex. </i>As a narrator of more than a dozen audiobooks, he has twice won the prestigious Audie Award, twice been a finalist for the Audie, and earned an Earphones Award from <i>AudioFile </i>magazine.</p>]]></b044>
+		</contributor>
+		<b056>UBR</b056>
+		<language>
+			<b253>01</b253>
+			<b252>eng</b252>
+		</language>
+		<extent>
+			<b218>09</b218>
+			<b219>396</b219>
+			<b220>05</b220>
+		</extent>
+		<extent>
+			<b218>22</b218>
+			<b219>70</b219>
+			<b220>11</b220>
+		</extent>
+		<b064>HUM016000</b064>
+		<subject>
+			<b067>10</b067>
+			<b069>HUM016000</b069>
+		</subject>
+		<subject>
+			<b067>10</b067>
+			<b069>HUM000000</b069>
+		</subject>
+		<subject>
+			<b067>10</b067>
+			<b069>SCI055000</b069>
+		</subject>
+		<subject>
+			<b067>10</b067>
+			<b069>HUM001000</b069>
+		</subject>
+		<subject>
+			<b067>20</b067>
+			<b069>humor;physics;trivia;webcomic;web comic;xkcd;comic strip;hypothetical;new york times bestseller;bestseller;bestselling author</b069>
+		</subject>
+		<b073>01</b073>
+		<audience>
+			<b204>02</b204>
+			<b205>Adult</b205>
+			<b206>Adult</b206>
+		</audience>
+		<othertext>
+			<d102>01</d102>
+			<d103>06</d103>
+			<d104><![CDATA[<p>From the creator of the wildly popular webcomic <i>xkcd</i> comes this hilarious and informative book of answers to important questions you probably never thought to ask.</p><p>Millions of people visit xkcd.com each week to read Randall Munroe's iconic webcomic. His stick-figure drawings about science, technology, language, and love have a large and passionate following. Fans of <i>xkcd</i> ask Munroe a lot of strange questions. What if you tried to hit a baseball pitched at 90 percent of the speed of light? How fast can you hit a speed bump while driving and live? If there were a robot apocalypse, how long would humanity last?</p><p>In pursuit of answers, Munroe runs computer simulations, pores over stacks of declassified military research memos, solves differential equations, and consults with nuclear reactor operators. His responses are masterpieces of clarity and hilarity, complemented by signature <i>xkcd</i> comics. They often predict the complete annihilation of humankind, or at least a really big explosion.</p><p>The book features new and never-before-answered questions, along with updated and expanded versions of the most popular answers from the <i>xkcd</i> website. <i>What If?</i> will be required reading for <i>xkcd</i> fans and anyone who loves to ponder the hypothetical.</p>]]></d104>
+		</othertext>
+		<othertext>
+			<d102>06</d102>
+			<d103>06</d103>
+			<d104><![CDATA[<p>“<i>What If?</i> is one of my Internet must-reads, and I look forward to each new installment, and always read it with delight.”</p>]]></d104>
+			<d108>Cory Doctorow, New York Times bestselling author</d108>
+		</othertext>
+		<othertext>
+			<d102>06</d102>
+			<d103>06</d103>
+			<d104><![CDATA[<p>“Required reading across the world.”</p>]]></d104>
+			<d108>New York Times</d108>
+		</othertext>
+		<othertext>
+			<d102>06</d102>
+			<d103>06</d103>
+			<d104><![CDATA[<p>“Munroe applies reason and research to hypothetical conundrums ranging 
+from the philosophical to the scientific (often absurd but never 
+pseudo) that probably seemed awesome in your elementary school days—but 
+were never sufficiently answered. It’s the rare combination of edifying 
+and fun.”</p>]]></d104>
+			<d108>Amazon.com, editorial review</d108>
+		</othertext>
+		<othertext>
+			<d102>06</d102>
+			<d103>06</d103>
+			<d104><![CDATA[<p>“Who
+better than Wil Wheaton, formerly of<i> Star Trek</i>, to narrate this
+romp through the world of Randall Munroe—physicist, roboticist, and editor of
+the website xkcd?…Wheaton’s ambitious performance
+meshes perfectly with the perspectives and humor of the author. Missing from
+the audio are the signature stick-figure cartoons from the printed book and
+website, but Wheaton’s outstanding inflections, pacing, cadence, and timing
+more than compensate for the loss. So if you want to be thoroughly entertained
+while discovering what would happen if the world suddenly stopped spinning or a
+drain appeared in the bottom of the ocean, this audiobook deserves space on
+your listening device.”</p>]]></d104>
+			<d108>AudioFile</d108>
+		</othertext>
+		<mediafile>
+			<f114>06</f114>
+			<f115>03</f115>
+			<f116>01</f116>
+			<f117>https://cdn.blackstonepublishing.com/9/9/9975/9975-square-final.jpg</f117>
+			<f373>20150328</f373>
+		</mediafile>
+		<mediafile>
+			<f114>44</f114>
+			<f115>07</f115>
+			<f116>01</f116>
+			<f117>https://cdn.blackstonepublishing.com/9/9/9975/9975-sample.mp3</f117>
+		</mediafile>
+		<prize>
+			<g126>#1 New York Times bestseller</g126>
+		</prize>
+		<prize>
+			<g126>USA Today bestseller</g126>
+		</prize>
+		<prize>
+			<g126>#1 NPR bestseller</g126>
+		</prize>
+		<prize>
+			<g126>Barnes &amp; Noble's Biggest Books</g126>
+			<g127>2014</g127>
+		</prize>
+		<prize>
+			<g126>#1 Publishers Weekly bestseller</g126>
+		</prize>
+		<prize>
+			<g126>AudioFile Best Audiobook of the Year</g126>
+			<g127>2014</g127>
+		</prize>
+		<prize>
+			<g126>Amazon Best Book</g126>
+			<g127>2014</g127>
+		</prize>
+		<prize>
+			<g126>Library Journal bestseller</g126>
+			<g127>2014</g127>
+		</prize>
+		<prize>
+			<g126>Entertainment Weekly Best Book</g126>
+			<g127>2014</g127>
+		</prize>
+		<prize>
+			<g126>YALSA Amazing Audiobooks for Young Adults</g126>
+			<g127>2016</g127>
+		</prize>
+		<prize>
+			<g126>Audible Editors Top Pick</g126>
+		</prize>
+		<imprint>
+			<b079>Blackstone Publishing</b079>
+		</imprint>
+		<publisher>
+			<b291>01</b291>
+			<b081>Blackstone Publishing</b081>
+		</publisher>
+		<b394>04</b394>
+		<b003>20140902</b003>
+		<copyrightstatement>
+			<b087>2014</b087>
+			<copyrightowner>
+				<b047>Blackstone Audio, Inc.</b047>
+			</copyrightowner>
+		</copyrightstatement>
+		<salesrights>
+			<b089>01</b089>
+			<b090>CA CR CU DO GL GT HN HT MX NI PA PR SV US</b090>
+		</salesrights>
+		<relatedproduct>
+			<h208>06</h208>
+			<productidentifier>
+				<b221>01</b221>
+				<b244>ZP9975</b244>
+			</productidentifier>
+			<productidentifier>
+				<b221>02</b221>
+				<b244>1483030180</b244>
+			</productidentifier>
+			<productidentifier>
+				<b221>15</b221>
+				<b244>9781483030180</b244>
+			</productidentifier>
+			<b012>AC</b012>
+			<b333>A101</b333>
+		</relatedproduct>
+		<relatedproduct>
+			<h208>06</h208>
+			<productidentifier>
+				<b221>01</b221>
+				<b244>ZE9975</b244>
+			</productidentifier>
+			<productidentifier>
+				<b221>02</b221>
+				<b244>1483030202</b244>
+			</productidentifier>
+			<productidentifier>
+				<b221>15</b221>
+				<b244>9781483030203</b244>
+			</productidentifier>
+			<b012>AC</b012>
+			<b333>A101</b333>
+		</relatedproduct>
+		<relatedproduct>
+			<h208>06</h208>
+			<productidentifier>
+				<b221>01</b221>
+				<b244>ZM9975</b244>
+			</productidentifier>
+			<productidentifier>
+				<b221>02</b221>
+				<b244>1483030199</b244>
+			</productidentifier>
+			<productidentifier>
+				<b221>15</b221>
+				<b244>9781483030197</b244>
+			</productidentifier>
+			<b012>AC</b012>
+			<b333>A103</b333>
+		</relatedproduct>
+		<relatedproduct>
+			<h208>06</h208>
+			<productidentifier>
+				<b221>01</b221>
+				<b244>DZ9975</b244>
+			</productidentifier>
+			<productidentifier>
+				<b221>02</b221>
+				<b244>1483030156</b244>
+			</productidentifier>
+			<productidentifier>
+				<b221>15</b221>
+				<b244>9781483030159</b244>
+			</productidentifier>
+			<b012>AJ</b012>
+		</relatedproduct>
+		<relatedproduct>
+			<h208>06</h208>
+			<productidentifier>
+				<b221>01</b221>
+				<b244>DR9975</b244>
+			</productidentifier>
+			<productidentifier>
+				<b221>02</b221>
+				<b244>1482171031</b244>
+			</productidentifier>
+			<productidentifier>
+				<b221>15</b221>
+				<b244>9781482171037</b244>
+			</productidentifier>
+			<b012>AJ</b012>
+		</relatedproduct>
+		<relatedproduct>
+			<h208>06</h208>
+			<productidentifier>
+				<b221>01</b221>
+				<b244>DM9975</b244>
+			</productidentifier>
+			<productidentifier>
+				<b221>02</b221>
+				<b244>1483030180</b244>
+			</productidentifier>
+			<productidentifier>
+				<b221>15</b221>
+				<b244>9781483030180</b244>
+			</productidentifier>
+			<b012>AJ</b012>
+		</relatedproduct>
+		<relatedproduct>
+			<h208>06</h208>
+			<productidentifier>
+				<b221>01</b221>
+				<b244>DP9975</b244>
+			</productidentifier>
+			<productidentifier>
+				<b221>02</b221>
+				<b244>1982476044</b244>
+			</productidentifier>
+			<productidentifier>
+				<b221>15</b221>
+				<b244>9781982476045</b244>
+			</productidentifier>
+			<b012>AJ</b012>
+		</relatedproduct>
+		<supplydetail>
+			<j137>Blackstone Publishing</j137>
+			<j292>09</j292>
+			<j268>04</j268>
+			<j269>00</j269>
+			<j141>IP</j141>
+			<j396>20</j396>
+			<price>
+				<j148>01</j148>
+				<j261>05</j261>
+				<j151>19.95</j151>
+				<j152>USD</j152>
+			</price>
+		</supplydetail>
+	</product>
+	<product>
+		<a001>9781094006352</a001>
+		<a002>03</a002>
+		<productidentifier>
+			<b221>01</b221>
+			<b244>DTdat4</b244>
+		</productidentifier>
+		<productidentifier>
+			<b221>02</b221>
+			<b244>1094006351</b244>
+		</productidentifier>
+		<productidentifier>
+			<b221>15</b221>
+			<b244>9781094006352</b244>
+		</productidentifier>
+		<b012>AJ</b012>
+		<b211>099</b211>
+		<b280>DRM=NO;US=NO;STREAMING=NO</b280>
+		<title>
+			<b202>01</b202>
+			<b203>Riot Baby</b203>
+		</title>
+		<contributor>
+			<b034>1</b034>
+			<b035>A01</b035>
+			<b035>E07</b035>
+			<b036>Tochi Onyebuchi</b036>
+			<b037>Onyebuchi, Tochi</b037>
+			<b039>Tochi</b039>
+			<b040>Onyebuchi</b040>
+			<b044><![CDATA[<p><b>Tochi Onyebuchi</b> is the author of the young adult novel <i>Beasts Made of Night</i>, which won the Ilube Nommo Award for Best Speculative Fiction Novel by an African; its sequel, <i>Crown of Thunder</i>; and <i>War Girls</i>. He holds a BA from Yale, an MFA in screenwriting from the Tisch School of the Arts, a master’s degree in economic law from Sciences Po, and a JD from Columbia Law School. His fiction has appeared in <i>Panverse Three</i>, <i>Asimov’s Science Fiction</i>, <i>Obsidian</i>, <i>Omenana </i>magazine, <i>Lightspeed</i>, and <i>Uncanny</i>. His nonfiction has appeared in <i>Nowhere </i>magazine, the Oxford University Press blog, Tor.com, and the <i>Harvard Journal of African American Public Policy</i>, among other places.<i> Riot Baby</i> is his adult fiction debut.</p>]]></b044>
+		</contributor>
+		<b056>UBR</b056>
+		<language>
+			<b253>01</b253>
+			<b252>eng</b252>
+		</language>
+		<extent>
+			<b218>09</b218>
+			<b219>226</b219>
+			<b220>05</b220>
+		</extent>
+		<b064>FIC028010</b064>
+		<subject>
+			<b067>10</b067>
+			<b069>FIC028010</b069>
+		</subject>
+		<subject>
+			<b067>10</b067>
+			<b069>FIC009010</b069>
+		</subject>
+		<subject>
+			<b067>10</b067>
+			<b069>FIC049000</b069>
+		</subject>
+		<subject>
+			<b067>10</b067>
+			<b069>FIC043000</b069>
+		</subject>
+		<subject>
+			<b067>20</b067>
+			<b069>loss;hope;anger;dystopian;family;love;fury;black;america;ella;kev;brother;sister;gifted;power;racism;brutality;incarceration;supernatural;revolution</b069>
+		</subject>
+		<b073>01</b073>
+		<audience>
+			<b204>02</b204>
+			<b205>Adult</b205>
+			<b206>Adult</b206>
+		</audience>
+		<othertext>
+			<d102>01</d102>
+			<d103>06</d103>
+			<d104><![CDATA[<p>Ella has a Thing. She sees a classmate grow up to become a caring nurse. A neighbor’s son murdered in a drive-by shooting. Things that haven’t happened yet. Kev, born while Los Angeles burned around them, wants to protect his sister from a power that could destroy her. But when Kev is incarcerated, Ella must decide what it means to watch her brother suffer while holding the ability to wreck cities in her hands.</p><p>Rooted in the hope that can live in anger,&nbsp;<em>Riot Baby&nbsp;</em>is as much an intimate family story as a global dystopian narrative. It burns fearlessly toward revolution and has quietly devastating things to say about love, fury, and the black American experience.</p><p>Ella and Kev are both shockingly human and immeasurably powerful. Their childhoods are defined and destroyed by racism. Their futures might alter the world.</p>]]></d104>
+		</othertext>
+		<othertext>
+			<d102>06</d102>
+			<d103>06</d103>
+			<d104><![CDATA[<p>“Blazes with rage and glory.”</p>]]></d104>
+			<d108>Cory Doctorow, New York Times bestselling author</d108>
+		</othertext>
+		<othertext>
+			<d102>06</d102>
+			<d103>06</d103>
+			<d104><![CDATA[<p>“An epic ode to the future and past, tiny acts of resistance, love, and the wild, unstoppable sweep of revolution.”</p>]]></d104>
+			<d108>Daniel José Older, New York Times bestselling author</d108>
+		</othertext>
+		<othertext>
+			<d102>06</d102>
+			<d103>06</d103>
+			<d104><![CDATA[<p>“It is the story of black pain in America, of the extent and lineage of police brutality, racism, and injustice in this country, written in prose as searing and precise as hot diamonds.”</p>]]></d104>
+			<d108>New York Times</d108>
+		</othertext>
+		<othertext>
+			<d102>06</d102>
+			<d103>06</d103>
+			<d104><![CDATA[<p>“A stunningly, vitally harrowing story and genre at its very best.”</p>]]></d104>
+			<d108>Kiersten White, New York Times bestselling author</d108>
+		</othertext>
+		<othertext>
+			<d102>06</d102>
+			<d103>06</d103>
+			<d104><![CDATA[<p>“Author/narrator Tochi Onyebuchi portrays characters who personify the violent world they live in…Onyebuchi delivers the intensity of his plot in an unflinching style. His characters are animated and in-your-face, while at the same time caring in a tough-love sort of way…His steady pace allows listeners to follow the details that bring this story to an unexpected, powerful close.”</p>]]></d104>
+			<d108>AudioFile</d108>
+		</othertext>
+		<othertext>
+			<d102>06</d102>
+			<d103>06</d103>
+			<d104><![CDATA[<p>“A thrilling, intense, nail-biting read that transcends genre and has an ending of biblical proportions.”</p>]]></d104>
+			<d108>Grimdark magazine</d108>
+		</othertext>
+		<othertext>
+			<d102>06</d102>
+			<d103>06</d103>
+			<d104><![CDATA[<p>“This staggering story is political speculative fiction at its finest.”</p>]]></d104>
+			<d108>Publishers Weekly (starred review)</d108>
+		</othertext>
+		<othertext>
+			<d102>06</d102>
+			<d103>06</d103>
+			<d104><![CDATA[<p>“Onyebuchi sheds light on a world of harsh familiarity and fantastical originality with his incredible worldbuilding and devastating prose. Stark, sharp, and brutal, this story will burn in readers’ minds long after the last page.”</p>]]></d104>
+			<d108>Library Journal (starred review)</d108>
+		</othertext>
+		<othertext>
+			<d102>06</d102>
+			<d103>06</d103>
+			<d104><![CDATA[<p>“For readers who love propulsive, creepy, emotionally dynamic novels with a dash of the supernatural, Tochi Onyebuchi’s powerful work of speculative fiction finds hope and magic within a black family as they stand against violence and racism.”</p>]]></d104>
+			<d108>BookPage</d108>
+		</othertext>
+		<othertext>
+			<d102>06</d102>
+			<d103>06</d103>
+			<d104><![CDATA[<p>“There is a richness and depth to Onyebuchi’s prose that delivers an intricate and textured world at once rife with violence and teeming with familial love.”</p>]]></d104>
+			<d108>Booklist</d108>
+		</othertext>
+		<othertext>
+			<d102>06</d102>
+			<d103>06</d103>
+			<d104><![CDATA[<p>“Bursts at the seams of story with fire, passion, and power.”</p>]]></d104>
+			<d108>Marlon James, Man Booker Prize–winning author</d108>
+		</othertext>
+		<othertext>
+			<d102>06</d102>
+			<d103>06</d103>
+			<d104><![CDATA[<p>“Gorgeous, tender, unflinching, breathtakingly good…comes at you full speed with the brake line cut.”</p>]]></d104>
+			<d108>Sarah Gailey, author of Magic for Liars</d108>
+		</othertext>
+		<othertext>
+			<d102>06</d102>
+			<d103>06</d103>
+			<d104><![CDATA[<p>“Tochi Onyebuchi is, primarily, a generous world-builder. His journey into this is honed and sharpened with <i>Riot Baby</i>.”</p>]]></d104>
+			<d108>Hanif Abdurraqib, New York Times bestselling author</d108>
+		</othertext>
+		<othertext>
+			<d102>06</d102>
+			<d103>06</d103>
+			<d104><![CDATA[<p>“The burning embers of a revolution…the flash of accelerant in a genre that needs the burn.”</p>]]></d104>
+			<d108>Mark Oshiro, author of Anger Is a Gift</d108>
+		</othertext>
+		<othertext>
+			<d102>06</d102>
+			<d103>06</d103>
+			<d104><![CDATA[<p>“Stunningly original, brutal, and electric. Onyebuchi’s prose scorches.”</p>]]></d104>
+			<d108>R. F. Kuang, author of The Poppy War</d108>
+		</othertext>
+		<othertext>
+			<d102>06</d102>
+			<d103>06</d103>
+			<d104><![CDATA[<p>“A story as uplifting as it is heartbreaking, an epic ode to the future and past.”</p>]]></d104>
+			<d108>Daniel José Older, New York Times bestselling author</d108>
+		</othertext>
+		<mediafile>
+			<f114>06</f114>
+			<f115>03</f115>
+			<f116>01</f116>
+			<f117>https://cdn.blackstonepublishing.com/d/a/dat4/dat4-square-final.jpg</f117>
+			<f373>20200114</f373>
+		</mediafile>
+		<mediafile>
+			<f114>44</f114>
+			<f115>07</f115>
+			<f116>01</f116>
+			<f117>https://cdn.blackstonepublishing.com/d/a/dat4/dat4-sample.mp3</f117>
+		</mediafile>
+		<prize>
+			<g126>Tor.com Reviewers' Choice</g126>
+		</prize>
+		<prize>
+			<g126>USA Today Pick</g126>
+		</prize>
+		<prize>
+			<g126>BookPage Top Pick</g126>
+		</prize>
+		<prize>
+			<g126>Electric Literature</g126>
+		</prize>
+		<prize>
+			<g126>New York Times Pick</g126>
+		</prize>
+		<prize>
+			<g126>Vogue Pick</g126>
+		</prize>
+		<prize>
+			<g126>New England Book Award</g126>
+		</prize>
+		<prize>
+			<g126>Audible.com Best of the Year</g126>
+		</prize>
+		<imprint>
+			<b079>Blackstone Publishing</b079>
+		</imprint>
+		<publisher>
+			<b291>01</b291>
+			<b081>Blackstone Publishing</b081>
+		</publisher>
+		<b394>04</b394>
+		<b003>20200421</b003>
+		<copyrightstatement>
+			<b087>2020</b087>
+			<copyrightowner>
+				<b047>Blackstone Publishing</b047>
+			</copyrightowner>
+		</copyrightstatement>
+		<salesrights>
+			<b089>01</b089>
+			<b090>AD AE AF AG AI AL AM AO AQ AR AS AT AU AW AX AZ BA BB BD BE BF BG BH BI BJ BL BM BN BO BQ BR BS BT BV BW BY BZ CA CC CD CF CG CH CI CK CL CM CN CO CR CU CV CW CX CY CZ DE DJ DK DM DO DZ EC EE EG EH ER ES ET FI FJ FK FM FO FR GA GB GD GE GF GG GH GI GL GM GN GP GQ GR GS GT GU GW GY HK HM HN HR HT HU ID IE IL IM IN IO IQ IR IS IT JE JM JO JP KE KG KH KI KM KN KP KR KW KY KZ LA LB LC LI LK LR LS LT LU LV LY MA MC MD ME MF MG MH MK ML MM MN MO MP MQ MR MS MT MU MV MW MX MY MZ NA NC NE NF NG NI NL NO NP NR NU NZ OM PA PE PF PG PH PK PL PM PN PR PS PT PW PY QA RE RO RS RU RW SA SB SC SD SE SG SH SI SJ SK SL SM SN SO SR SS ST SV SX SY SZ TC TD TF TG TH TJ TK TL TM TN TO TR TT TV TW TZ UA UG UM US UY UZ VA VC VE VG VI VN VU WF WS YE YT ZA ZM ZW</b090>
+		</salesrights>
+		<relatedproduct>
+			<h208>06</h208>
+			<productidentifier>
+				<b221>01</b221>
+				<b244>ZPdat4</b244>
+			</productidentifier>
+			<productidentifier>
+				<b221>02</b221>
+				<b244>1094006297</b244>
+			</productidentifier>
+			<productidentifier>
+				<b221>15</b221>
+				<b244>9781094006291</b244>
+			</productidentifier>
+			<b012>AC</b012>
+			<b333>A101</b333>
+		</relatedproduct>
+		<relatedproduct>
+			<h208>06</h208>
+			<productidentifier>
+				<b221>01</b221>
+				<b244>ZEdat4</b244>
+			</productidentifier>
+			<productidentifier>
+				<b221>02</b221>
+				<b244>1094006300</b244>
+			</productidentifier>
+			<productidentifier>
+				<b221>15</b221>
+				<b244>9781094006307</b244>
+			</productidentifier>
+			<b012>AC</b012>
+			<b333>A101</b333>
+		</relatedproduct>
+		<relatedproduct>
+			<h208>06</h208>
+			<productidentifier>
+				<b221>01</b221>
+				<b244>ZMdat4</b244>
+			</productidentifier>
+			<productidentifier>
+				<b221>02</b221>
+				<b244>1094006319</b244>
+			</productidentifier>
+			<productidentifier>
+				<b221>15</b221>
+				<b244>9781094006314</b244>
+			</productidentifier>
+			<b012>AC</b012>
+			<b333>A103</b333>
+		</relatedproduct>
+		<relatedproduct>
+			<h208>06</h208>
+			<productidentifier>
+				<b221>01</b221>
+				<b244>DRdat4</b244>
+			</productidentifier>
+			<productidentifier>
+				<b221>02</b221>
+				<b244>1094006335</b244>
+			</productidentifier>
+			<productidentifier>
+				<b221>15</b221>
+				<b244>9781094006338</b244>
+			</productidentifier>
+			<b012>AJ</b012>
+		</relatedproduct>
+		<relatedproduct>
+			<h208>06</h208>
+			<productidentifier>
+				<b221>01</b221>
+				<b244>DZdat4</b244>
+			</productidentifier>
+			<productidentifier>
+				<b221>02</b221>
+				<b244>1094006343</b244>
+			</productidentifier>
+			<productidentifier>
+				<b221>15</b221>
+				<b244>9781094006345</b244>
+			</productidentifier>
+			<b012>AJ</b012>
+		</relatedproduct>
+		<relatedproduct>
+			<h208>06</h208>
+			<productidentifier>
+				<b221>01</b221>
+				<b244>DPdat4</b244>
+			</productidentifier>
+			<productidentifier>
+				<b221>02</b221>
+				<b244>109400636X</b244>
+			</productidentifier>
+			<productidentifier>
+				<b221>15</b221>
+				<b244>9781094006369</b244>
+			</productidentifier>
+			<b012>AJ</b012>
+		</relatedproduct>
+		<relatedproduct>
+			<h208>06</h208>
+			<productidentifier>
+				<b221>01</b221>
+				<b244>DMdat4</b244>
+			</productidentifier>
+			<productidentifier>
+				<b221>02</b221>
+				<b244>1094006297</b244>
+			</productidentifier>
+			<productidentifier>
+				<b221>15</b221>
+				<b244>9781094006291</b244>
+			</productidentifier>
+			<b012>AJ</b012>
+		</relatedproduct>
+		<supplydetail>
+			<j137>Blackstone Publishing</j137>
+			<j292>09</j292>
+			<j268>04</j268>
+			<j269>00</j269>
+			<j141>IP</j141>
+			<j396>20</j396>
+			<price>
+				<j148>01</j148>
+				<j261>05</j261>
+				<j151>14.95</j151>
+				<j152>USD</j152>
+			</price>
+		</supplydetail>
+	</product>
+	<product>
+		<a001>9781094072586</a001>
+		<a002>03</a002>
+		<productidentifier>
+			<b221>01</b221>
+			<b244>DTdhfv</b244>
+		</productidentifier>
+		<productidentifier>
+			<b221>02</b221>
+			<b244>1094072583</b244>
+		</productidentifier>
+		<productidentifier>
+			<b221>15</b221>
+			<b244>9781094072586</b244>
+		</productidentifier>
+		<b012>AJ</b012>
+		<b211>099</b211>
+		<b280>DRM=NO;US=NO;STREAMING=NO</b280>
+		<title>
+			<b202>01</b202>
+			<b030>The</b030>
+			<b031>Aeronauts</b031>
+			<b029>Travels in the Air</b029>
+		</title>
+		<contributor>
+			<b034>1</b034>
+			<b035>A01</b035>
+			<b036>James Glaisher</b036>
+			<b037>Glaisher, James</b037>
+			<b039>James</b039>
+			<b040>Glaisher</b040>
+			<b044><![CDATA[<p><b>James Glaisher</b> (1809-1903) was an English meteorologist, aeronaut, and astronomer who worked at the Royal Observatory, Greenwich for forty-three years. He was a founding member of the Meteorological Society and the Aeronautical Society of Great Britain. He is most famous as a pioneering balloonist and his ascent on September 5, 1862 along with Henry Tracey Coxwell broke the world record for altitude. </p>]]></b044>
+		</contributor>
+		<contributor>
+			<b034>2</b034>
+			<b035>A23</b035>
+			<b036>Liz Bentley</b036>
+			<b037>Bentley, Liz</b037>
+			<b039>Liz</b039>
+			<b040>Bentley</b040>
+		</contributor>
+		<contributor>
+			<b034>3</b034>
+			<b035>E07</b035>
+			<b036>Antony Ferguson</b036>
+			<b037>Ferguson, Antony</b037>
+			<b039>Antony</b039>
+			<b040>Ferguson</b040>
+			<b044><![CDATA[<p><b>Antony Ferguson</b>, Earphones Award–winning narrator, was born in London. He has performed successfully on both sides of the Atlantic and has played many leading roles in theater, film, and television.</p>]]></b044>
+		</contributor>
+		<b056>UBR</b056>
+		<language>
+			<b253>01</b253>
+			<b252>eng</b252>
+		</language>
+		<extent>
+			<b218>09</b218>
+			<b219>231</b219>
+			<b220>05</b220>
+		</extent>
+		<b064>BIO034000</b064>
+		<subject>
+			<b067>10</b067>
+			<b069>BIO034000</b069>
+		</subject>
+		<subject>
+			<b067>20</b067>
+			<b069>scientist;ambition;ambitious;aviation;flight;hot air balloon;discoveries;biography</b069>
+		</subject>
+		<b073>01</b073>
+		<audience>
+			<b204>02</b204>
+			<b205>Adult</b205>
+			<b206>Adult</b206>
+		</audience>
+		<othertext>
+			<d102>01</d102>
+			<d103>06</d103>
+			<d104><![CDATA[<p><br></p><p>In 1862, ambitious scientist James Glaisher set out to do the impossible: ascend higher into the skies than ever before to establish his groundbreaking research.</p><p>Glaisher’s death-defying journey forms the story of the major motion picture&nbsp;<em>The Aeronauts</em>, starring Eddie Redmayne as Glaisher and Felicity Jones as his balloon companion, Amelia Wren. Written in his own words,&nbsp;<em>The Aeronauts&nbsp;</em>chronicles Glaisher’s incredible flights and discoveries first hand, as well as his observations on the pioneers who came before and inspired him.</p><p>Includes an introduction by Professor Liz Bentley, Chief Executive at the Royal Meteorological Society, of which Glaisher was a founding member in 1850</p>]]></d104>
+		</othertext>
+		<mediafile>
+			<f114>06</f114>
+			<f115>03</f115>
+			<f116>01</f116>
+			<f117>https://cdn.blackstonepublishing.com/d/h/dhfv/dhfv-square-final.jpg</f117>
+			<f373>20190828</f373>
+		</mediafile>
+		<mediafile>
+			<f114>44</f114>
+			<f115>07</f115>
+			<f116>01</f116>
+			<f117>https://cdn.blackstonepublishing.com/d/h/dhfv/dhfv-sample.mp3</f117>
+		</mediafile>
+		<imprint>
+			<b079>Blackstone Publishing</b079>
+		</imprint>
+		<publisher>
+			<b291>01</b291>
+			<b081>Blackstone Publishing</b081>
+		</publisher>
+		<b394>04</b394>
+		<b003>20190924</b003>
+		<copyrightstatement>
+			<b087>2019</b087>
+			<copyrightowner>
+				<b047>Blackstone Publishing</b047>
+			</copyrightowner>
+		</copyrightstatement>
+		<salesrights>
+			<b089>01</b089>
+			<b090>AD AE AF AG AI AL AM AO AQ AR AS AT AU AW AX AZ BA BB BD BE BF BG BH BI BJ BL BM BN BO BQ BR BS BT BV BW BY BZ CA CC CD CF CG CH CI CK CL CM CN CO CR CU CV CW CX CY CZ DE DJ DK DM DO DZ EC EE EG EH ER ES ET FI FJ FK FM FO FR GA GB GD GE GF GG GH GI GL GM GN GP GQ GR GS GT GU GW GY HK HM HN HR HT HU ID IE IL IM IN IO IQ IR IS IT JE JM JO JP KE KG KH KI KM KN KP KR KW KY KZ LA LB LC LI LK LR LS LT LU LV LY MA MC MD ME MF MG MH MK ML MM MN MO MP MQ MR MS MT MU MV MW MX MY MZ NA NC NE NF NG NI NL NO NP NR NU NZ OM PA PE PF PG PH PK PL PM PN PR PS PT PW PY QA RE RO RS RU RW SA SB SC SD SE SG SH SI SJ SK SL SM SN SO SR SS ST SV SX SY SZ TC TD TF TG TH TJ TK TL TM TN TO TR TT TV TW TZ UA UG UM US UY UZ VA VC VE VG VI VN VU WF WS YE YT ZA ZM ZW</b090>
+		</salesrights>
+		<relatedproduct>
+			<h208>06</h208>
+			<productidentifier>
+				<b221>01</b221>
+				<b244>ZPdhfv</b244>
+			</productidentifier>
+			<productidentifier>
+				<b221>02</b221>
+				<b244>1094072524</b244>
+			</productidentifier>
+			<productidentifier>
+				<b221>15</b221>
+				<b244>9781094072524</b244>
+			</productidentifier>
+			<b012>AC</b012>
+			<b333>A101</b333>
+		</relatedproduct>
+		<relatedproduct>
+			<h208>06</h208>
+			<productidentifier>
+				<b221>01</b221>
+				<b244>ZEdhfv</b244>
+			</productidentifier>
+			<productidentifier>
+				<b221>02</b221>
+				<b244>1094072532</b244>
+			</productidentifier>
+			<productidentifier>
+				<b221>15</b221>
+				<b244>9781094072531</b244>
+			</productidentifier>
+			<b012>AC</b012>
+			<b333>A101</b333>
+		</relatedproduct>
+		<relatedproduct>
+			<h208>06</h208>
+			<productidentifier>
+				<b221>01</b221>
+				<b244>ZMdhfv</b244>
+			</productidentifier>
+			<productidentifier>
+				<b221>02</b221>
+				<b244>1094072540</b244>
+			</productidentifier>
+			<productidentifier>
+				<b221>15</b221>
+				<b244>9781094072548</b244>
+			</productidentifier>
+			<b012>AC</b012>
+			<b333>A103</b333>
+		</relatedproduct>
+		<relatedproduct>
+			<h208>06</h208>
+			<productidentifier>
+				<b221>01</b221>
+				<b244>DRdhfv</b244>
+			</productidentifier>
+			<productidentifier>
+				<b221>02</b221>
+				<b244>1094072567</b244>
+			</productidentifier>
+			<productidentifier>
+				<b221>15</b221>
+				<b244>9781094072562</b244>
+			</productidentifier>
+			<b012>AJ</b012>
+		</relatedproduct>
+		<relatedproduct>
+			<h208>06</h208>
+			<productidentifier>
+				<b221>01</b221>
+				<b244>DZdhfv</b244>
+			</productidentifier>
+			<productidentifier>
+				<b221>02</b221>
+				<b244>1094072575</b244>
+			</productidentifier>
+			<productidentifier>
+				<b221>15</b221>
+				<b244>9781094072579</b244>
+			</productidentifier>
+			<b012>AJ</b012>
+		</relatedproduct>
+		<relatedproduct>
+			<h208>06</h208>
+			<productidentifier>
+				<b221>01</b221>
+				<b244>DPdhfv</b244>
+			</productidentifier>
+			<productidentifier>
+				<b221>02</b221>
+				<b244>1094072591</b244>
+			</productidentifier>
+			<productidentifier>
+				<b221>15</b221>
+				<b244>9781094072593</b244>
+			</productidentifier>
+			<b012>AJ</b012>
+		</relatedproduct>
+		<relatedproduct>
+			<h208>06</h208>
+			<productidentifier>
+				<b221>01</b221>
+				<b244>DMdhfv</b244>
+			</productidentifier>
+			<productidentifier>
+				<b221>02</b221>
+				<b244>1094072524</b244>
+			</productidentifier>
+			<productidentifier>
+				<b221>15</b221>
+				<b244>9781094072524</b244>
+			</productidentifier>
+			<b012>AJ</b012>
+		</relatedproduct>
+		<supplydetail>
+			<j137>Blackstone Publishing</j137>
+			<j292>09</j292>
+			<j268>04</j268>
+			<j269>00</j269>
+			<j141>IP</j141>
+			<j396>20</j396>
+			<price>
+				<j148>01</j148>
+				<j261>05</j261>
+				<j151>19.95</j151>
+				<j152>USD</j152>
+			</price>
+		</supplydetail>
+	</product>
+	<product>
+		<a001>9781094149226</a001>
+		<a002>03</a002>
+		<productidentifier>
+			<b221>01</b221>
+			<b244>DTdorn</b244>
+		</productidentifier>
+		<productidentifier>
+			<b221>02</b221>
+			<b244>1094149225</b244>
+		</productidentifier>
+		<productidentifier>
+			<b221>15</b221>
+			<b244>9781094149226</b244>
+		</productidentifier>
+		<b012>AJ</b012>
+		<b211>099</b211>
+		<b280>DRM=NO;US=NO;STREAMING=NO</b280>
+		<series>
+			<b018>The Raybearer Series</b018>
+			<b019>1</b019>
+		</series>
+		<title>
+			<b202>01</b202>
+			<b203>Raybearer</b203>
+		</title>
+		<contributor>
+			<b034>1</b034>
+			<b035>A01</b035>
+			<b036>Jordan Ifueko</b036>
+			<b037>Ifueko, Jordan</b037>
+			<b039>Jordan</b039>
+			<b040>Ifueko</b040>
+			<b044><![CDATA[<p><b>Jordan Ifueko</b> grew up under a blanket fort, eating fried plantains, and reading comic books. Eventually, she switched the comics for a tea-stained notebook. She now lives in Los Angeles with her husband, David, and their collection of <i>Black Panther</i> Funko Pops.</p>]]></b044>
+		</contributor>
+		<contributor>
+			<b034>2</b034>
+			<b035>E07</b035>
+			<b036>Joniece Abbott-Pratt</b036>
+			<b037>Abbott-Pratt, Joniece</b037>
+			<b039>Joniece</b039>
+			<b040>Abbott-Pratt</b040>
+			<b044><![CDATA[<p>With an MFA in acting from the University of Iowa, <b>Joniece Abbott-Pratt</b> has performed on regional theater stages across the country, including the Public Theater in New York City. She has also appeared on numerous television shows, including <i>The Good Fight</i>, <i>Law and Order</i>: <i>SVU</i>, <i>Luke Cage</i>, and <i>Orange Is the New Black</i>.</p>]]></b044>
+		</contributor>
+		<b056>UBR</b056>
+		<language>
+			<b253>01</b253>
+			<b252>eng</b252>
+		</language>
+		<extent>
+			<b218>09</b218>
+			<b219>829</b219>
+			<b220>05</b220>
+		</extent>
+		<b064>YAF019030</b064>
+		<subject>
+			<b067>10</b067>
+			<b069>YAF019030</b069>
+		</subject>
+		<subject>
+			<b067>20</b067>
+			<b069>fantasy;ya;epic;young adult;loyalty;council;prince;family;loyal</b069>
+		</subject>
+		<b073>01</b073>
+		<audience>
+			<b204>02</b204>
+			<b205>Young Adult (12-17)</b205>
+			<b206>Young Adult (12-17)</b206>
+		</audience>
+		<audiencerange>
+			<b074>17</b074>
+			<b075>03</b075>
+			<b076>12</b076>
+			<b075>04</b075>
+			<b076>17</b076>
+		</audiencerange>
+		<othertext>
+			<d102>01</d102>
+			<d103>06</d103>
+			<d104><![CDATA[<p><strong>The epic debut YA fantasy from an incredible new talent—perfect for fans of Tomi Adeyemi and Sabaa Tahir</strong></p><p>Nothing is more important than loyalty. But what if you’ve sworn to protect the one you were born to destroy?</p><p>Tarisai has always longed for the warmth of a family. She was raised in isolation by a mysterious, often absent mother known only as the Lady. The Lady sends her to the capital of the global empire of Aritsar to compete with other children to be chosen as one of the Crown Prince’s Council of Eleven. If she’s picked, she’ll be joined with the other Council members through the Ray, a bond deeper than blood. That closeness is irresistible to Tarisai, who has always wanted to belong somewhere. But the Lady has other ideas, including a magical wish that Tarisai is compelled to obey: kill the Crown Prince once she gains his trust. Tarisai won’t stand by and become someone’s pawn—but is she strong enough to choose a different path for herself?</p><p>With extraordinary world-building and breathtaking prose, <em>Raybearer</em> is the story of loyalty, fate, and the lengths we’re willing to go for the ones we love.</p>]]></d104>
+		</othertext>
+		<othertext>
+			<d102>06</d102>
+			<d103>06</d103>
+			<d104><![CDATA[<p>“Jordan Ifueko creates a bold new world in her debut book.”</p>]]></d104>
+			<d108>Seventeen</d108>
+		</othertext>
+		<othertext>
+			<d102>06</d102>
+			<d103>06</d103>
+			<d104><![CDATA[<p>“[An] immersive and powerful debut.”</p>]]></d104>
+			<d108>Minneapolis Star Tribune</d108>
+		</othertext>
+		<othertext>
+			<d102>06</d102>
+			<d103>06</d103>
+			<d104><![CDATA[<p><strong><em>&nbsp;</em></strong>“The ultimate escapist read…Enthralling.”</p>]]></d104>
+			<d108>Napa Valley Register</d108>
+		</othertext>
+		<othertext>
+			<d102>06</d102>
+			<d103>06</d103>
+			<d104><![CDATA[<p>“Joniece Abbott-Pratt’s evocative narration skillfully complements Ifueko’s vibrant multilayered fantasy…Abbott-Pratt’s richly expressive characterizations imbue a fascinating cast with warmth and complexity, and her expert delivery evokes the listener’s curiosity at each turn. Winner of AudioFile Earphones Award.”</p>]]></d104>
+			<d108>AudioFile</d108>
+		</othertext>
+		<othertext>
+			<d102>06</d102>
+			<d103>06</d103>
+			<d104><![CDATA[<p>"<i>Raybearer</i> is an
+excellent and needed addition to diverse fantasy, and the writing and
+characters immediately captivated me.”</p>]]></d104>
+			<d108>BuzzFeed</d108>
+		</othertext>
+		<othertext>
+			<d102>06</d102>
+			<d103>06</d103>
+			<d104><![CDATA[<p>“I love it when characters are faced with impossible choices. Even better, add <i>magic</i>. I was hooked from page one.”</p>]]></d104>
+			<d108>Electric Literature</d108>
+		</othertext>
+		<othertext>
+			<d102>06</d102>
+			<d103>06</d103>
+			<d104><![CDATA[<p>“A fresh, phenomenal fantasy that begs readers to revel in its brilliant world.”</p>]]></d104>
+			<d108>Kirkus Reviews (starred review)</d108>
+		</othertext>
+		<othertext>
+			<d102>06</d102>
+			<d103>06</d103>
+			<d104><![CDATA[<p>“Ifueko’s mesmerizing debut stuns as it weaves a tale of loyalty, fate, destiny, family, and revenge. Moreover, it places a dark skinned heroine front and center, who is beautiful and powerful, deadly and compassionate, and vulnerable and tough, giving YA literature more of the diverse representation teens need.”</p>]]></d104>
+			<d108>Booklist (starred review)</d108>
+		</othertext>
+		<othertext>
+			<d102>06</d102>
+			<d103>06</d103>
+			<d104><![CDATA[<p>“By crafting a world plagued by imperialism, poverty, and institutionalized misogyny and a mythology that literalizes the power of love, purpose, and sacrifice, Ifueko illustrates the need for social change and inspires readers to fight for it.”</p>]]></d104>
+			<d108>Publishers Weekly (starred review)</d108>
+		</othertext>
+		<othertext>
+			<d102>06</d102>
+			<d103>06</d103>
+			<d104><![CDATA[<p>“Completely blown away! Tarisai’s tale set my imagination on fire.”</p>]]></d104>
+			<d108>Ebony Elizabeth Thomas, author of The Dark Fantastic</d108>
+		</othertext>
+		<othertext>
+			<d102>06</d102>
+			<d103>06</d103>
+			<d104><![CDATA[<p>“Fresh and utterly transportive, <i>Raybearer</i> is a fantastical fight for freedom, family, and justice at all costs.”</p>]]></d104>
+			<d108>Heidi Heilig, author of The Girl from Everywhere</d108>
+		</othertext>
+		<othertext>
+			<d102>06</d102>
+			<d103>06</d103>
+			<d104><![CDATA[<p>“Ifueko’s world building and prose is nothing short of seductive and I completely adore Tarisai’s headstrong, tragic self. This will be a major gem of a release in 2020!”</p>]]></d104>
+			<d108>Jessica Khoury, author of The Forbidden Wish </d108>
+		</othertext>
+		<mediafile>
+			<f114>06</f114>
+			<f115>03</f115>
+			<f116>01</f116>
+			<f117>https://cdn.blackstonepublishing.com/d/o/dorn/dorn-square-final.jpg</f117>
+			<f373>20201123</f373>
+		</mediafile>
+		<mediafile>
+			<f114>44</f114>
+			<f115>07</f115>
+			<f116>01</f116>
+			<f117>https://cdn.blackstonepublishing.com/d/o/dorn/dorn-sample.mp3</f117>
+		</mediafile>
+		<prize>
+			<g126>Booklist Pick</g126>
+		</prize>
+		<prize>
+			<g126>Electric Literature</g126>
+		</prize>
+		<prize>
+			<g126>BookRiot Pick</g126>
+		</prize>
+		<prize>
+			<g126>Minneapolis Star-Tribune Pick</g126>
+		</prize>
+		<prize>
+			<g126>AudioFile Earphones Award</g126>
+		</prize>
+		<prize>
+			<g126>Kirkus Reviews Pick</g126>
+		</prize>
+		<prize>
+			<g126>Tor.com Reviewers' Choice</g126>
+		</prize>
+		<prize>
+			<g126>io9 Pick</g126>
+		</prize>
+		<prize>
+			<g126>Publishers Weekly Pick of the Week</g126>
+		</prize>
+		<prize>
+			<g126>New York Times bestseller</g126>
+		</prize>
+		<prize>
+			<g126>Voice Arts Award</g126>
+		</prize>
+		<prize>
+			<g126>NPR Best Book of the Year</g126>
+		</prize>
+		<prize>
+			<g126>Buzzfeed Best Books of the Year</g126>
+		</prize>
+		<prize>
+			<g126>Audiofile Magazine &amp;#8220;Best of the Year&amp;#8221;</g126>
+		</prize>
+		<imprint>
+			<b079>Blackstone Publishing</b079>
+		</imprint>
+		<publisher>
+			<b291>01</b291>
+			<b081>Blackstone Publishing</b081>
+		</publisher>
+		<b394>04</b394>
+		<b003>20200818</b003>
+		<copyrightstatement>
+			<b087>2020</b087>
+			<copyrightowner>
+				<b047>Blackstone Publishing</b047>
+			</copyrightowner>
+		</copyrightstatement>
+		<salesrights>
+			<b089>01</b089>
+			<b090>AD AE AF AI AL AM AO AR AS AT AW AX AZ BA BB BE BF BG BH BI BJ BL BO BQ BR BT BV BY CA CC CD CF CG CH CI CK CL CN CO CR CU CV CW CX CZ DE DJ DK DM DO DZ EC EE EH ER ES ET FI FM FO FR GA GE GF GL GN GP GQ GR GS GT GU GW HK HM HN HR HT HU ID IL IO IR IS IT JP KG KH KM KP KR KZ LA LB LI LR LT LU LV LY MA MC MD ME MF MG MH MK ML MM MN MO MP MQ MV MX MZ NC NE NF NI NL NO NP NU OM PA PE PH PL PM PR PS PT PW PY QA RE RO RS RU RW SA SE SI SJ SK SM SN SR SS ST SV SX SY TC TD TF TG TH TJ TK TL TM TN TR TW UA UM US UY UZ VA VE VI VN VU WF YT</b090>
+		</salesrights>
+		<relatedproduct>
+			<h208>06</h208>
+			<productidentifier>
+				<b221>01</b221>
+				<b244>ZPdorn</b244>
+			</productidentifier>
+			<productidentifier>
+				<b221>02</b221>
+				<b244>1094149160</b244>
+			</productidentifier>
+			<productidentifier>
+				<b221>15</b221>
+				<b244>9781094149165</b244>
+			</productidentifier>
+			<b012>AC</b012>
+			<b333>A101</b333>
+		</relatedproduct>
+		<relatedproduct>
+			<h208>06</h208>
+			<productidentifier>
+				<b221>01</b221>
+				<b244>ZEdorn</b244>
+			</productidentifier>
+			<productidentifier>
+				<b221>02</b221>
+				<b244>1094149179</b244>
+			</productidentifier>
+			<productidentifier>
+				<b221>15</b221>
+				<b244>9781094149172</b244>
+			</productidentifier>
+			<b012>AC</b012>
+			<b333>A101</b333>
+		</relatedproduct>
+		<relatedproduct>
+			<h208>06</h208>
+			<productidentifier>
+				<b221>01</b221>
+				<b244>ZMdorn</b244>
+			</productidentifier>
+			<productidentifier>
+				<b221>02</b221>
+				<b244>1094149187</b244>
+			</productidentifier>
+			<productidentifier>
+				<b221>15</b221>
+				<b244>9781094149189</b244>
+			</productidentifier>
+			<b012>AC</b012>
+			<b333>A103</b333>
+		</relatedproduct>
+		<relatedproduct>
+			<h208>06</h208>
+			<productidentifier>
+				<b221>01</b221>
+				<b244>DRdorn</b244>
+			</productidentifier>
+			<productidentifier>
+				<b221>02</b221>
+				<b244>1094149209</b244>
+			</productidentifier>
+			<productidentifier>
+				<b221>15</b221>
+				<b244>9781094149202</b244>
+			</productidentifier>
+			<b012>AJ</b012>
+		</relatedproduct>
+		<relatedproduct>
+			<h208>06</h208>
+			<productidentifier>
+				<b221>01</b221>
+				<b244>DZdorn</b244>
+			</productidentifier>
+			<productidentifier>
+				<b221>02</b221>
+				<b244>1094149217</b244>
+			</productidentifier>
+			<productidentifier>
+				<b221>15</b221>
+				<b244>9781094149219</b244>
+			</productidentifier>
+			<b012>AJ</b012>
+		</relatedproduct>
+		<relatedproduct>
+			<h208>06</h208>
+			<productidentifier>
+				<b221>01</b221>
+				<b244>DPdorn</b244>
+			</productidentifier>
+			<productidentifier>
+				<b221>02</b221>
+				<b244>1094149233</b244>
+			</productidentifier>
+			<productidentifier>
+				<b221>15</b221>
+				<b244>9781094149233</b244>
+			</productidentifier>
+			<b012>AJ</b012>
+		</relatedproduct>
+		<relatedproduct>
+			<h208>06</h208>
+			<productidentifier>
+				<b221>01</b221>
+				<b244>DMdorn</b244>
+			</productidentifier>
+			<productidentifier>
+				<b221>02</b221>
+				<b244>1094149160</b244>
+			</productidentifier>
+			<productidentifier>
+				<b221>15</b221>
+				<b244>9781094149165</b244>
+			</productidentifier>
+			<b012>AJ</b012>
+		</relatedproduct>
+		<supplydetail>
+			<j137>Blackstone Publishing</j137>
+			<j292>09</j292>
+			<j268>04</j268>
+			<j269>00</j269>
+			<j141>IP</j141>
+			<j396>20</j396>
+			<price>
+				<j148>01</j148>
+				<j261>05</j261>
+				<j151>22.95</j151>
+				<j152>USD</j152>
+			</price>
+		</supplydetail>
+	</product>
+</ONIXmessage>

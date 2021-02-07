@@ -20,7 +20,7 @@ const bookSchema = new Schema(
 		AUTHORS: {type: Array, default: []},	// array of author ids	
 		BIOGRAPHICAL_NOTE: String,	
 		NARRATORS: {type: Array, default: []},	// array of narrator ids 
-		GENRES: {type: Array, default: []},	// array of strings of genres
+		GENRES: {type: Array, default: []},	// array of strings of genre ids 
 		AUDIENCE: String,	
 		PUBLISHER_ID: Object, 
 		PRICE: Number,
