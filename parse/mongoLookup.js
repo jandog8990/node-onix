@@ -5,7 +5,7 @@ module.exports = {
         AUTHOR_TABLES: "AUTHOR_TABLES",
         NARRATOR_TABLES: "NARRATOR_TABLES",
         PUBLISHER_TABLE: "PUBLISHER_TABLE",
-        GENRE_TABLES: "GENRE_TABLES",
+        SUBJECT_TABLES: "SUBJECT_TABLES",
         BOOK_PHOTO_TABLES: "BOOK_PHOTO_TABLES",
         AUDIO_TABLES: "AUDIO_TABLES",
         BOOK_REVIEW_TABLES: "BOOK_REVIEW_TABLES",
@@ -54,8 +54,8 @@ module.exports = {
         GHOST: "GHOST",
         TRANSLATOR: "TRANSLATOR"
     },
-    genreFields: {
-        // GENRE fields
+    subjectFields: {
+        // SUBJECT fields
         BISAC_SUBJECTS: "BISAC_SUBJECTS",
         BIC_SUBJECTS: "BIC_SUBJECTS",
         BIC_READING_LEVEL: "BIC_READING_LEVEL",

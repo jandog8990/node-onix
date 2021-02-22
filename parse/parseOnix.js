@@ -22,7 +22,7 @@ var Audio = require('./models/audio');
 var Book = require('./models/book');
 var BookPhotos = require('./models/book_photos');
 var Narrator = require('./models/narrator');
-var Genre = require('./models/genre');
+var Subject = require('./models/subject');
 var Publisher = require('./models/publisher');
 var BookReview = require('./models/book_review');
 var BookExtra = require('./models/book_extra');
@@ -33,9 +33,13 @@ const onixKeyLookup = onixlookup.onixKeyLookup;
 const dbLookup = require('./mongoLookup');
 const tables = dbLookup.tables;
 const { BOOK_TABLE, AUTHOR_TABLES, NARRATOR_TABLES,
-	PUBLISHER_TABLE, GENRE_TABLES, BOOK_PHOTO_TABLES, AUDIO_TABLES, BOOK_EXTRA, BOOK_REVIEW } = tables;
+	PUBLISHER_TABLE, SUBJECT_TABLES, BOOK_PHOTO_TABLES, AUDIO_TABLES, BOOK_EXTRA, BOOK_REVIEW } = tables;
 
-var macXml = fs.readFileSync('./xml/MacmillanMetadata.xml', { encoding: 'utf-8' });
+// Read input files from the command line
+var xmlFile = process.argv[2];
+console.log("XML file = " + xmlFile);
+
+var macXml = fs.readFileSync(xmlFile, { encoding: 'utf-8' });
 var onix21Xsd = fs.readFileSync('./ONIX2.1/ONIX_BookProduct_CodeLists.xsd', { encoding: 'utf-8' });
 // var EPUBDIRECT = fs.readFileSync(path.join(__dirname, './fixtures/epubDirect.xml'), { encoding: 'utf-8' });
 
@@ -43,6 +47,7 @@ var onix21Xsd = fs.readFileSync('./ONIX2.1/ONIX_BookProduct_CodeLists.xsd', { en
 console.log("db_url = " + db_url);
 mongoose.connect(db_url, {
 	useCreateIndex: true,
+	autoIndex: true,
 	useNewUrlParser: true,
 	useFindAndModify: false,
 	useUnifiedTopology: true
@@ -115,6 +120,10 @@ function getValue(obj, searchKey) {
  * @param {*} xsdSchema - xsd schema for code list 
  */
 async function processOnixJson(onixJson, xsdJson) {
+	console.log("ONIX Json:");
+	console.log(onixJson);	
+	console.log("\n");	
+
 	var products = onixJson.products;
 	var testBook = products[1];
 
@@ -134,12 +143,12 @@ async function processOnixJson(onixJson, xsdJson) {
 	var mongoAuthors = [];	// array of objs as there could be mult authors
 	var mongoNarrators = [];	// array of objs as there could be mult narrators 
 	var mongoPublisher = {};
-	var mongoGenres = [];
+	var mongoSubjects = [];
 	var mongoBookPhotos = [];
 	var mongoAudioTables = [];
 	var mongoBookReviews = [];
 	var mongoBookExtras = [];
-	var mongoGenre = {};
+	var mongoSubject = {};
 
 	// table to edit when looking up the role, type and identifier
 	var tablesToEdit = {
@@ -147,21 +156,21 @@ async function processOnixJson(onixJson, xsdJson) {
 		AUTHOR_TABLES: mongoAuthors,
 		NARRATOR_TABLES: mongoNarrators,
 		PUBLISHER_TABLE: mongoPublisher,
-		GENRE_TABLES: mongoGenres,
+		SUBJECT_TABLES: mongoSubjects,
 		BOOK_PHOTO_TABLES: mongoBookPhotos,
 		AUDIO_TABLES: mongoAudioTables,
 		BOOK_REVIEW_TABLES: mongoBookReviews,
 		BOOK_EXTRA_TABLES: mongoBookExtras
 	}
 	updateObjects(testBook, tablesToEdit, mongoBook, mongoAuthors,
-		mongoNarrators, mongoPublisher, mongoGenres, mongoBookPhotos,
+		mongoNarrators, mongoPublisher, mongoSubjects, mongoBookPhotos,
 		mongoAudioTables, mongoBookReviews, mongoBookExtras);
 
 
-	// Update the GENRE table since it has all fields for one table
-	for (const obj of mongoGenres) {
+	// Update the SUBJECT table since it has all fields for one table
+	for (const obj of mongoSubjects) {
 		for (var key in obj) {
-			mongoGenre[key] = obj[key];
+			mongoSubject[key] = obj[key];
 		}
 	}
 
@@ -188,8 +197,8 @@ async function processOnixJson(onixJson, xsdJson) {
 	console.log(mongoPublisher);
 	console.log("\n");
 
-	console.log("Genre Table:");
-	console.log(mongoGenre);
+	console.log("Subject Table:");
+	console.log(mongoSubject);
 	console.log("\n");
 
 	console.log("Book Photos:");
@@ -211,10 +220,10 @@ async function processOnixJson(onixJson, xsdJson) {
 	// INSERT new collections into the mongo db 
 	try {
 		await insertMongoCollections(mongoBook, mongoAuthors, mongoNarrators, mongoPublisher,
-			mongoGenre, mongoBookPhotos, mongoAudioTables, mongoBookReviews, mongoBookExtras);
-		} catch(err) {
-			console.error(err.message);
-		}
+			mongoSubject, mongoBookPhotos, mongoAudioTables, mongoBookReviews, mongoBookExtras);
+	} catch (err) {
+		console.error(err.message);
+	}
 
 	// Test for checking a BOOK can be queried
 	/*	
@@ -231,10 +240,10 @@ async function processOnixJson(onixJson, xsdJson) {
  * @param {*} authorTables 
  * @param {*} narratorTables 
  * @param {*} publisherTable 
- * @param {*} genreTables 
+ * @param {*} subjectTables 
  */
 function updateObjects(book, tablesToEdit, bookTable, authorTables,
-	narratorTables, publisherTable, genreTables, bookPhotoTables,
+	narratorTables, publisherTable, subjectTables, bookPhotoTables,
 	audioTables, bookReviewTables, bookExtraTables) {
 
 	// check Array.isArray() for imported objects
@@ -299,7 +308,7 @@ function updateObjects(book, tablesToEdit, bookTable, authorTables,
 }
 
 async function insertMongoCollections(mongoBook, mongoAuthors, mongoNarrators, mongoPublisher,
-	mongoGenre, mongoBookPhotos, mongoAudioTables, mongoBookReviews, mongoBookExtras) {
+	mongoSubject, mongoBookPhotos, mongoAudioTables, mongoBookReviews, mongoBookExtras) {
 
 	try {
 		/*	
@@ -309,10 +318,10 @@ async function insertMongoCollections(mongoBook, mongoAuthors, mongoNarrators, m
 		console.log(bookResult);
 		console.log("\n");
 		*/
-		
+
 		// Save the AUTHOR tables to the DB	
 		var authorIds = [];	// received from mongo after insertion	
-		const authorResult = await Author.insertMany(mongoAuthors);
+		const authorResult = await Author.insertMany(mongoAuthors); 
 		console.log("Author Result:");
 		console.log(authorResult);
 		console.log("\n");
@@ -322,7 +331,7 @@ async function insertMongoCollections(mongoBook, mongoAuthors, mongoNarrators, m
 		console.log("Author ids:");
 		console.log(authorIds);
 		console.log("\n");
-		
+
 		// Save the NARRATOR tables to the DB	
 		var narratorIds = [];	// received from mongo after insertion	
 		const narratorsResult = await Narrator.insertMany(mongoNarrators);
@@ -341,19 +350,19 @@ async function insertMongoCollections(mongoBook, mongoAuthors, mongoNarrators, m
 		console.log("Publisher Result:");
 		console.log(publisherResult);
 		console.log("\n");
-		var	publisherId = new ObjectId(publisherResult["_id"]);
+		var publisherId = new ObjectId(publisherResult["_id"]);
 		console.log("Publisher id:");
 		console.log(publisherId);
 		console.log("\n");
 
-		// Save the GENRE tables to the DB
-		const genreResult = await Genre.create(mongoGenre);
-		console.log("Genre Result:");
-		console.log(genreResult);
+		// Save the SCHEMA tables to the DB
+		const subjectResult = await Subject.create(mongoSubject);
+		console.log("Subject Result:");
+		console.log(subjectResult);
 		console.log("\n");
-		var genreId = new ObjectId(genreResult["_id"]);
-		console.log("Genre id:");
-		console.log(genreId);
+		var subjectId = new ObjectId(subjectResult["_id"]);
+		console.log("Subject id:");
+		console.log(subjectId);
 		console.log("\n");
 
 		// Save the BOOK_PHOTOS to the DB
@@ -373,19 +382,19 @@ async function insertMongoCollections(mongoBook, mongoAuthors, mongoNarrators, m
 		mongoBook.AUTHORS = authorIds;
 		mongoBook.NARRATORS = narratorIds;
 		mongoBook.PUBLISHER_ID = publisherId;
-		mongoBook.GENRES = new Array(genreId);
-		console.log("MOngo Book w Authors:");
+		mongoBook.SUBJECTS = new Array(subjectId);
+		console.log("Mongo Book Creation:");
 		console.log(mongoBook);
 		console.log("\n");
 		const bookResult = await Book.create(mongoBook);
 		console.log("Book Result:");
 		console.log(bookResult);
 		console.log("\n");
-		
+
 		console.log("STORAGE SUCCESSFUL! -> EXIT()")
 		process.exit(0);
 	} catch (err) {
-		console.error("Mongo err:", err);	
+		console.error("Mongo err:", err);
 		process.exit(1);
 	}
 }

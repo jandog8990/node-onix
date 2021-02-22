@@ -2,9 +2,9 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+//AUTHOR_ID: { type: Number, default: null, required: true },
 const authorSchema = new Schema(
 	{
-		//AUTHOR_ID: { type: Number, default: null, required: true },
 		AUTHOR_ID: Number,
 		LASTNAME: String, 
 		FIRSTNAME: String, 
@@ -27,6 +27,9 @@ const authorSchema = new Schema(
 authorSchema.virtual('url').get(function() {
 	return '/author/' + this._id;
 });
+
+// Create index for both LASTNAME & FIRSTNAME to ensure uniqueness
+authorSchema.index({LASTNAME: 1, FIRSTNAME: 1}, {unique: true});
 
 // export the Audio model for the API
 //module.exports = mongoose.model('Audio', audioSchema, 'audio');

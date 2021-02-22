@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 const publisherSchema = new Schema(
 	{
-		PUBLISHER_NAME: String,
+		PUBLISHER_NAME: {type: String, required: true, unique: true},
 		COUNTRY: String,
 		YEAR: Number,
 		SEARCH_ID: String,	

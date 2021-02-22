@@ -8,7 +8,7 @@ const bookPhotosSchema = new Schema(
 		ISBN13: String, // FK to the BOOK Schema	
 		PHOTO_ID: Number,
 		PHOTO_DATE: Object, 
-		PHOTO_LOC: String, 
+		PHOTO_LOC: {type: String, required: true, unique: true}, 
 		PHOTO_TYPE: Object, 
 		DESCRIPTION: Object, 
 		THUMBNAIL_LOC: String, 

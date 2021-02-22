@@ -16,6 +16,7 @@
         "mongoose": "^5.11.12",
         "nconf": "^0.11.1",
         "subjects-utils": "0.0.1",
+        "underscore": "^1.12.0",
         "xml-schema": "git://github.com/christianroy/xml-schema.git",
         "xsd": "0.0.2",
         "xsd2json": "^1.12.17",

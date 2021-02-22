@@ -10,9 +10,9 @@ const bookAudioList = db.wp_BOOKS.aggregate([ { $lookup: { from: "wp_AUDIO", loc
 const bookSchema = new Schema(
 	{
 		// ISBN: { type: Number, default: null, required: true },
-		ISBN: Number,
-		ISBN13: String,	
-		TITLE: String,
+		ISBN: {type: Number},
+		ISBN13: {type: String, required: true, unique: true},	
+		TITLE: {type: String, required: true, unique: true},
 		TITLE_ACRONYM: String,
 		TITLE_ABBREVIATED: String,	
 		EDITION: Object,
@@ -21,6 +21,7 @@ const bookSchema = new Schema(
 		BIOGRAPHICAL_NOTE: String,	
 		NARRATORS: {type: Array, default: []},	// array of narrator ids 
 		GENRES: {type: Array, default: []},	// array of strings of genre ids 
+		SUBJECTS: {type: Array},	
 		AUDIENCE: String,	
 		PUBLISHER_ID: Object, 
 		PRICE: Number,
@@ -52,6 +53,8 @@ const bookSchema = new Schema(
 bookSchema.virtual('url').get(function() {
 	return '/books/' + this._id;
 });
+
+bookSchema.index({ISBN13: 1, TITLE: 1}, {unique: true});
 
 // export the Books model for the API
 module.exports = mongoose.model('Books', bookSchema); 

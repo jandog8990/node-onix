@@ -2,11 +2,11 @@ const { KEYWORDS } = require("../lib/codes/subject");
 const dbLookup = require('./mongoLookup');
 
 // import the tables and field objects
-const { BOOK_TABLE, AUTHOR_TABLES, NARRATOR_TABLES, PUBLISHER_TABLE, GENRE_TABLES, BOOK_PHOTO_TABLES, AUDIO_TABLES, BOOK_EXTRA_TABLES, BOOK_REVIEW_TABLES} = dbLookup.tables;
+const { BOOK_TABLE, AUTHOR_TABLES, NARRATOR_TABLES, PUBLISHER_TABLE, SUBJECT_TABLES, BOOK_PHOTO_TABLES, AUDIO_TABLES, BOOK_EXTRA_TABLES, BOOK_REVIEW_TABLES} = dbLookup.tables;
 const { NOTIFICATION, PUBLISHING_STATUS, CITY_OF_PUBLICATION, PUBLICATION_DATE, SUMMARY, SHORT_SUMMARY, LONG_SUMMARY, BIOGRAPHICAL_NOTE } = dbLookup.bookFields;
 const { PUBLISHER_NAME, SEARCH_ID } = dbLookup.publisherFields;
 const { FIRSTNAME, LASTNAME, MI, BIOGRAPHY, GHOST, TRANSLATOR } = dbLookup.contributorFields;
-const { BISAC_SUBJECTS, BIC_SUBJECTS, BIC_READING_LEVEL, KEYWORDS_KEY } = dbLookup.genreFields;
+const { BISAC_SUBJECTS, BIC_SUBJECTS, BIC_READING_LEVEL, KEYWORDS_KEY } = dbLookup.subjectFields;
 const { LINK_TYPE, AUDIO_LOC, DEMO_LOC, PHOTO_LOC, THUMBNAIL_LOC, HQ_LOC } = dbLookup.mediaFields;
 const { REVIEW_QUOTE, REVIEW_PREVIOUS_EDITION, REVIEW_TEXT, PROMOTIONAL_HEADLINE, PREVIOUS_REVIEW_QUOTE, AUTHOR_COMMENTS} = dbLookup.bookReviewFields;
 const { GROUP_DISCUSSION, GROUP_DISCUSSION_QUESTION, EXCERPT, COMMENTARY, FIRST_CHAPTER, AUTHOR_INTERVIEW } = dbLookup.bookExtraFields;
@@ -144,19 +144,19 @@ module.exports = {
         },   // List 17 (contributor code ie author) 
         subjects: { // is array , keys: identifier/code/heading 
             identifier: {
-                10: () => { return [GENRE_TABLES, BISAC_SUBJECTS]; }, //bisac-subject",    // bisac genre category "/" delimited https://ww.bisg.org/complete-bisac-subject-headings-2013-edition
+                10: () => { return [SUBJECT_TABLES, BISAC_SUBJECTS]; }, //bisac-subject",    // bisac subject category "/" delimited https://ww.bisg.org/complete-bisac-subject-headings-2013-edition
                 11: () => { return []; },   //"bisac-region",     // region of the book (categories based on published area??)
-                12: () => { return [GENRE_TABLES, BIC_SUBJECTS]; },  //"bic-subject",      // bic genre categories https://bic.org.uk/files/pdfs/101201%20bic2.1%20complete%20rev.pdf
+                12: () => { return [SUBJECT_TABLES, BIC_SUBJECTS]; },  //"bic-subject",      // bic subject categories https://bic.org.uk/files/pdfs/101201%20bic2.1%20complete%20rev.pdf
                 13: () => { return []; }, //"bic-geography",    // again geo tagging
                 14: () => { return []; },//"bic-language",     // language qualifier
                 15: () => { return []; },//"bic-time-period",  // time period for BIC std
                 16: () => { return []; },//"bic-education",    // educational purpose
                 17: () => { return []; },//"bic-reading-level",
-                20: () => { return [GENRE_TABLES, KEYWORDS_KEY]; },//"keyords", // multiple keywords and phrases (not usually shown)
+                20: () => { return [SUBJECT_TABLES, KEYWORDS_KEY]; },//"keyords", // multiple keywords and phrases (not usually shown)
             },
             heading: (tableArr, field, val) => {
                 // check if e are parsing subjects or keywords
-                var table = {}; //empty genre table 
+                var table = {}; //empty subject table 
                 var arr;
                 if (field == BISAC_SUBJECTS || field == BIC_SUBJECTS) {
                     // parse on a forard slash
@@ -172,7 +172,7 @@ module.exports = {
                 table[field] = arr;
                 tableArr.push(table);
             }
-        },   // List 26 (main subject id ie genres)
+        },   // List 26 (main subject id ie subjects)
         audiences: {    // is array, type/value keys
             type: {
                 1: () => { return []; }, //"General/trade",
