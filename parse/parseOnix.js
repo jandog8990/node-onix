@@ -125,7 +125,7 @@ async function processOnixJson(onixJson, xsdJson) {
 	console.log("\n");	
 
 	var products = onixJson.products;
-	var testBook = products[1];
+	var testBook = products[0];
 
 	console.log("Process ONIX Json data:");
 	console.log("Products len = " + products.length);
@@ -137,99 +137,108 @@ async function processOnixJson(onixJson, xsdJson) {
 	console.log("\n");
 
 	// TODO: Loop through all books and feed to the update objects
+	for (var ii = 0; ii < products.length; ii++) {
+		const book = products[ii];
+		console.log("BOOK[ " + ii + " ]");
+		console.log(book["title"]);
+		console.log("\n");
 
-	// loop through object and look up the code lists
-	var mongoBook = {};
-	var mongoAuthors = [];	// array of objs as there could be mult authors
-	var mongoNarrators = [];	// array of objs as there could be mult narrators 
-	var mongoPublisher = {};
-	var mongoSubjects = [];
-	var mongoBookPhotos = [];
-	var mongoAudioTables = [];
-	var mongoBookReviews = [];
-	var mongoBookExtras = [];
-	var mongoSubject = {};
+		// loop through object and look up the code lists
+		var mongoBook = {};
+		var mongoAuthors = [];	// array of objs as there could be mult authors
+		var mongoNarrators = [];	// array of objs as there could be mult narrators 
+		var mongoPublisher = {};
+		var mongoSubjects = [];
+		var mongoBookPhotos = [];
+		var mongoAudioTables = [];
+		var mongoBookReviews = [];
+		var mongoBookExtras = [];
+		var mongoSubject = {};
 
-	// table to edit when looking up the role, type and identifier
-	var tablesToEdit = {
-		BOOK_TABLE: mongoBook,
-		AUTHOR_TABLES: mongoAuthors,
-		NARRATOR_TABLES: mongoNarrators,
-		PUBLISHER_TABLE: mongoPublisher,
-		SUBJECT_TABLES: mongoSubjects,
-		BOOK_PHOTO_TABLES: mongoBookPhotos,
-		AUDIO_TABLES: mongoAudioTables,
-		BOOK_REVIEW_TABLES: mongoBookReviews,
-		BOOK_EXTRA_TABLES: mongoBookExtras
-	}
-	updateObjects(testBook, tablesToEdit, mongoBook, mongoAuthors,
-		mongoNarrators, mongoPublisher, mongoSubjects, mongoBookPhotos,
-		mongoAudioTables, mongoBookReviews, mongoBookExtras);
-
-
-	// Update the SUBJECT table since it has all fields for one table
-	for (const obj of mongoSubjects) {
-		for (var key in obj) {
-			mongoSubject[key] = obj[key];
+		// table to edit when looking up the role, type and identifier
+		var tablesToEdit = {
+			BOOK_TABLE: mongoBook,
+			AUTHOR_TABLES: mongoAuthors,
+			NARRATOR_TABLES: mongoNarrators,
+			PUBLISHER_TABLE: mongoPublisher,
+			SUBJECT_TABLES: mongoSubjects,
+			BOOK_PHOTO_TABLES: mongoBookPhotos,
+			AUDIO_TABLES: mongoAudioTables,
+			BOOK_REVIEW_TABLES: mongoBookReviews,
+			BOOK_EXTRA_TABLES: mongoBookExtras
 		}
+		updateObjects(book, tablesToEdit, mongoBook, mongoAuthors,
+			mongoNarrators, mongoPublisher, mongoSubjects, mongoBookPhotos,
+			mongoAudioTables, mongoBookReviews, mongoBookExtras);
+
+
+		// Update the SUBJECT table since it has all fields for one table
+		for (const obj of mongoSubjects) {
+			for (var key in obj) {
+				mongoSubject[key] = obj[key];
+			}
+		}
+
+		// Update the BOOK_PHOTOS with the ISBN13 from the main book 
+		ISBN13 = mongoBook.ISBN13;
+		for (const obj of mongoBookPhotos) {
+			obj["ISBN13"] = ISBN13;
+		}
+
+		// First show the updates to the tables
+		console.log("Book Table:");
+		console.log(mongoBook);
+		console.log("\n");
+
+		console.log("Authors:");
+		console.log(mongoAuthors);
+		console.log("\n");
+
+		console.log("Narrators:");
+		console.log(mongoNarrators);
+		console.log("\n");
+
+		console.log("Publisher:");
+		console.log(mongoPublisher);
+		console.log("\n");
+
+		console.log("Subject Table:");
+		console.log(mongoSubject);
+		console.log("\n");
+
+		console.log("Book Photos:");
+		console.log(mongoBookPhotos);
+		console.log("\n");
+
+		console.log("Audio Tables:");
+		console.log(mongoAudioTables);
+		console.log("\n");
+
+		console.log("Book Reviews:");
+		console.log(mongoBookReviews);
+		console.log("\n");
+
+		console.log("Book Extras:");
+		console.log(mongoBookExtras);
+		console.log("\n");
+
+		// INSERT new collections into the mongo db 
+		/*	
+		try {
+			await insertMongoCollections(mongoBook, mongoAuthors, mongoNarrators, mongoPublisher,
+				mongoSubject, mongoBookPhotos, mongoAudioTables, mongoBookReviews, mongoBookExtras);
+		} catch (err) {
+			console.error(err.message);
+		}
+		*/
+
+		// Test for checking a BOOK can be queried
+		/*	
+		ISBN = 9374281;
+		updateMongoCollection(ISBN);
+		*/
 	}
-
-	// Update the BOOK_PHOTOS with the ISBN13 from the main book 
-	ISBN13 = mongoBook.ISBN13;
-	for (const obj of mongoBookPhotos) {
-		obj["ISBN13"] = ISBN13;
-	}
-
-	// First show the updates to the tables
-	console.log("Book Table:");
-	console.log(mongoBook);
-	console.log("\n");
-
-	console.log("Authors:");
-	console.log(mongoAuthors);
-	console.log("\n");
-
-	console.log("Narrators:");
-	console.log(mongoNarrators);
-	console.log("\n");
-
-	console.log("Publisher:");
-	console.log(mongoPublisher);
-	console.log("\n");
-
-	console.log("Subject Table:");
-	console.log(mongoSubject);
-	console.log("\n");
-
-	console.log("Book Photos:");
-	console.log(mongoBookPhotos);
-	console.log("\n");
-
-	console.log("Audio Tables:");
-	console.log(mongoAudioTables);
-	console.log("\n");
-
-	console.log("Book Reviews:");
-	console.log(mongoBookReviews);
-	console.log("\n");
-
-	console.log("Book Extras:");
-	console.log(mongoBookExtras);
-	console.log("\n");
-
-	// INSERT new collections into the mongo db 
-	try {
-		await insertMongoCollections(mongoBook, mongoAuthors, mongoNarrators, mongoPublisher,
-			mongoSubject, mongoBookPhotos, mongoAudioTables, mongoBookReviews, mongoBookExtras);
-	} catch (err) {
-		console.error(err.message);
-	}
-
-	// Test for checking a BOOK can be queried
-	/*	
-	ISBN = 9374281;
-	updateMongoCollection(ISBN);
-	*/
+	process.exit(0);	
 }
 
 /**
@@ -250,6 +259,9 @@ function updateObjects(book, tablesToEdit, bookTable, authorTables,
 	for (key in book) {
 		var bookField = book[key];
 		var isArray = Array.isArray(bookField);
+		//console.log("Book key = " + key);
+		//console.log("Book field = " + bookField);
+		//console.log("\n");
 
 		// Check the field type Number, String, Object, Array
 		if (isArray) {
@@ -392,7 +404,8 @@ async function insertMongoCollections(mongoBook, mongoAuthors, mongoNarrators, m
 		console.log("\n");
 
 		console.log("STORAGE SUCCESSFUL! -> EXIT()")
-		process.exit(0);
+		//process.exit(0);
+		return 0;
 	} catch (err) {
 		console.error("Mongo err:", err);
 		process.exit(1);
@@ -419,6 +432,13 @@ function checkUpdateObjectTable(mainKey, bookField, tablesToEdit) {
 
 		if (typeKey in bookField) {
 			var subVal = bookField[typeKey];
+		
+			//TODO: Needed for checking missing keys in the onixKeyLookup script
+			console.log("mainKey = " + mainKey);	
+			console.log("typeKey = " + typeKey);	
+			console.log("subVal = " + subVal);
+			console.log("\n");
+
 			var tableKeyArray = onixKeyLookup[mainKey][typeKey][subVal]();
 
 			if (tableKeyArray.length != 0) {

@@ -2,6 +2,13 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+/**
+ * TODO: Change this to be a CONTRIBUTOR table rather than AUTHOR
+ * to encapsulate all types of contributors from Author, Artist to Editor.
+ * This will involve all calls to the AUTHOR table and updating aggregates
+ * and the main detail book page.
+ */
+
 //AUTHOR_ID: { type: Number, default: null, required: true },
 const authorSchema = new Schema(
 	{
@@ -9,9 +16,15 @@ const authorSchema = new Schema(
 		LASTNAME: String, 
 		FIRSTNAME: String, 
 		MI: String, 
-		GHOST: {type: Boolean, default: false},	// ghost author 
-		TRANSLATOR: {type: Boolean, default: false},	// translator 
-		NICKNAME: String,	
+	    ARTIST: {type: Boolean, default: false},	// artist (art??) 
+        GHOST: {type: Boolean, default: false},	// ghost author 
+	    ADAPTED_BY: {type: Boolean, default: false},    // adapted by
+	    EDITED_BY: {type: Boolean, default: false},    // edited by
+		TRANSLATOR: {type: Boolean, default: false},	// translator
+	    FOREWORD_BY: {type: Boolean, default: false},    // foreword by
+	    AFTERWORD_BY: {type: Boolean, default: false},    // afterword by
+	    COMPILED_BY: {type: Boolean, default: false},    // compiled by
+        NICKNAME: String,	
 		GENDER: String, 
 		BIRTH_DATE: Object, 
 		ADDRESS: String, 

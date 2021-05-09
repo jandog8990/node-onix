@@ -1,0 +1,677 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE ONIXMessage SYSTEM "http://www.editeur.org/onix/2.1/reference/onix-international.dtd">
+<ONIXMessage>
+<Header>
+<FromCompany>Ingram Content Group</FromCompany>
+<FromPerson>CoreSource</FromPerson>
+<FromEmail>partnersupport@ingramcontent.com</FromEmail>
+<ToCompany>Abantu Audio - 2.1 No Conversion</ToCompany>
+<SentDate>202103191634</SentDate>
+</Header>
+<Product>
+<RecordReference>9781549184253</RecordReference>
+<NotificationType>03</NotificationType>
+<ProductIdentifier>
+<ProductIDType>15</ProductIDType>
+<IDValue>9781549184253</IDValue>
+</ProductIdentifier>
+<ProductIdentifier>
+<ProductIDType>02</ProductIDType>
+<IDValue>1549184253</IDValue>
+</ProductIdentifier>
+<ProductIdentifier>
+<ProductIDType>14</ProductIDType>
+<IDValue>09781549184253</IDValue>
+</ProductIdentifier>
+<ProductIdentifier>
+<ProductIDType>03</ProductIDType>
+<IDValue>9781549184253</IDValue>
+</ProductIdentifier>
+<ProductForm>AJ</ProductForm>
+<ProductFormDescription>Lossless Format Audio, WAV</ProductFormDescription>
+<NoSeries/>
+<Title>
+<TitleType>01</TitleType>
+<TitleText>Stamped: Racism, Antiracism, and You</TitleText>
+<Subtitle>A Remix of the National Book Award-winning Stamped from the Beginning</Subtitle>
+</Title>
+<WorkIdentifier>
+<WorkIDType>01</WorkIDType>
+<IDValue>9780316453691</IDValue>
+</WorkIdentifier>
+<Contributor>
+<SequenceNumber>1</SequenceNumber>
+<ContributorRole>A01</ContributorRole>
+<PersonName>Jason Reynolds</PersonName>
+<PersonNameInverted>Reynolds, Jason</PersonNameInverted>
+<NamesBeforeKey>Jason</NamesBeforeKey>
+<KeyNames>Reynolds</KeyNames>
+</Contributor>
+<Contributor>
+<SequenceNumber>2</SequenceNumber>
+<ContributorRole>A01</ContributorRole>
+<PersonName>Ibram X. Kendi</PersonName>
+<PersonNameInverted>Kendi, Ibram X.</PersonNameInverted>
+<NamesBeforeKey>Ibram X.</NamesBeforeKey>
+<KeyNames>Kendi</KeyNames>
+</Contributor>
+<Contributor>
+<SequenceNumber>3</SequenceNumber>
+<ContributorRole>E07</ContributorRole>
+<PersonName>Jason Reynolds</PersonName>
+<PersonNameInverted>Reynolds, Jason</PersonNameInverted>
+<NamesBeforeKey>Jason</NamesBeforeKey>
+<KeyNames>Reynolds</KeyNames>
+</Contributor>
+<EditionTypeCode>UBR</EditionTypeCode>
+<EditionStatement>retail</EditionStatement>
+<Language>
+<LanguageRole>01</LanguageRole>
+<LanguageCode>eng</LanguageCode>
+</Language>
+<Extent>
+<ExtentType>09</ExtentType>
+<ExtentValue>255</ExtentValue>
+<ExtentUnit>05</ExtentUnit>
+</Extent>
+<BASICMainSubject>YAN051180</BASICMainSubject>
+<Subject>
+<SubjectSchemeIdentifier>10</SubjectSchemeIdentifier>
+<SubjectCode>YAN038110</SubjectCode>
+</Subject>
+<Subject>
+<SubjectSchemeIdentifier>10</SubjectSchemeIdentifier>
+<SubjectCode>YAN052040</SubjectCode>
+</Subject>
+<Subject>
+<SubjectSchemeIdentifier>10</SubjectSchemeIdentifier>
+<SubjectCode>YAN051270</SubjectCode>
+</Subject>
+<Subject>
+<SubjectSchemeIdentifier>10</SubjectSchemeIdentifier>
+<SubjectCode>YAN025170</SubjectCode>
+</Subject>
+<Subject>
+<SubjectSchemeIdentifier>22</SubjectSchemeIdentifier>
+<SubjectCode>TP020</SubjectCode>
+</Subject>
+<Subject>
+<SubjectSchemeIdentifier>20</SubjectSchemeIdentifier>
+<SubjectHeadingText>antiracist;racism;race;protest;social justice;teen nonfiction books;young adult;ya;boy;girl;age 12 13 14 15 16 17 18 year old;high school;african american history;black lives matter;jim crow;diversity</SubjectHeadingText>
+</Subject>
+<AudienceCode>03</AudienceCode>
+<Audience>
+<AudienceCodeType>01</AudienceCodeType>
+<AudienceCodeValue>03</AudienceCodeValue>
+</Audience>
+<AudienceRange>
+<AudienceRangeQualifier>17</AudienceRangeQualifier>
+<AudienceRangePrecision>03</AudienceRangePrecision>
+<AudienceRangeValue>12</AudienceRangeValue>
+<AudienceRangePrecision>04</AudienceRangePrecision>
+<AudienceRangeValue>99</AudienceRangeValue>
+</AudienceRange>
+<AudienceRange>
+<AudienceRangeQualifier>18</AudienceRangeQualifier>
+<AudienceRangePrecision>03</AudienceRangePrecision>
+<AudienceRangeValue>12</AudienceRangeValue>
+<AudienceRangePrecision>04</AudienceRangePrecision>
+<AudienceRangeValue>99</AudienceRangeValue>
+</AudienceRange>
+<AudienceRange>
+<AudienceRangeQualifier>11</AudienceRangeQualifier>
+<AudienceRangePrecision>03</AudienceRangePrecision>
+<AudienceRangeValue>7</AudienceRangeValue>
+<AudienceRangePrecision>04</AudienceRangePrecision>
+<AudienceRangeValue>17</AudienceRangeValue>
+</AudienceRange>
+<OtherText>
+<TextTypeCode>01</TextTypeCode>
+<TextFormat>02</TextFormat>
+<Text><![CDATA[<DIV><B>The #1 <I>New York Times </I>bestseller and a<I> USAToday </I>bestseller!</B></DIV><B><DIV><B><br></B></DIV>A timely, crucial, and empowering exploration of racism--and antiracism--in America</B><br><br><I>This is NOT a history book.</I><br><I>This is a book about the here and now. </I><br><I>A book to help us better understand why we are where we are.</I><br><I>A book about race. </I><br><br>The construct of race has always been used to gain and keep power, to create dynamics that separate and silence. This remarkable reimagining of Dr. Ibram X. Kendi's National Book Award-winning <I>Stamped from the Beginning</I> reveals the history of racist ideas in America, and inspires hope for an antiracist future. It takes you on a race journey from then to now, shows you why we feel how we feel, and why the poison of racism lingers. It also proves that while racist ideas have always been easy to fabricate and distribute, they can also be discredited. <br><br>Through a gripping, fast-paced, and energizing narrative written by beloved award-winner Jason Reynolds, this book shines a light on the many insidious forms of racist ideas--and on ways readers can identify and stamp out racist thoughts in their daily lives.<br><br>]]></Text>
+</OtherText>
+<OtherText>
+<TextTypeCode>08</TextTypeCode>
+<TextFormat>02</TextFormat>
+<Text><![CDATA["Teens are often searching for their place in the world, in <I>Stamped</I>, Reynolds gives context to where we are, how we got here, and reminds young people-and all of us-that we have a choice to make about who we want to be. This unapologetic telling of the history of racism in our nation is refreshingly simple and deeply profound. This is the history book I needed as a teen."<br>—<i><b>Ren&#233;e Watson, New York Timesbestselling and Newbery Honor-winning author of Piecing Me Together</b></i>]]></Text>
+</OtherText>
+<OtherText>
+<TextTypeCode>08</TextTypeCode>
+<TextFormat>02</TextFormat>
+<Text><![CDATA["If knowledge is power, this book will make you more powerful than you've ever been before."—<i><b>Ibi Zoboi, author of the National Book Award finalist American Street</b></i>]]></Text>
+</OtherText>
+<OtherText>
+<TextTypeCode>08</TextTypeCode>
+<TextFormat>02</TextFormat>
+<Text><![CDATA[* "Readers who want to truly understand how deeply embedded racism is in the very fabric of the U.S., its history, and its systems will come away educated and enlightened. Worthy of inclusion in every home and in curricula and libraries everywhere. Impressive and much needed." <br>—<i><b>Kirkus Reviews, starred review</b></i>]]></Text>
+</OtherText>
+<OtherText>
+<TextTypeCode>08</TextTypeCode>
+<TextFormat>02</TextFormat>
+<Text><![CDATA[<U><B>Praise for <I>Stamped: Racism, Antiracism, and You:</I></B></U><br><br>"An amazingly timely and stunningly accessible manifesto for young people....At times funny, at times somber but always packed with relevant information that is at once thoughtful and spot-on, <I>Stamped</I> is the book I wish I had as a young person and am so grateful my own children have now." <br>—<i><b>Jacqueline Woodson, bestselling and National Book Award-winning author of Brown Girl Dreaming</b></i>]]></Text>
+</OtherText>
+<OtherText>
+<TextTypeCode>08</TextTypeCode>
+<TextFormat>02</TextFormat>
+<Text><![CDATA["Reynolds's engaging, clear prose shines a light on difficult and confusing subjects....This is no easy feat."—<i><b>The New York Times Book Review</b></i>]]></Text>
+</OtherText>
+<OtherText>
+<TextTypeCode>08</TextTypeCode>
+<TextFormat>02</TextFormat>
+<Text><![CDATA["Reading this compelling not-a-history book is like finding a field guide to American racism, allowing you to quickly identify racist ideas when you encounter them in the wild." <br>—<i><b>Dashka Slater, author of The 57 Bus</b></i>]]></Text>
+</OtherText>
+<OtherText>
+<TextTypeCode>08</TextTypeCode>
+<TextFormat>02</TextFormat>
+<Text><![CDATA[* "An epic feat... More than merely a young reader's adaptation of Kendi's landmark work, <I>Stamped</I> does a remarkable job of tying together disparate threads while briskly moving through its historical narrative."—<i><b>Bookpage, starred review</b></i>]]></Text>
+</OtherText>
+<OtherText>
+<TextTypeCode>08</TextTypeCode>
+<TextFormat>02</TextFormat>
+<Text><![CDATA["the must-read book of the moment...potent and provocative"—<i><b>--San Francisco Chronicle</b></i>]]></Text>
+</OtherText>
+<OtherText>
+<TextTypeCode>08</TextTypeCode>
+<TextFormat>02</TextFormat>
+<Text><![CDATA["The R-word: Racism. Some tuck tail and run from it. Others say it's no longer a thing. But Dr. Kendi breaks it down, and Jason Reynolds makes it easy to understand. Mark my words: This book will change everything."—<i><b>Nic Stone, bestselling author of Dear Martin</b></i>]]></Text>
+</OtherText>
+<OtherText>
+<TextTypeCode>08</TextTypeCode>
+<TextFormat>02</TextFormat>
+<Text><![CDATA[* "Required reading for everyone, especially those invested in the future of young people in America."—<i><b>Booklist, starred review</b></i>]]></Text>
+</OtherText>
+<OtherText>
+<TextTypeCode>13</TextTypeCode>
+<TextFormat>02</TextFormat>
+<Text><![CDATA[<B>Jason Reynolds</B> is the #1 <I>New York Times </I>bestselling author of many books, including W<I>hen I Was the Greatest</I>,<I> Boy in the Black Suit</I>, <I>All American Boys </I>(cowritten with Brendan Kiely), <I>As Brave as You</I>,<I> For Every One</I>, the Track series (<I>Ghost</I>, <I>Patina</I>, <I>Sunny</I>, and <I>Lu</I>), <I>Long Way Down</I>, and <I>Look Both Ways</I>. He is a two-time National Book Award finalist; the recipient of a Newbery Honor, a Printz Honor, and multiple Coretta Scott King Honors; and the winner of a Kirkus Prize, two Walter Dean Myers Awards, and an NAACP Image Award, among other honors. He lives in Washington, D.C and invites you to visit him online at JasonWritesBooks.com.<br><br><B>Ibram X. Kendi </B>is a #1 <I>New York Times </I>bestselling author, the Andrew W. Mellon Professor in the Humanities, and the Founding Director of the Boston University Center for Antiracist Research. He is an Ideas Columnist at <I>The Atlantic</I>, and a correspondent with CBS News. He is the author of five books including <I>Stamped from the Beginning: The Definitive History of Racist Ideas in America</I>, which won the National Book Award for Nonfiction; <I>How to Be an Antiracist; STAMPED: Racism, Antiracism, and You, </I>co-authored with Jason Reynolds; and <I>Antiracist Baby</I>, illustrated by Ashley Lukashevsky.]]></Text>
+</OtherText>
+<OtherText>
+<TextTypeCode>08</TextTypeCode>
+<TextFormat>02</TextFormat>
+<Text><![CDATA[* "Reynolds and Kendi eloquently challenge the common narrative attached to U.S. history. This adaptation, like the 2016 adult title, will undoubtedly leave a lasting impact. Highly recommended for libraries serving middle and high school students."—<i><b>School Library Journal, starred review</b></i>]]></Text>
+</OtherText>
+<OtherText>
+<TextTypeCode>08</TextTypeCode>
+<TextFormat>02</TextFormat>
+<Text><![CDATA["Jason Reynolds has the amazing ability to make words jump off the page. Told with passion, precision, and even humor, <I>Stamped</I> is a true story-a living story-that everyone needs to know."—<i><b>Steve Sheinkin, New York Times bestselling and award-winning author of Bomb and Born to Fly</b></i>]]></Text>
+</OtherText>
+<OtherText>
+<TextTypeCode>08</TextTypeCode>
+<TextFormat>02</TextFormat>
+<Text><![CDATA["Sheer brilliance....An empowering, transformative read. Bravo."—<i><b>Jewell Parker Rhodes, New York Times bestselling author of Ghost Boys</b></i>]]></Text>
+</OtherText>
+<OtherText>
+<TextTypeCode>08</TextTypeCode>
+<TextFormat>02</TextFormat>
+<Text><![CDATA[* "Reynolds (<I>Look Both Ways</I>) lends his signature flair to remixing Kendi's award-winning <I>Stamped from the Beginning</I>...Told impressively economically, loaded with historical details that connect clearly to current experiences, and bolstered with suggested reading and listening selected specifically for young readers, Kendi and Reynolds's volume is essential, meaningfully accessible reading."—<i><b>Publishers Weekly, starred review</b></i>]]></Text>
+</OtherText>
+<OtherText>
+<TextTypeCode>08</TextTypeCode>
+<TextFormat>02</TextFormat>
+<Text><![CDATA[* "Eye-opening...this engaging overview offers readers lots to think about and should spark important conversations about this timely topic."—<i><b>School Library Connection, starred review</b></i>]]></Text>
+</OtherText>
+<Imprint>
+<NameCodeType>01</NameCodeType>
+<NameCodeValue>010408</NameCodeValue>
+<ImprintName>Little, Brown Young Readers</ImprintName>
+</Imprint>
+<Publisher>
+<PublishingRole>01</PublishingRole>
+<NameCodeType>01</NameCodeType>
+<NameCodeValue>Hachette Audio</NameCodeValue>
+<PublisherName>Hachette Audio</PublisherName>
+</Publisher>
+<CountryOfPublication>US</CountryOfPublication>
+<PublishingStatus>04</PublishingStatus>
+<PublicationDate>20200310</PublicationDate>
+<SalesRights>
+<SalesRightsType>01</SalesRightsType>
+<RightsCountry>AD AE AF AG AI AL AM AO AQ AR AS AT AU AW AX AZ BA BB BD BE BF BG BH BI BJ BL BM BN BO BQ BR BS BT BV BW BY BZ CA CC CD CF CG CH CI CK CL CM CN CO CR CU CV CW CX CY CZ DE DJ DK DM DO DZ EC EE EG EH ER ES ET FI FJ FK FM FO FR GA GB GD GE GF GG GH GI GL GM GN GP GQ GR GS GT GU GW GY HK HM HN HR HT HU ID IE IL IM IN IO IQ IR IS IT JE JM JO JP KE KG KH KI KM KN KP KR KW KY KZ LA LB LC LI LK LR LS LT LU LV LY MA MC MD ME MF MG MH MK ML MM MN MO MP MQ MR MS MT MU MV MW MX MY MZ NA NC NE NF NG NI NL NO NP NR NU NZ OM PA PE PF PG PH PK PL PM PN PR PS PT PW PY QA RE RO RS RU RW SA SB SC SD SE SG SH SI SJ SK SL SM SN SO SR SS ST SV SX SY SZ TC TD TF TG TH TJ TK TL TM TN TO TR TT TV TW TZ UA UG UM US UY UZ VA VC VE VG VI VN VU WF WS YE YT ZA ZM ZW</RightsCountry>
+</SalesRights>
+<RelatedProduct>
+<RelationCode>13</RelationCode>
+<ProductIdentifier>
+<ProductIDType>02</ProductIDType>
+<IDValue>0316453692</IDValue>
+</ProductIdentifier>
+</RelatedProduct>
+<RelatedProduct>
+<RelationCode>13</RelationCode>
+<ProductIdentifier>
+<ProductIDType>15</ProductIDType>
+<IDValue>9780316453691</IDValue>
+</ProductIdentifier>
+</RelatedProduct>
+<SupplyDetail>
+<SupplierSAN>2002205</SupplierSAN>
+<SupplierName>Hachette Book Group USA</SupplierName>
+<SupplierRole>00</SupplierRole>
+<ReturnsCodeType>02</ReturnsCodeType>
+<ReturnsCode>N</ReturnsCode>
+<AvailabilityCode>IP</AvailabilityCode>
+<ProductAvailability>20</ProductAvailability>
+<OnSaleDate>20200310</OnSaleDate>
+<Price>
+<PriceTypeCode>01</PriceTypeCode>
+<DiscountCoded>
+<DiscountCodeType>02</DiscountCodeType>
+<DiscountCodeTypeName>HBG</DiscountCodeTypeName>
+<DiscountCode>XL</DiscountCode>
+</DiscountCoded>
+<PriceAmount>24.98</PriceAmount>
+<CurrencyCode>USD</CurrencyCode>
+<PriceEffectiveFrom>20200306</PriceEffectiveFrom>
+</Price>
+<Price>
+<PriceTypeCode>01</PriceTypeCode>
+<DiscountCoded>
+<DiscountCodeType>02</DiscountCodeType>
+<DiscountCodeTypeName>HBG</DiscountCodeTypeName>
+<DiscountCode>XL</DiscountCode>
+</DiscountCoded>
+<PriceAmount>30.98</PriceAmount>
+<CurrencyCode>CAD</CurrencyCode>
+<PriceEffectiveFrom>20200306</PriceEffectiveFrom>
+</Price>
+</SupplyDetail>
+</Product>
+<Product>
+<RecordReference>9781549119736</RecordReference>
+<NotificationType>03</NotificationType>
+<ProductIdentifier>
+<ProductIDType>15</ProductIDType>
+<IDValue>9781549119736</IDValue>
+</ProductIdentifier>
+<ProductIdentifier>
+<ProductIDType>02</ProductIDType>
+<IDValue>1549119737</IDValue>
+</ProductIdentifier>
+<ProductIdentifier>
+<ProductIDType>14</ProductIDType>
+<IDValue>09781549119736</IDValue>
+</ProductIdentifier>
+<ProductIdentifier>
+<ProductIDType>03</ProductIDType>
+<IDValue>9781549119736</IDValue>
+</ProductIdentifier>
+<ProductForm>AJ</ProductForm>
+<ProductFormDescription>Lossless Format Audio, WAV</ProductFormDescription>
+<Series>
+<TitleOfSeries>The Great Cities Trilogy</TitleOfSeries>
+<NumberWithinSeries>1</NumberWithinSeries>
+</Series>
+<Title>
+<TitleType>01</TitleType>
+<TitleText>The City We Became</TitleText>
+<TitlePrefix>The</TitlePrefix>
+<TitleWithoutPrefix>City We Became</TitleWithoutPrefix>
+<Subtitle>A Novel</Subtitle>
+</Title>
+<WorkIdentifier>
+<WorkIDType>01</WorkIDType>
+<IDValue>9780316509848</IDValue>
+</WorkIdentifier>
+<Contributor>
+<SequenceNumber>1</SequenceNumber>
+<ContributorRole>A01</ContributorRole>
+<PersonName>N. K. Jemisin</PersonName>
+<PersonNameInverted>Jemisin, N. K.</PersonNameInverted>
+<NamesBeforeKey>N. K.</NamesBeforeKey>
+<KeyNames>Jemisin</KeyNames>
+</Contributor>
+<Contributor>
+<SequenceNumber>2</SequenceNumber>
+<ContributorRole>E07</ContributorRole>
+<PersonName>Robin Miles</PersonName>
+<PersonNameInverted>Miles, Robin</PersonNameInverted>
+<NamesBeforeKey>Robin</NamesBeforeKey>
+<KeyNames>Miles</KeyNames>
+</Contributor>
+<EditionTypeCode>UBR</EditionTypeCode>
+<EditionStatement>retail</EditionStatement>
+<Language>
+<LanguageRole>01</LanguageRole>
+<LanguageCode>eng</LanguageCode>
+</Language>
+<Extent>
+<ExtentType>09</ExtentType>
+<ExtentValue>975</ExtentValue>
+<ExtentUnit>05</ExtentUnit>
+</Extent>
+<BASICMainSubject>FIC061000</BASICMainSubject>
+<Subject>
+<SubjectSchemeIdentifier>10</SubjectSchemeIdentifier>
+<SubjectCode>FIC009010</SubjectCode>
+</Subject>
+<Subject>
+<SubjectSchemeIdentifier>10</SubjectSchemeIdentifier>
+<SubjectCode>FIC019000</SubjectCode>
+</Subject>
+<Subject>
+<SubjectSchemeIdentifier>10</SubjectSchemeIdentifier>
+<SubjectCode>FIC069000</SubjectCode>
+</Subject>
+<Subject>
+<SubjectSchemeIdentifier>10</SubjectSchemeIdentifier>
+<SubjectCode>FIC009100</SubjectCode>
+</Subject>
+<Subject>
+<SubjectSchemeIdentifier>20</SubjectSchemeIdentifier>
+<SubjectHeadingText>magical;books;hugo;award;winners;nk;jemison;speculative;realism;novels;science;fiction;fantasy;adults;new;york;city;Brooklyn;Bronx;manhattan;queesn;staten;island;family;mother;father</SubjectHeadingText>
+</Subject>
+<AudienceCode>01</AudienceCode>
+<Audience>
+<AudienceCodeType>01</AudienceCodeType>
+<AudienceCodeValue>01</AudienceCodeValue>
+</Audience>
+<OtherText>
+<TextTypeCode>01</TextTypeCode>
+<TextFormat>02</TextFormat>
+<Text><![CDATA[<DIV><DIV><B>Three-time Hugo Award-winning and <I>New York Times </I>bestselling author N.K. Jemisin crafts her most incredible novel yet, a &quot;glorious&quot; story of culture, identity, magic, and myths in contemporary New York City.</B><BR /><BR />In Manhattan, a young grad student gets off the train and realizes he doesn&#39;t remember who he is, where he&#39;s from, or even his own name. But he can sense the beating heart of the city, see its history, and feel its power.<BR /><BR />In the Bronx, a Lenape gallery director discovers strange graffiti scattered throughout the city, so beautiful and powerful it&#39;s as if the paint is literally calling to her.<BR /><BR />In Brooklyn, a politician and mother finds she can hear the songs of her city, pulsing to the beat of her Louboutin heels.<BR /><BR />And they&#39;re not the only ones.<BR /><BR /><B>Every great city has a soul. Some are ancient as myths, and others are as new and destructive as children. New York? She&#39;s got six.</B><BR />For more from N. K. Jemisin, check out:<BR /><BR /><B>The Inheritance Trilogy</B><BR /><I>The Hundred Thousand Kingdoms</I><BR /><I>The Broken Kingdoms</I><BR /><I>The Kingdom of Gods</I><BR /><BR /><I>The Inheritance Trilogy</I> (omnibus edition)<BR /><I>Shades in Shadow: An Inheritance Triptych </I>(e-only short fiction)<BR /><I>The Awakened Kingdom</I> (e-only novella)<BR /><BR /><B>Dreamblood Duology</B><BR /><I>The Killing Moon</I><BR /><I>The Shadowed Sun</I><BR /><BR /><I>The Dreamblood Duology </I>(omnibus)<BR /><BR /><B>The Broken Earth</B><BR /><I>The Fifth Season</I><BR /><I>The Obelisk Gate</I><BR /><I>The Stone Sky</I><BR /><BR /><I>How Long &#39;til Black Future Month?</I> (short story collection)<BR /><BR /><B>&quot;A glorious fantasy.&quot; &mdash;Neil Gaiman</B></DIV></DIV>]]></Text>
+</OtherText>
+<OtherText>
+<TextTypeCode>08</TextTypeCode>
+<TextFormat>02</TextFormat>
+<Text><![CDATA["A love/hate song to and rallying cry for the author's home of New York... Fierce, poetic, uncompromising."—<i><b>Kirkus (starred review)</b></i>]]></Text>
+</OtherText>
+<OtherText>
+<TextTypeCode>08</TextTypeCode>
+<TextFormat>02</TextFormat>
+<Text><![CDATA["The greatest fantasy novelist currently writing turns her magnificent eye and ear and heart on New York City, and the result is every bit as full of love and rage and crazy compelling characters as my beloved city deserves."—<i><b>Sam J. Miller, Nebula-Award-Winning author of Blackfish City </b></i>]]></Text>
+</OtherText>
+<OtherText>
+<TextTypeCode>08</TextTypeCode>
+<TextFormat>02</TextFormat>
+<Text><![CDATA["The most important speculative writer of her generation...She's that good."—<i><b>John Scalzi</b></i>]]></Text>
+</OtherText>
+<OtherText>
+<TextTypeCode>08</TextTypeCode>
+<TextFormat>02</TextFormat>
+<Text><![CDATA["N. K. Jemisin has captured the living, breathing soul of New York City in a way that only a writer of her skill can.<I> The City We Became</I> is a masterpiece that plays by no rules-beautiful, musical, joyfully weird, and as impossibly fantastical as it is deeply true."—<i><b>Peng Shepherd, author of The Book of M</b></i>]]></Text>
+</OtherText>
+<OtherText>
+<TextTypeCode>08</TextTypeCode>
+<TextFormat>02</TextFormat>
+<Text><![CDATA["Some of the most exciting and powerful fantasy writing of today... Jemisin's latest will attract ... even those who don't typically read genre fiction."—<i><b>Booklist (starred review)</b></i>]]></Text>
+</OtherText>
+<OtherText>
+<TextTypeCode>08</TextTypeCode>
+<TextFormat>02</TextFormat>
+<Text><![CDATA["Jemisin is now a pillar of speculative fiction, breathtakingly imaginative and narratively bold."—<i><b>Entertainment Weekly</b></i>]]></Text>
+</OtherText>
+<OtherText>
+<TextTypeCode>08</TextTypeCode>
+<TextFormat>02</TextFormat>
+<Text><![CDATA["It's a glorious fantasy, set in that most imaginary of cities, New York. It's inclusive in all the best ways, and manages to contain both Borges and Lovecraft in its fabric, but the unique voice and viewpoint are Jemisin's alone."—<i><b>Neil Gaiman</b></i>]]></Text>
+</OtherText>
+<OtherText>
+<TextTypeCode>08</TextTypeCode>
+<TextFormat>02</TextFormat>
+<Text><![CDATA["A love letter, a celebration and an expression of hope and belief that a city and its people can and will stand up to darkness, will stand up to fear, and will, when called to, stand up for each other."<br><br><br>—<i><b>NPR</b></i>]]></Text>
+</OtherText>
+<OtherText>
+<TextTypeCode>13</TextTypeCode>
+<TextFormat>02</TextFormat>
+<Text><![CDATA[<DIV><B>N. K. Jemisin</B> is the first author in history to win three consecutive Best Novel Hugo Awards, all for her Broken Earth trilogy. Her work has also won the Nebula, Locus, and Goodreads Choice Awards. She has been a reviewer for the <I>New York Times Book Review</I>, and an instructor for the Clarion and Clarion West writing workshops. In her spare time, she is a gamer and gardener, and she is also single-handedly responsible for saving the world from King Ozzymandias, her dangerously intelligent ginger cat, and his phenomenally destructive sidekick Magpie.</DIV>]]></Text>
+</OtherText>
+<OtherText>
+<TextTypeCode>08</TextTypeCode>
+<TextFormat>02</TextFormat>
+<Text><![CDATA[<I>"The City We Became</I> takes a broad-shouldered stand on the side of sanctuary, family and love. It's a joyful shout, a reclamation and a call to arms."—<i><b>The New York Times</b></i>]]></Text>
+</OtherText>
+<OtherText>
+<TextTypeCode>08</TextTypeCode>
+<TextFormat>02</TextFormat>
+<Text><![CDATA["Without a doubt, one of the most brilliant books I have ever had the honor of reading. An homage to New York City, packed with all its love and harshness, and so incredibly inventive that I felt my own imagination and the boundaries of what fantasy can be expand."—<i><b>S. A. Chakraborty, author of City of Brass</b></i>]]></Text>
+</OtherText>
+<OtherText>
+<TextTypeCode>08</TextTypeCode>
+<TextFormat>02</TextFormat>
+<Text><![CDATA[<I>"The City We Became</I> is a raucous delight, a joyride, a call-to-arms, a revolution with plenty of dancing. Eat your heart out, Lovecraft."—<i><b>Alix E. Harrow, author of The Ten Thousand Doors of January</b></i>]]></Text>
+</OtherText>
+<OtherText>
+<TextTypeCode>08</TextTypeCode>
+<TextFormat>02</TextFormat>
+<Text><![CDATA[<I>"The City We Became</I> is a wonderfully inventive love letter to New York City that spans the multiverse. A big middle finger to Lovercraft with a lot of heart, creativity, smarts and humor. A timely and audacious allegorical tale for our times. This book is all these things and more."—<i><b>Rebecca Roanhorse, author of Trail of Lightning</b></i>]]></Text>
+</OtherText>
+<OtherText>
+<TextTypeCode>08</TextTypeCode>
+<TextFormat>02</TextFormat>
+<Text><![CDATA["One of the most celebrated new voices in epic fantasy."—<i><b>Salon.com</b></i>]]></Text>
+</OtherText>
+<Imprint>
+<NameCodeType>01</NameCodeType>
+<NameCodeValue>010411</NameCodeValue>
+<ImprintName>Orbit</ImprintName>
+</Imprint>
+<Publisher>
+<PublishingRole>01</PublishingRole>
+<NameCodeType>01</NameCodeType>
+<NameCodeValue>Hachette Audio</NameCodeValue>
+<PublisherName>Hachette Audio</PublisherName>
+</Publisher>
+<CountryOfPublication>US</CountryOfPublication>
+<PublishingStatus>04</PublishingStatus>
+<PublicationDate>20200324</PublicationDate>
+<SalesRights>
+<SalesRightsType>01</SalesRightsType>
+<RightsCountry>AF AG AI AM AR AS AW BB BM BN BO BQ BR BS BZ CA CL CO CR CU CW DM DO EC FM GD GP GT GU GY HK HN HT ID IO JM JP KG KH KN KP KR KY KZ LA LC MF MH MM MN MO MP MQ MS MX MY NI PA PE PH PK PR PY SG SR SV SX TC TH TJ TL TM TT TW UM US UY UZ VC VE VG VI VN</RightsCountry>
+</SalesRights>
+<SalesRights>
+<SalesRightsType>02</SalesRightsType>
+<RightsCountry>CN</RightsCountry>
+</SalesRights>
+<SalesRights>
+<SalesRightsType>03</SalesRightsType>
+<RightsCountry>AD AE AL AO AQ AT AU AX AZ BA BD BE BF BG BH BI BJ BL BT BV BW BY CC CD CF CG CH CI CK CM CV CX CY CZ DE DJ DK DZ EE EG EH ER ES ET FI FJ FK FO FR GA GB GE GF GG GH GI GL GM GN GQ GR GS GW HM HR HU IE IL IM IN IQ IR IS IT JE JO KE KI KM KW LB LI LK LR LS LT LU LV LY MA MC MD ME MG MK ML MR MT MU MV MW MZ NA NC NE NF NG NL NO NP NR NU NZ OM PF PG PL PM PN PS PT PW QA RE RO RS RU RW SA SB SC SD SE SH SI SJ SK SL SM SN SO SS ST SY SZ TD TF TG TK TN TO TR TV TZ UA UG VA VU WF WS YE YT ZA ZM ZW</RightsCountry>
+</SalesRights>
+<RelatedProduct>
+<RelationCode>13</RelationCode>
+<ProductIdentifier>
+<ProductIDType>02</ProductIDType>
+<IDValue>0316509841</IDValue>
+</ProductIdentifier>
+</RelatedProduct>
+<RelatedProduct>
+<RelationCode>13</RelationCode>
+<ProductIdentifier>
+<ProductIDType>15</ProductIDType>
+<IDValue>9780316509848</IDValue>
+</ProductIdentifier>
+</RelatedProduct>
+<SupplyDetail>
+<SupplierSAN>2002205</SupplierSAN>
+<SupplierName>Hachette Book Group USA</SupplierName>
+<SupplierRole>00</SupplierRole>
+<ReturnsCodeType>02</ReturnsCodeType>
+<ReturnsCode>N</ReturnsCode>
+<AvailabilityCode>IP</AvailabilityCode>
+<ProductAvailability>20</ProductAvailability>
+<OnSaleDate>20200324</OnSaleDate>
+<Price>
+<PriceTypeCode>01</PriceTypeCode>
+<DiscountCoded>
+<DiscountCodeType>02</DiscountCodeType>
+<DiscountCodeTypeName>HBG</DiscountCodeTypeName>
+<DiscountCode>XL</DiscountCode>
+</DiscountCoded>
+<PriceAmount>25.98</PriceAmount>
+<CurrencyCode>USD</CurrencyCode>
+<PriceEffectiveFrom>20200306</PriceEffectiveFrom>
+</Price>
+<Price>
+<PriceTypeCode>01</PriceTypeCode>
+<DiscountCoded>
+<DiscountCodeType>02</DiscountCodeType>
+<DiscountCodeTypeName>HBG</DiscountCodeTypeName>
+<DiscountCode>XL</DiscountCode>
+</DiscountCoded>
+<PriceAmount>32.98</PriceAmount>
+<CurrencyCode>CAD</CurrencyCode>
+<PriceEffectiveFrom>20200306</PriceEffectiveFrom>
+</Price>
+</SupplyDetail>
+</Product>
+<Product>
+<RecordReference>9781478979791</RecordReference>
+<NotificationType>03</NotificationType>
+<ProductIdentifier>
+<ProductIDType>15</ProductIDType>
+<IDValue>9781478979791</IDValue>
+</ProductIdentifier>
+<ProductIdentifier>
+<ProductIDType>02</ProductIDType>
+<IDValue>1478979798</IDValue>
+</ProductIdentifier>
+<ProductIdentifier>
+<ProductIDType>14</ProductIDType>
+<IDValue>09781478979791</IDValue>
+</ProductIdentifier>
+<ProductIdentifier>
+<ProductIDType>03</ProductIDType>
+<IDValue>9781478979791</IDValue>
+</ProductIdentifier>
+<ProductIdentifier>
+<ProductIDType>01</ProductIDType>
+<IDTypeName>Library ISBN</IDTypeName>
+<IDValue>9781478927990</IDValue>
+</ProductIdentifier>
+<ProductForm>AJ</ProductForm>
+<ProductFormDescription>Lossless Format Audio, WAV</ProductFormDescription>
+<NoSeries/>
+<Title>
+<TitleType>01</TitleType>
+<TitleText>I Am Malala</TitleText>
+<Subtitle>The Girl Who Stood Up for Education and Was Shot by the Taliban</Subtitle>
+</Title>
+<WorkIdentifier>
+<WorkIDType>01</WorkIDType>
+<IDValue>9780316322409</IDValue>
+</WorkIdentifier>
+<Contributor>
+<SequenceNumber>1</SequenceNumber>
+<ContributorRole>A01</ContributorRole>
+<PersonName>Malala Yousafzai</PersonName>
+<PersonNameInverted>Yousafzai, Malala</PersonNameInverted>
+<NamesBeforeKey>Malala</NamesBeforeKey>
+<KeyNames>Yousafzai</KeyNames>
+</Contributor>
+<Contributor>
+<SequenceNumber>2</SequenceNumber>
+<ContributorRole>E07</ContributorRole>
+<PersonName>Archie Panjabi</PersonName>
+<PersonNameInverted>Panjabi, Archie</PersonNameInverted>
+<NamesBeforeKey>Archie</NamesBeforeKey>
+<KeyNames>Panjabi</KeyNames>
+</Contributor>
+<Contributor>
+<SequenceNumber>3</SequenceNumber>
+<ContributorRole>A02</ContributorRole>
+<PersonName>Christina Lamb</PersonName>
+<PersonNameInverted>Lamb, Christina</PersonNameInverted>
+<NamesBeforeKey>Christina</NamesBeforeKey>
+<KeyNames>Lamb</KeyNames>
+</Contributor>
+<EditionTypeCode>UBR</EditionTypeCode>
+<EditionStatement>retail</EditionStatement>
+<Language>
+<LanguageRole>01</LanguageRole>
+<LanguageCode>eng</LanguageCode>
+</Language>
+<Extent>
+<ExtentType>09</ExtentType>
+<ExtentValue>600</ExtentValue>
+<ExtentUnit>05</ExtentUnit>
+</Extent>
+<BASICMainSubject>BIO026000</BASICMainSubject>
+<Subject>
+<SubjectSchemeIdentifier>10</SubjectSchemeIdentifier>
+<SubjectCode>BIO022000</SubjectCode>
+</Subject>
+<Subject>
+<SubjectSchemeIdentifier>20</SubjectSchemeIdentifier>
+<SubjectHeadingText>Malala Yousafzai; Pakistan; Netflix; David Letterman; Emma Watson; International Women's Day; Nobel Peace Prize; Oxford</SubjectHeadingText>
+</Subject>
+<AudienceCode>01</AudienceCode>
+<Audience>
+<AudienceCodeType>01</AudienceCodeType>
+<AudienceCodeValue>01</AudienceCodeValue>
+</Audience>
+<OtherText>
+<TextTypeCode>01</TextTypeCode>
+<TextFormat>02</TextFormat>
+<Text><![CDATA[<DIV><B>A MEMOIR BY THE YOUNGEST RECIPIENT OF THE NOBEL PEACE PRIZE <br><br></B><B>As seen on Netflix with David Letterman</B><DIV><br>"I come from a country that was created at midnight. When I almost died it was just after midday."<br><br>When the Taliban took control of the Swat Valley in Pakistan, one girl spoke out. Malala Yousafzai refused to be silenced and fought for her right to an education.<br><br>On Tuesday, October 9, 2012, when she was fifteen, she almost paid the ultimate price. She was shot in the head at point-blank range while riding the bus home from school, and few expected her to survive.<br><br>Instead, Malala's miraculous recovery has taken her on an extraordinary journey from a remote valley in northern Pakistan to the halls of the United Nations in New York. At sixteen, she became a global symbol of peaceful protest and the youngest nominee ever for the Nobel Peace Prize.<br><br><I>I AM MALALA </I>is the remarkable tale of a family uprooted by global terrorism, of the fight for girls' education, of a father who, himself a school owner, championed and encouraged his daughter to write and attend school, and of brave parents who have a fierce love for their daughter in a society that prizes sons.<br><br><I>I AM MALALA </I>will make you believe in the power of one person's voice to inspire change in the world.  </DIV></DIV>]]></Text>
+</OtherText>
+<OtherText>
+<TextTypeCode>13</TextTypeCode>
+<TextFormat>02</TextFormat>
+<Text><![CDATA[<DIV><B>Malala Yousafzai</B>, the educational campaigner from Swat Valley, Pakistan, came to public attention by writing for BBC Urdu about life under the Taliban. Using the pen name Gul Makai, she often spoke about her family's fight for girls' education in her community.<br><br>In October 2012, Malala was targeted by the Taliban and shot in the head as she was returning from school on a bus. She miraculously survived and continues her campaign for education.<br><br>In recognition of her courage and advocacy, Malala was awarded the Nobel Peace Prize in 2014, becoming the youngest-ever recipient at just seventeen years of age. She was also honored with the National Youth Peace Prize in Pakistan in 2011 and the International Children's Peace Prize in 2013, and she was short-listed for <I>Time </I>magazine's Person of the Year.<br><br>Malala continues to champion universal access to education through the Malala Fund, a non-<br>profit organization investing in community-led programs and supporting education advocates around the world.<br><br><br><br><br><B>Christina Lamb</B> is one of the world's leading foreign correspondents. She has reported on Pakistan and Afghanistan since 1987. Educated at Oxford and Harvard, she is the author of five books and has won a number of awards, including Britain's Foreign Correspondent of the Year five times, as well as the Prix Bayeux-Calvados, Europe's most prestigious award for war correspondents. She currently works for the <I>Sunday Times </I>and lives in London and Portugal with her husband and son.</DIV>]]></Text>
+</OtherText>
+<Imprint>
+<NameCodeType>01</NameCodeType>
+<NameCodeValue>010402</NameCodeValue>
+<ImprintName>Little, Brown &amp; Company</ImprintName>
+</Imprint>
+<Publisher>
+<PublishingRole>01</PublishingRole>
+<NameCodeType>01</NameCodeType>
+<NameCodeValue>Hachette Audio</NameCodeValue>
+<PublisherName>Hachette Audio</PublisherName>
+</Publisher>
+<PublishingStatus>04</PublishingStatus>
+<PublicationDate>20131008</PublicationDate>
+<SalesRights>
+<SalesRightsType>02</SalesRightsType>
+<RightsCountry>CN</RightsCountry>
+</SalesRights>
+<SalesRights>
+<SalesRightsType>01</SalesRightsType>
+<RightsCountry>AF AG AI AM AR AS AW BB BM BN BO BQ BR BS BZ CA CL CO CR CU CW DM DO EC FM GD GP GT GU GY HK HN HT ID IO JM JP KG KH KN KP KR KY KZ LA LC MF MH MM MN MO MP MQ MS MX MY NI PA PE PH PK PR PY SG SR SV SX TC TH TJ TL TM TT TW UM US UY UZ VC VE VG VI VN</RightsCountry>
+</SalesRights>
+<SalesRights>
+<SalesRightsType>03</SalesRightsType>
+<RightsCountry>AD AE AL AO AQ AT AU AX AZ BA BD BE BF BG BH BI BJ BL BT BV BW BY CC CD CF CG CH CI CK CM CV CX CY CZ DE DJ DK DZ EE EG EH ER ES ET FI FJ FK FO FR GA GB GE GF GG GH GI GL GM GN GQ GR GS GW HM HR HU IE IL IM IN IQ IR IS IT JE JO KE KI KM KW LB LI LK LR LS LT LU LV LY MA MC MD ME MG MK ML MR MT MU MV MW MZ NA NC NE NF NG NL NO NP NR NU NZ OM PF PG PL PM PN PS PT PW QA RE RO RS RU RW SA SB SC SD SE SH SI SJ SK SL SM SN SO SS ST SY SZ TD TF TG TK TN TO TR TV TZ UA UG VA VU WF WS YE YT ZA ZM ZW</RightsCountry>
+</SalesRights>
+<RelatedProduct>
+<RelationCode>13</RelationCode>
+<ProductIdentifier>
+<ProductIDType>02</ProductIDType>
+<IDValue>0316322407</IDValue>
+</ProductIdentifier>
+</RelatedProduct>
+<RelatedProduct>
+<RelationCode>13</RelationCode>
+<ProductIdentifier>
+<ProductIDType>15</ProductIDType>
+<IDValue>9780316322409</IDValue>
+</ProductIdentifier>
+</RelatedProduct>
+<SupplyDetail>
+<SupplierSAN>2002205</SupplierSAN>
+<SupplierName>Hachette Book Group USA</SupplierName>
+<SupplierRole>00</SupplierRole>
+<ReturnsCodeType>02</ReturnsCodeType>
+<ReturnsCode>N</ReturnsCode>
+<AvailabilityCode>IP</AvailabilityCode>
+<ProductAvailability>20</ProductAvailability>
+<DateFormat>00</DateFormat>
+<ExpectedShipDate>20131101</ExpectedShipDate>
+<OnSaleDate>20131008</OnSaleDate>
+<Price>
+<PriceTypeCode>01</PriceTypeCode>
+<DiscountCoded>
+<DiscountCodeType>02</DiscountCodeType>
+<DiscountCodeTypeName>HBGUSA</DiscountCodeTypeName>
+<DiscountCode>XL</DiscountCode>
+</DiscountCoded>
+<PriceAmount>24.98</PriceAmount>
+<CurrencyCode>USD</CurrencyCode>
+</Price>
+<Price>
+<PriceTypeCode>01</PriceTypeCode>
+<PriceAmount>27.98</PriceAmount>
+<CurrencyCode>CAD</CurrencyCode>
+</Price>
+</SupplyDetail>
+</Product>
+</ONIXMessage>

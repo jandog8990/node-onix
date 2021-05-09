@@ -17,9 +17,10 @@ module.exports = {
         // This ill be a map from Keys to Functions for each object type 
         notification: {
             1: (book, author, narrator) => { book[NOTIFICATION] = "early"; }, // early 
-            3: (book, author, narrator) => { book[NOTIFICATION] = "advanced-confirmation"; }, // book ready
-            4: (book, author, narrator) => { book[NOTIFICATION] = "confirmed"; }, // book ready
-            5: (book, author, narrator) => { book[NOTIFICATION] = "update" },
+            2: (book, author, narrator) => { book[NOTIFICATION] = "advanced"; }, // book ready
+            3: (book, author, narrator) => { book[NOTIFICATION] = "confirmed"; }, // book ready
+            4: (book, author, narrator) => { book[NOTIFICATION] = "update"; }, // book ready
+            5: (book, author, narrator) => { book[NOTIFICATION] = "delete" },
             88: (book, author, narrator) => { book[NOTIFICATION] = "test-update" },  // test processing (disregard data)
             89: (book, author, narrator) => { ok[NOTIFICATION] = "test-record" }// test record (disregard data)
         },   // List 1 (notification types) 
@@ -57,8 +58,9 @@ module.exports = {
                 1: () => { return []; }, //"proprietary",
                 2: () => { return []; }, //"isbn-10",
                 3: () => { return []; }, //"gtin-13",
+           	14: () => { return []; },	// gtin-14 
                 15: () => { return [BOOK_TABLE, "ISBN13"]; } // "isbn-13"
-            },
+	    },
             value: (table, field, val) => {
                 table[field] = val; // store the ISBN13 as a string
             }
@@ -92,18 +94,42 @@ module.exports = {
                 "A02": () => {
                     return [AUTHOR_TABLES, "GHOST"];
                 },//"ghost-author",  // not handled yet (should still be an author: hidden??)
+                "A07": () => {
+                    return [AUTHOR_TABLES, "ARTIST"];
+                },//
                 "A09": () => {
                     return [];
                 },  //"created-by",    // is this an author?
+                "A12": () => {
+                    return [];
+                },  //"illustrated-by",
+                "A19": () => {
+                    return [AUTHOR_TABLES, "AFTERWORD_BY"];
+                },//"foreward-author",  // not handled yet (should still be an author: hidden??)
+                "A23": () => {
+                    return [AUTHOR_TABLES, "FOREWORD_BY"];
+                },//"foreword-author",  // not handled yet (should still be an author: hidden??)
+                "B01": () => {
+                    return [AUTHOR_TABLES, "EDITED_BY"];
+                },  // "translated-by", // this should be another author field
+                "B05": () => {
+                    return [AUTHOR_TABLES, "ADAPTED_BY"];
+                },  // "adapted-by", // this should be another author field
                 "B06": () => {
                     return [AUTHOR_TABLES, "TRANSLATOR"];
                 },  // "translated-by", // this should be another author field
+                "C01": () => {
+                    return [AUTHOR_TABLES, "COMPILED_BY"];
+                },  // "compiled-by", // this should be another author field
                 "E03": () => {
                     return [NARRATOR_TABLES, "NARRATOR"];
                 },  // "narrator",
                 "E07": () => {
                     return [NARRATOR_TABLES, "NARRATOR"];
                 },  // "read-by",   // as in audiobook
+                "Z99": () => {
+                    return [];  // OTHER contributor not handled
+                }
             },
             nameInverted: (tableArr, field, val) => {
                 var first = "";
@@ -153,6 +179,7 @@ module.exports = {
                 16: () => { return []; },//"bic-education",    // educational purpose
                 17: () => { return []; },//"bic-reading-level",
                 20: () => { return [SUBJECT_TABLES, KEYWORDS_KEY]; },//"keyords", // multiple keywords and phrases (not usually shown)
+                22: () => { return []; },//who knows
             },
             heading: (tableArr, field, val) => {
                 // check if e are parsing subjects or keywords
