@@ -14,7 +14,7 @@ const subjectSchema = new Schema(
     },
     {
         // set collection to wp_GENRES
-        collection: 'SUBJECT'
+        collection: 'SUBJECT_NEW'
     }
 );
 

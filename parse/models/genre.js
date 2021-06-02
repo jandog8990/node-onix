@@ -11,7 +11,7 @@ const genreSchema = new Schema(
     },
     {
         // set collection to wp_GENRES
-        collection: 'wp_GENRES'
+        collection: 'GENRES_NEW'
     }
 );
 

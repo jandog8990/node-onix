@@ -44,7 +44,7 @@ const bookSchema = new Schema(
 	},
 	{
 		// set the collection to our wp_BOOKS table
-		collection: 'wp_BOOKS'
+		collection: 'BOOKS_NEW'
 	}
 );
 // function for linking multiple tables using aggregate and $lookup

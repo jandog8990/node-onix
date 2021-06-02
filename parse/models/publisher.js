@@ -13,7 +13,7 @@ const publisherSchema = new Schema(
 	},
 	{
 		// set the collection to wp_PUBLISHER
-		collection: 'wp_PUBLISHER'
+		collection: 'PUBLISHER_NEW'
 	}
 );
 
