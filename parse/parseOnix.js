@@ -41,6 +41,7 @@ console.log("XML file = " + xmlFile);
 
 var macXml = fs.readFileSync(xmlFile, { encoding: 'utf-8' });
 var onix21Xsd = fs.readFileSync('./ONIX2.1/ONIX_BookProduct_CodeLists.xsd', { encoding: 'utf-8' });
+// var onix30Xsd = fs.readFileSync('./ONIX3.0/ONIX_BookProduct_CodeLists.xsd', { encoding: 'utf-8' });
 // var EPUBDIRECT = fs.readFileSync(path.join(__dirname, './fixtures/epubDirect.xml'), { encoding: 'utf-8' });
 
 // Local MongoDB connection
@@ -78,6 +79,7 @@ mongoose.connect(mongoUri, {
 
 // Parse the input onix xml file
 var xmlFeed = onix.parse(macXml, "2.1");
+// var xmlFeed = onix.parse(macXml, "3.0");
 
 const convertedSchemas = xs2js.processAllSchemas({
 	schemas: { 'onix.xsd': onix21Xsd }
@@ -137,6 +139,7 @@ async function processOnixJson(onixJson, xsdJson) {
 	console.log("\n");
 
 	// TODO: Loop through all books and feed to the update objects
+	//for (var ii = 0; ii < 1; ii++) {
 	for (var ii = 0; ii < products.length; ii++) {
 		const book = products[ii];
 		console.log("BOOK[ " + ii + " ]");
@@ -434,10 +437,12 @@ function checkUpdateObjectTable(mainKey, bookField, tablesToEdit) {
 			var subVal = bookField[typeKey];
 		
 			//TODO: Needed for checking missing keys in the onixKeyLookup script
-			console.log("mainKey = " + mainKey);	
+		    /*	
+            console.log("mainKey = " + mainKey);	
 			console.log("typeKey = " + typeKey);	
 			console.log("subVal = " + subVal);
 			console.log("\n");
+            */
 
 			var tableKeyArray = onixKeyLookup[mainKey][typeKey][subVal]();
 

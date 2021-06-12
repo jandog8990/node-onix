@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE ONIXMessage SYSTEM "http://www.editeur.org/onix/2.1/reference/onix-international.dtd">
+<ONIXMessage>
+<Header>
+<FromCompany>Ingram Content Group</FromCompany>
+<FromPerson>CoreSource</FromPerson>
+<FromEmail>partnersupport@ingramcontent.com</FromEmail>
+<ToCompany>Abantu Audio - 2.1 No Conversion</ToCompany>
+<SentDate>202105191031</SentDate>
+</Header>
+<Product>
+<RecordReference>9781549134043</RecordReference>
+<NotificationType>03</NotificationType>
+<ProductIdentifier>
+<ProductIDType>15</ProductIDType>
+<IDValue>9781549134043</IDValue>
+</ProductIdentifier>
+<ProductIdentifier>
+<ProductIDType>02</ProductIDType>
+<IDValue>1549134043</IDValue>
+</ProductIdentifier>
+<ProductIdentifier>
+<ProductIDType>14</ProductIDType>
+<IDValue>09781549134043</IDValue>
+</ProductIdentifier>
+<ProductIdentifier>
+<ProductIDType>03</ProductIDType>
+<IDValue>9781549134043</IDValue>
+</ProductIdentifier>
+<ProductIdentifier>
+<ProductIDType>01</ProductIDType>
+<IDTypeName>Library ISBN</IDTypeName>
+<IDValue>9781549164163</IDValue>
+</ProductIdentifier>
+<ProductForm>AJ</ProductForm>
+<ProductFormDescription>Lossless Format Audio, WAV</ProductFormDescription>
+<ProductContentType>01</ProductContentType>
+<Series>
+<TitleOfSeries>The Nameless Republic</TitleOfSeries>
+<NumberWithinSeries>1</NumberWithinSeries>
+</Series>
+<Title>
+<TitleType>01</TitleType>
+<TitleText>Son of the Storm</TitleText>
+</Title>
+<WorkIdentifier>
+<WorkIDType>01</WorkIDType>
+<IDValue>9780316428941</IDValue>
+</WorkIdentifier>
+<Contributor>
+<SequenceNumber>1</SequenceNumber>
+<ContributorRole>A01</ContributorRole>
+<PersonName>Suyi Davies Okungbowa</PersonName>
+<PersonNameInverted>Okungbowa, Suyi Davies</PersonNameInverted>
+<NamesBeforeKey>Suyi Davies</NamesBeforeKey>
+<KeyNames>Okungbowa</KeyNames>
+</Contributor>
+<Contributor>
+<SequenceNumber>2</SequenceNumber>
+<ContributorRole>E07</ContributorRole>
+<PersonName>Korey Jackson</PersonName>
+<PersonNameInverted>Jackson, Korey</PersonNameInverted>
+<NamesBeforeKey>Korey</NamesBeforeKey>
+<KeyNames>Jackson</KeyNames>
+</Contributor>
+<EditionTypeCode>UBR</EditionTypeCode>
+<EditionStatement>retail</EditionStatement>
+<Language>
+<LanguageRole>01</LanguageRole>
+<LanguageCode>eng</LanguageCode>
+</Language>
+<Extent>
+<ExtentType>09</ExtentType>
+<ExtentValue>1065</ExtentValue>
+<ExtentUnit>05</ExtentUnit>
+</Extent>
+<BASICMainSubject>FIC009100</BASICMainSubject>
+<Subject>
+<SubjectSchemeIdentifier>10</SubjectSchemeIdentifier>
+<SubjectCode>FIC009020</SubjectCode>
+</Subject>
+<Subject>
+<SubjectSchemeIdentifier>10</SubjectSchemeIdentifier>
+<SubjectCode>FIC049000</SubjectCode>
+</Subject>
+<Subject>
+<SubjectSchemeIdentifier>20</SubjectSchemeIdentifier>
+<SubjectHeadingText>fantasy;about magic;diverse books;smart protagonist;warrior;future;scholar;hero;action adventure;rebel;revolution;gifts;political tension;hidden secrets</SubjectHeadingText>
+</Subject>
+<AudienceCode>01</AudienceCode>
+<Audience>
+<AudienceCodeType>01</AudienceCodeType>
+<AudienceCodeValue>01</AudienceCodeValue>
+</Audience>
+<OtherText>
+<TextTypeCode>01</TextTypeCode>
+<TextFormat>02</TextFormat>
+<Text><![CDATA[<DIV><B>From one of the most exciting new storytellers in epic fantasy, <I>Son of the Storm</I>&#160;is a sweeping tale of violent conquest and forgotten&#160;magic set in a world inspired by the pre-colonial empires of West Africa.</B><BR /><BR />&quot;Everything I love in a fantasy novel. Damn good stuff!&quot;&#160;&mdash;Jenn Lyons, author of <I>The Ruin of Kings</I><BR /><BR />In the ancient. city of Bassa, Danso is a clever scholar on the cusp of achieving greatness&mdash;only he doesn&rsquo;t want it. Instead, he prefers to chase forbidden stories about what lies outside the city walls. The Bassai elite claim there is nothing of interest.&#160;The city&rsquo;s immigrants are sworn to secrecy.<BR /><BR />But when Danso stumbles across a warrior wielding magic that shouldn&rsquo;t exist, he&rsquo;s put on a collision course with Bassa&rsquo;s darkest secrets. Drawn into the city&rsquo;s hidden history, he sets out on a journey beyond its borders. And the chaos left in the wake of his discovery threatens to destroy the empire.<BR /><BR /><B>Praise for <I>Son of the Storm</I>:</B><BR /><BR />&quot;With an intricate and irresistible plot, Okungbowa weaves a vibrant tale of betrayal, intrigue, and revolution.&rdquo; Anthony Ryan, author of <I>Blood Song</I><BR /><BR />&quot;A thrilling, fantastical adventure that introduces a beguiling new world . . . and then rips apart everything you think you know.&quot; &mdash;S. A. Chakraborty, author of <I>The City of Brass</I><BR /><BR /><B>The Nameless Republic</B><BR /><I>Son of the Storm</I></DIV>]]></Text>
+</OtherText>
+<OtherText>
+<TextTypeCode>13</TextTypeCode>
+<TextFormat>02</TextFormat>
+<Text><![CDATA[<B>Suyi Davies Okungbowa</B> is a Nigerian author of speculative fiction inspired by his West African origins. He is the author of&#160;<I>David Mogo, Godhunter</I>, and his shorter works have appeared in&#160;<I>Lightspeed, Nightmare, Strange Horizons</I>, and other periodicals and anthologies. He lives between Lagos, Nigeria, and Tucson, Arizona, where he teaches writing while completing his MFA in creative writing. He tweets at @IAmSuyiDavies and is @suyidavies everywhere else.]]></Text>
+</OtherText>
+<OtherText>
+<TextTypeCode>08</TextTypeCode>
+<TextFormat>02</TextFormat>
+<Text><![CDATA[&quot;This is everything I love to see in a fantasy story: masterful, fully-realized worldbuilding, morally complex characters, thoughtful and piercing interrogations of power, privilege, and all the facets of human nature. Damn good book!&quot;—<i><b>Jenn Lyons, author of The Ruin of Kings</b></i>]]></Text>
+</OtherText>
+<OtherText>
+<TextTypeCode>08</TextTypeCode>
+<TextFormat>02</TextFormat>
+<Text><![CDATA[&quot;A mesmerizing coming of age tale set against a thrilling, fantastical adventure that introduces a beguiling new world...and then rips apart everything you think you know.&rdquo;&#160;—<i><b>S. A. Chakraborty, author of City of Brass</b></i>]]></Text>
+</OtherText>
+<OtherText>
+<TextTypeCode>08</TextTypeCode>
+<TextFormat>02</TextFormat>
+<Text><![CDATA[&quot;Okungbowa weaves an intricate and irresistible plot around the tensions and contradictions of a corrupt, decadent society which is both dependent upon and resentful of its diverse migrant population. The result is a vibrant tale of betrayal, intrigue, and revolution which benefits greatly from an original setting, a fresh take on magic, and deftly executed characterization.&quot;—<i><b>Anthony Ryan, author of Blood Song</b></i>]]></Text>
+</OtherText>
+<OtherText>
+<TextTypeCode>08</TextTypeCode>
+<TextFormat>02</TextFormat>
+<Text><![CDATA[&ldquo;Okungbowa&#39;s world feels fully formed from the first pages, sweeping readers away into an elaborately plotted tale of ancient magics and world-shattering politics. I, like many others, will be impatiently waiting for the next installment!&rdquo;—<i><b>Andrea Stewart, author of The Bone Shard Daughter</b></i>]]></Text>
+</OtherText>
+<OtherText>
+<TextTypeCode>08</TextTypeCode>
+<TextFormat>02</TextFormat>
+<Text><![CDATA[&quot;An epic fantasy set apart by how deftly Okungbowa unfurls his intricate, richly imagined world. It&#39;s not often you get to read a fantasy novel that spans not only ancient magic, sinister machinations, and monstrous forests but courthouses, college classes, and hairdressers too, evoking the terrible and fascinating city-state of Bassa in living, breathing detail.&quot;—<i><b>A. K. Larkwood, author of The Unspoken Name</b></i>]]></Text>
+</OtherText>
+<OtherText>
+<TextTypeCode>08</TextTypeCode>
+<TextFormat>02</TextFormat>
+<Text><![CDATA[&quot;A world so exquisitely observed in every detail, from the built environment to its social and political organization, that you can&rsquo;t help but tumble headlong into its vivid, captivating reality. Esheme is a standout: her unflinching subversion of motherhood to serve her own ends absolutely thrilled me.&quot;—<i><b>Shelley Parker Chan, author of She Who Became the Sun</b></i>]]></Text>
+</OtherText>
+<OtherText>
+<TextTypeCode>08</TextTypeCode>
+<TextFormat>02</TextFormat>
+<Text><![CDATA[&quot;An original and fascinating epic fantasy full of bold characters, bloody action, and brutal politics. I thoroughly enjoyed it!&rdquo;—<i><b>James Islington, author of The Shadow of What Was Lost</b></i>]]></Text>
+</OtherText>
+<OtherText>
+<TextTypeCode>08</TextTypeCode>
+<TextFormat>02</TextFormat>
+<Text><![CDATA[&ldquo;Okungobwa&rsquo;s richly-drawn and ruthlessly strict world never provides its conflicted characters with easy answers. Fantastical beasts and forgotten magic propel a story about ambition, conspiracy, and the elusiveness of belonging. This is epic fantasy that will make you think and leave you unsettled.&rdquo;&#160;—<i><b>Fonda Lee, World Fantasy Award-winning author</b></i>]]></Text>
+</OtherText>
+<Imprint>
+<NameCodeType>01</NameCodeType>
+<NameCodeValue>010411</NameCodeValue>
+<ImprintName>Orbit</ImprintName>
+</Imprint>
+<Publisher>
+<PublishingRole>01</PublishingRole>
+<NameCodeType>01</NameCodeType>
+<NameCodeValue>Hachette Audio</NameCodeValue>
+<PublisherName>Hachette Audio</PublisherName>
+</Publisher>
+<PublishingStatus>02</PublishingStatus>
+<PublicationDate>20210511</PublicationDate>
+<SalesRights>
+<SalesRightsType>01</SalesRightsType>
+<RightsCountry>AD AE AF AG AI AL AM AO AQ AR AS AT AU AW AX AZ BA BB BD BE BF BG BH BI BJ BL BM BN BO BQ BR BS BT BV BW BY BZ CA CC CD CF CG CH CI CK CL CM CN CO CR CU CV CW CX CY CZ DE DJ DK DM DO DZ EC EE EG EH ER ES ET FI FJ FK FM FO FR GA GB GD GE GF GG GH GI GL GM GN GP GQ GR GS GT GU GW GY HK HM HN HR HT HU ID IE IL IM IN IO IQ IR IS IT JE JM JO JP KE KG KH KI KM KN KP KR KW KY KZ LA LB LC LI LK LR LS LT LU LV LY MA MC MD ME MF MG MH MK ML MM MN MO MP MQ MR MS MT MU MV MW MX MY MZ NA NC NE NF NG NI NL NO NP NR NU NZ OM PA PE PF PG PH PK PL PM PN PR PS PT PW PY QA RE RO RS RU RW SA SB SC SD SE SG SH SI SJ SK SL SM SN SO SR SS ST SV SX SY SZ TC TD TF TG TH TJ TK TL TM TN TO TR TT TV TW TZ UA UG UM US UY UZ VA VC VE VG VI VN VU WF WS YE YT ZA ZM ZW</RightsCountry>
+</SalesRights>
+<RelatedProduct>
+<RelationCode>13</RelationCode>
+<ProductIdentifier>
+<ProductIDType>02</ProductIDType>
+<IDValue>0316428949</IDValue>
+</ProductIdentifier>
+</RelatedProduct>
+<RelatedProduct>
+<RelationCode>13</RelationCode>
+<ProductIdentifier>
+<ProductIDType>15</ProductIDType>
+<IDValue>9780316428941</IDValue>
+</ProductIdentifier>
+</RelatedProduct>
+<SupplyDetail>
+<SupplierName>Hachette Book Group USA</SupplierName>
+<SupplierRole>00</SupplierRole>
+<SupplyToTerritory>WORLD</SupplyToTerritory>
+<ReturnsCodeType>02</ReturnsCodeType>
+<ReturnsCode>N</ReturnsCode>
+<AvailabilityCode>NP</AvailabilityCode>
+<ProductAvailability>11</ProductAvailability>
+<OnSaleDate>20210511</OnSaleDate>
+<Price>
+<PriceTypeCode>01</PriceTypeCode>
+<DiscountCoded>
+<DiscountCodeType>02</DiscountCodeType>
+<DiscountCodeTypeName>HBG</DiscountCodeTypeName>
+<DiscountCode>XL</DiscountCode>
+</DiscountCoded>
+<PriceAmount>25.98</PriceAmount>
+<CurrencyCode>USD</CurrencyCode>
+<Territory>WORLD</Territory>
+<PriceEffectiveFrom>20200414</PriceEffectiveFrom>
+</Price>
+<Price>
+<PriceTypeCode>01</PriceTypeCode>
+<DiscountCoded>
+<DiscountCodeType>02</DiscountCodeType>
+<DiscountCodeTypeName>HBG</DiscountCodeTypeName>
+<DiscountCode>XL</DiscountCode>
+</DiscountCoded>
+<PriceAmount>32.98</PriceAmount>
+<CurrencyCode>CAD</CurrencyCode>
+<Territory>WORLD</Territory>
+<PriceEffectiveFrom>20200414</PriceEffectiveFrom>
+</Price>
+</SupplyDetail>
+<MarketRepresentation>
+<AgentName>Hachette Audio</AgentName>
+<AgentRole>07</AgentRole>
+<MarketTerritory>WORLD</MarketTerritory>
+<MarketPublishingStatus>02</MarketPublishingStatus>
+<MarketDate>
+<MarketDateRole>01</MarketDateRole>
+<DateFormat>00</DateFormat>
+<Date>20210511</Date>
+</MarketDate>
+</MarketRepresentation>
+</Product>
+</ONIXMessage>
