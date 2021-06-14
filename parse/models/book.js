@@ -44,7 +44,7 @@ const bookSchema = new Schema(
 	},
 	{
 		// set the collection to our wp_BOOKS table
-		collection: 'BOOKS_NEW'
+		collection: 'BOOK_NEW'
 	}
 );
 // function for linking multiple tables using aggregate and $lookup
@@ -57,4 +57,4 @@ bookSchema.virtual('url').get(function() {
 bookSchema.index({ISBN13: 1, TITLE: 1}, {unique: true});
 
 // export the Books model for the API
-module.exports = mongoose.model('Books', bookSchema); 
+module.exports = mongoose.model('Book', bookSchema); 

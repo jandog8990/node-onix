@@ -17,10 +17,10 @@ const bookPhotosSchema = new Schema(
 	},
 	{
 		// set collection to wp_BOOK_PHOTOS table
-		collection: 'PHOTOS_NEW'
+		collection: 'BOOK_PHOTO_NEW'
 	}
 );
 
 // export the Audio model for the API
 //module.exports = mongoose.model('Audio', audioSchema, 'audio');
-module.exports = mongoose.model('BookPhotos', bookPhotosSchema); 
+module.exports = mongoose.model('BookPhoto', bookPhotosSchema); 

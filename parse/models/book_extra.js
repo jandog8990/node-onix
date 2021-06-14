@@ -15,7 +15,7 @@ const bookExtraSchema = new Schema(
         AUTHOR_INTERVIEW: String
     },
     {
-        collection: 'EXTRA_NEW'
+        collection: 'BOOK_EXTRA_NEW'
     }
 );
 
