@@ -10,7 +10,7 @@ const narratorSchema = new Schema(
         BIOGRAPHY: String,
     },
     {
-        collection: 'NARRATOR'
+        collection: 'NARRATOR_NEW'
     }
 );
 

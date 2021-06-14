@@ -17,7 +17,7 @@ const bookPhotosSchema = new Schema(
 	},
 	{
 		// set collection to wp_BOOK_PHOTOS table
-		collection: 'wp_BOOK_PHOTOS'
+		collection: 'PHOTOS_NEW'
 	}
 );
 

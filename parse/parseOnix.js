@@ -63,10 +63,10 @@ console.log("\nMongo URI:");
 console.log(mongoUri);
 console.log("\n");
 mongoose.connect(mongoUri, {
-    reconnectTries: 80,
-    reconnectInterval: 1000,
-    useCreateIndex: true,
-    useNewUrlParser: true
+	reconnectTries: 80,
+	reconnectInterval: 1000,
+	useCreateIndex: true,
+	useNewUrlParser: true
 },  (err, client) => {
 	if (err) {
 		console.log("Mongoose Connect Err:");
@@ -123,8 +123,8 @@ function getValue(obj, searchKey) {
  */
 async function processOnixJson(onixJson, xsdJson) {
 	console.log("ONIX Json:");
-	console.log(onixJson);	
-	console.log("\n");	
+	console.log(onixJson);
+	console.log("\n");
 
 	var products = onixJson.products;
 	var testBook = products[0];
@@ -139,7 +139,6 @@ async function processOnixJson(onixJson, xsdJson) {
 	console.log("\n");
 
 	// TODO: Loop through all books and feed to the update objects
-	//for (var ii = 0; ii < 1; ii++) {
 	for (var ii = 0; ii < products.length; ii++) {
 		const book = products[ii];
 		console.log("BOOK[ " + ii + " ]");
@@ -225,15 +224,14 @@ async function processOnixJson(onixJson, xsdJson) {
 		console.log(mongoBookExtras);
 		console.log("\n");
 
-		// INSERT new collections into the mongo db 
-		/*	
+		// INSERT new collections into the mongo db 	
 		try {
 			await insertMongoCollections(mongoBook, mongoAuthors, mongoNarrators, mongoPublisher,
 				mongoSubject, mongoBookPhotos, mongoAudioTables, mongoBookReviews, mongoBookExtras);
 		} catch (err) {
 			console.error(err.message);
 		}
-		*/
+		
 
 		// Test for checking a BOOK can be queried
 		/*	
@@ -241,7 +239,7 @@ async function processOnixJson(onixJson, xsdJson) {
 		updateMongoCollection(ISBN);
 		*/
 	}
-	process.exit(0);	
+	process.exit(0);
 }
 
 /**
@@ -336,7 +334,7 @@ async function insertMongoCollections(mongoBook, mongoAuthors, mongoNarrators, m
 
 		// Save the AUTHOR tables to the DB	
 		var authorIds = [];	// received from mongo after insertion	
-		const authorResult = await Author.insertMany(mongoAuthors); 
+		const authorResult = await Author.insertMany(mongoAuthors);
 		console.log("Author Result:");
 		console.log(authorResult);
 		console.log("\n");
@@ -435,7 +433,7 @@ function checkUpdateObjectTable(mainKey, bookField, tablesToEdit) {
 
 		if (typeKey in bookField) {
 			var subVal = bookField[typeKey];
-		
+
 			//TODO: Needed for checking missing keys in the onixKeyLookup script
 		    /*	
             console.log("mainKey = " + mainKey);	
