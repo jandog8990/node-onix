@@ -20,7 +20,7 @@ const xs2js = new Xsd2JsonSchema();
 var Author = require('./models/author');
 var Audio = require('./models/audio');
 var Book = require('./models/book');
-var BookPhotos = require('./models/book_photos');
+var BookPhotos = require('./models/book_photo');
 var Narrator = require('./models/narrator');
 var Subject = require('./models/subject');
 var Publisher = require('./models/publisher');
@@ -139,7 +139,7 @@ async function processOnixJson(onixJson, xsdJson) {
 	console.log("\n");
 
 	// TODO: Loop through all books and feed to the update objects
-	for (var ii = 0; ii < products.length; ii++) {
+	for (var ii = 0; ii < 10; ii++) {
 		const book = products[ii];
 		console.log("BOOK[ " + ii + " ]");
 		console.log(book["title"]);
@@ -231,7 +231,7 @@ async function processOnixJson(onixJson, xsdJson) {
 		} catch (err) {
 			console.error(err.message);
 		}
-		
+
 
 		// Test for checking a BOOK can be queried
 		/*	
@@ -320,96 +320,165 @@ function updateObjects(book, tablesToEdit, bookTable, authorTables,
 	}
 }
 
+// Function for saving and handling authors if there exists dups
+function saveAuthor(mongoAuthor) {
+	console.log("Save authors async:");
+	console.log(mongoAuthor);
+	console.log("\n");
+	const options = { new: true, upsert: true };	// new returns document, upsert inserts if DNE	
+	const update = {};
+	return Author.findOneAndUpdate(mongoAuthor, update, options)
+		.then(authorData => {
+			// return the updated user
+			return authorData;
+		}).catch(err => {
+			console.error("Author Find & Update Err:");
+			console.error(err);
+			console.error("\n");
+			throw err;
+		});
+	/*	
+	return Author.insertMany(mongoAuthors, { ordered: false },
+		function (err, result) {
+			if (err) {
+				console.error("Insert many err:");
+				console.error(err);
+
+				throw err;
+				// throw err;
+			} else {
+				console.log("Author insertMany success:");
+				console.log(result);
+				console.log("\n");
+				return result;
+			}
+		});
+
+	// return result;
+	/*
+	const authorResult = await Author.insertMany(mongoAuthors, {ordered: false});
+	console.log("Author Result:");
+	console.log(authorResult);
+	console.log("\n");
+	for (const obj of authorResult) {
+		authorIds.push(new ObjectId(obj["_id"]));
+	}
+	console.log("Author ids:");
+	console.log(authorIds);
+	console.log("\n");
+	*/
+}
+
+async function saveEverythingElse(mongoBook) {
+
+	// Save the NARRATOR tables to the DB	
+	var narratorIds = [];	// received from mongo after insertion	
+	/*	
+	const narratorsResult = await Narrator.insertMany(mongoNarrators, {ordered: false});
+	console.log("Narrators Result:");
+	console.log(narratorsResult);
+	console.log("\n");
+	for (const obj of narratorsResult) {
+		narratorIds.push(new ObjectId(obj["_id"]));
+	}
+	console.log("Narrator ids:");
+	console.log(narratorIds);
+	console.log("\n");
+	*/
+
+	// Save the PUBLISHER table to the DB
+	let publisherId = 0;
+	/*	
+	const publisherResult = await Publisher.create(mongoPublisher);
+	console.log("Publisher Result:");
+	console.log(publisherResult);
+	console.log("\n");
+	var publisherId = new ObjectId(publisherResult["_id"]);
+	console.log("Publisher id:");
+	console.log(publisherId);
+	console.log("\n");
+	*/
+
+	// Save the SCHEMA tables to the DB
+	let subjectId = 0;
+	/*	
+	const subjectResult = await Subject.create(mongoSubject);
+	console.log("Subject Result:");
+	console.log(subjectResult);
+	console.log("\n");
+	var subjectId = new ObjectId(subjectResult["_id"]);
+	console.log("Subject id:");
+	console.log(subjectId);
+	console.log("\n");
+	*/
+
+	// Save the BOOK_PHOTOS to the DB
+	var bookPhotoIds = [];	// received from mongo after insertion	
+	/*	
+	const bookPhotosResult = await BookPhotos.insertMany(mongoBookPhotos, {ordered: false});
+	console.log("Book Photos Result:");
+	console.log(bookPhotosResult);
+	console.log("\n");
+	for (const obj of bookPhotosResult) {
+		bookPhotoIds.push(new ObjectId(obj["_id"]));
+	}
+	console.log("BookPhotos Result:");
+	console.log(bookPhotosResult);
+	console.log("\n");
+	*/
+
+	// update the BOOK table with AUTHOR_IDS array and everything else
+	mongoBook.AUTHORS = authorIds;
+	mongoBook.NARRATORS = narratorIds;
+	mongoBook.PUBLISHER_ID = publisherId;
+	mongoBook.SUBJECTS = new Array(subjectId);
+	console.log("Mongo Book Creation:");
+	console.log(mongoBook);
+	console.log("\n");
+	const bookResult = await Book.create(mongoBook);
+	console.log("Book Result:");
+	console.log(bookResult);
+	console.log("\n");
+
+	console.log("STORAGE SUCCESSFUL! -> EXIT()")
+	//process.exit(0);
+	return 0;
+
+}
+
 async function insertMongoCollections(mongoBook, mongoAuthors, mongoNarrators, mongoPublisher,
 	mongoSubject, mongoBookPhotos, mongoAudioTables, mongoBookReviews, mongoBookExtras) {
 
-	try {
-		/*	
-		ISBN = 9374281;
-		const bookResult = await Book.findOne({ 'ISBN': ISBN }, { SUMMARY: 0 });//function (err, book) {
-		console.log("Book Mongo:");
-		console.log(bookResult);
-		console.log("\n");
-		*/
+	// try {
+	/*	
+	ISBN = 9374281;
+	const bookResult = await Book.findOne({ 'ISBN': ISBN }, { SUMMARY: 0 });//function (err, book) {
+	console.log("Book Mongo:");
+	console.log(bookResult);
+	console.log("\n");
+	*/
 
-		// Save the AUTHOR tables to the DB	
-		var authorIds = [];	// received from mongo after insertion	
-		const authorResult = await Author.insertMany(mongoAuthors);
-		console.log("Author Result:");
-		console.log(authorResult);
-		console.log("\n");
-		for (const obj of authorResult) {
-			authorIds.push(new ObjectId(obj["_id"]));
+	// Save the AUTHOR tables to the DB	
+	let authorIds = [];	// received from mongo after insertion	
+	console.log("Save Authors:");
+	try {
+		for (var x = 0; x < mongoAuthors.length; x++) {
+			const author = 	await saveAuthor(mongoAuthors[x]);
+			authorIds.push(author._id);
+			// function (err, result) {
+
 		}
-		console.log("Author ids:");
+
+		console.log("Authors insert success:");
 		console.log(authorIds);
 		console.log("\n");
+		// saveEverythingElse();
+		// });
 
-		// Save the NARRATOR tables to the DB	
-		var narratorIds = [];	// received from mongo after insertion	
-		const narratorsResult = await Narrator.insertMany(mongoNarrators);
-		console.log("Narrators Result:");
-		console.log(narratorsResult);
-		console.log("\n");
-		for (const obj of narratorsResult) {
-			narratorIds.push(new ObjectId(obj["_id"]));
-		}
-		console.log("Narrator ids:");
-		console.log(narratorIds);
-		console.log("\n");
-
-		// Save the PUBLISHER table to the DB
-		const publisherResult = await Publisher.create(mongoPublisher);
-		console.log("Publisher Result:");
-		console.log(publisherResult);
-		console.log("\n");
-		var publisherId = new ObjectId(publisherResult["_id"]);
-		console.log("Publisher id:");
-		console.log(publisherId);
-		console.log("\n");
-
-		// Save the SCHEMA tables to the DB
-		const subjectResult = await Subject.create(mongoSubject);
-		console.log("Subject Result:");
-		console.log(subjectResult);
-		console.log("\n");
-		var subjectId = new ObjectId(subjectResult["_id"]);
-		console.log("Subject id:");
-		console.log(subjectId);
-		console.log("\n");
-
-		// Save the BOOK_PHOTOS to the DB
-		var bookPhotoIds = [];	// received from mongo after insertion	
-		const bookPhotosResult = await BookPhotos.insertMany(mongoBookPhotos);
-		console.log("Book Photos Result:");
-		console.log(bookPhotosResult);
-		console.log("\n");
-		for (const obj of bookPhotosResult) {
-			bookPhotoIds.push(new ObjectId(obj["_id"]));
-		}
-		console.log("BookPhotos Result:");
-		console.log(bookPhotosResult);
-		console.log("\n");
-
-		// update the BOOK table with AUTHOR_IDS array and everything else
-		mongoBook.AUTHORS = authorIds;
-		mongoBook.NARRATORS = narratorIds;
-		mongoBook.PUBLISHER_ID = publisherId;
-		mongoBook.SUBJECTS = new Array(subjectId);
-		console.log("Mongo Book Creation:");
-		console.log(mongoBook);
-		console.log("\n");
-		const bookResult = await Book.create(mongoBook);
-		console.log("Book Result:");
-		console.log(bookResult);
-		console.log("\n");
-
-		console.log("STORAGE SUCCESSFUL! -> EXIT()")
-		//process.exit(0);
-		return 0;
 	} catch (err) {
-		console.error("Mongo err:", err);
-		process.exit(1);
+		console.error("Mongo insert many err:");
+		console.error(err);
+		//process.exit(1);
 	}
 }
 

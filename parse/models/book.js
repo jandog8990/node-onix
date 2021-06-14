@@ -13,7 +13,7 @@ const bookSchema = new Schema(
 		ISBN: {type: Number},
 		ISBN13: {type: String, required: true, unique: true},	
 		TITLE: {type: String, required: true, unique: true},
-		TITLE_ACRONYM: String,
+		TITLE_ACRONYM: {type: String},
 		TITLE_ABBREVIATED: String,	
 		EDITION: Object,
 		AUTHOR_ID: Number,	// user._id.toString() from other table
