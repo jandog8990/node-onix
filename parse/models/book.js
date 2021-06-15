@@ -11,8 +11,8 @@ const bookSchema = new Schema(
 	{
 		// ISBN: { type: Number, default: null, required: true },
 		ISBN: {type: Number},
-		ISBN13: {type: String, required: true, unique: true},	
-		TITLE: {type: String, required: true, unique: true},
+		ISBN13: String,	
+		TITLE: String,
 		TITLE_ACRONYM: {type: String},
 		TITLE_ABBREVIATED: String,	
 		EDITION: Object,
@@ -54,7 +54,8 @@ bookSchema.virtual('url').get(function() {
 	return '/books/' + this._id;
 });
 
-bookSchema.index({ISBN13: 1, TITLE: 1}, {unique: true});
+// bookSchema.index({ISBN13: 1, TITLE: 1}, {unique: true});
+bookSchema.index({TITLE: 1}, {unique: true});
 
 // export the Books model for the API
 module.exports = mongoose.model('Book', bookSchema); 
