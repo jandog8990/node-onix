@@ -14,7 +14,7 @@ const bookReviewSchema = new Schema(
     },
     {
         // set collection to wp_GENRES
-        collection: 'BOOK_REVIEW'
+        collection: 'BOOK_REVIEW_NEW'
     }
 );
 

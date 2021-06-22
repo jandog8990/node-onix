@@ -32,7 +32,7 @@ const authorSchema = new Schema(
 	},
 	{
 		// set collection to wp_AUDIO table
-		collection: 'wp_AUTHOR'
+		collection: 'AUTHOR_NEW'
 	}
 );
 

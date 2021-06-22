@@ -11,9 +11,9 @@ const bookSchema = new Schema(
 	{
 		// ISBN: { type: Number, default: null, required: true },
 		ISBN: {type: Number},
-		ISBN13: {type: String, required: true, unique: true},	
-		TITLE: {type: String, required: true, unique: true},
-		TITLE_ACRONYM: String,
+		ISBN13: String,	
+		TITLE: String,
+		TITLE_ACRONYM: {type: String},
 		TITLE_ABBREVIATED: String,	
 		EDITION: Object,
 		AUTHOR_ID: Number,	// user._id.toString() from other table
@@ -44,7 +44,7 @@ const bookSchema = new Schema(
 	},
 	{
 		// set the collection to our wp_BOOKS table
-		collection: 'wp_BOOKS'
+		collection: 'BOOK_NEW'
 	}
 );
 // function for linking multiple tables using aggregate and $lookup
@@ -54,7 +54,8 @@ bookSchema.virtual('url').get(function() {
 	return '/books/' + this._id;
 });
 
-bookSchema.index({ISBN13: 1, TITLE: 1}, {unique: true});
+// bookSchema.index({ISBN13: 1, TITLE: 1}, {unique: true});
+bookSchema.index({TITLE: 1}, {unique: true});
 
 // export the Books model for the API
-module.exports = mongoose.model('Books', bookSchema); 
+module.exports = mongoose.model('Book', bookSchema); 

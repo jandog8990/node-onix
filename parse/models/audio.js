@@ -31,7 +31,7 @@ const audioSchema = new Schema(
 	},
 	{
 		// set collection to wp_AUDIO table
-		collection: 'wp_AUDIO'
+		collection: 'AUDIO_NEW'
 	}
 );
 
